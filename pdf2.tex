@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+	%
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 1 \_ Week 1 Part} \hfill \large \textbf{W. Huang}
+	\end{singlespace}
+	%
+	\rule{\textwidth}{0.4pt}
+	%
+	\begin{itemize}
+		\item Each Coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Practice problems (you will get help on this part in session 4 of week 2. You should work on this before you go to this session.)
+			\item Homework problems (to be submitted through QMquiz)
+			\item Exploration problems (to help you understand concepts discussed during lecture, not optional and examinable)
+		\end{enumerate}
+		\item \textcolor{red}{You must submit Week 1 and 2 homework problems of Coursework 1 together through the corresponding QMplus quiz before the deadline, which is at the friday afternoon of week 4 (Oct.16th, 17:00). Otherwise, you will receive 0 for this coursework (which worths $5\%$ for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 in week 5.}
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this module}.
+		\item A selection of solutions to coursework problems will be posted on QMPlus after the homework deadline. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	%
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	%
+	\textbf{I. Practice Problems}\par
+	\textbf{A.} For each of the following differential equations compute the general solution by integration and fix the constant of integration according to the initial condition $y(0) = 1$.
+	\begin{enumerate}[\bfseries 1)]
+		\item $y^\prime = 3x^2 + 2x + 3$
+		\item $y^\prime = −2\sin(2x) + 2\cos(2x)$
+		\item $ y^\prime = (x + 1)e^{- x^2 - 2x}$
+		\item $y^\prime = e^{-x}\cos(x)$
+		\item $y^\prime = 3/(1 − x)$
+	\end{enumerate}
+	\textbf{B}. Solve each of the following differential equations by separation of variables. Whenever possible write the general solution in explicit form. For each solution fix the constant of integration according to the given initial condition.\\
+	\textit{In the general solution of a first order ODE, you obtain $y(x)$, where the value of $y$ depends on the value of $x$. Also in the general solution, there is always a constant arbitrary $C$. The initial condition, for example $y(0) = −1$ means that when $x=0,\ y = -1$. Using this condition, you will specify what is the value of the arbitrary $C$ in the general solution. You will learn more of this in the following weeks.}
+	\begin{enumerate}[\bfseries 1)]
+		\item $y^\prime = −x/y,\quad y(0) = −2$.
+		\item $y^\prime = (y^2 + 1)/y, \quad y(0) = 1$.
+		\item $y^\prime = (1 + y^2)e^x, \quad y(0) = −1$.
+		\item $y^\prime = = ye^x − 2e^x + y − 2, \quad y(0) = 0$
+	\end{enumerate}
+	\textbf{C.} For each of the differential equations
+	$$
+	\text{\textbf{1)}}\ y^\prime = −y/x − x/y, \quad
+	\text{\textbf{2)}}\ y^\prime = = 2x + y − 5
+	$$
+	use an appropriate substitution to reduce it to a separable form and hence apply the separation of variables method to determine the general solution $y(x)$ of the original differential equation.
+	%
+	\newpage
+	\rule{\textwidth}{0.4pt}
+	\textbf{II. Homework}\par
+	Submit through QM quiz under MTH5123 qmplus page > Week 1\\
+	\rule{\textwidth}{0.4pt}
+	%
+	\textbf{III. Further Exploration: Modeling a Physical System}\par
+	\textbf{A.} In our Week 1 lecture, we used Newton’s Second Law of motion to deduce an equation describing the motion of a falling object of mass $m$ as
+	$$
+	m\frac{dv}{dt} = mg - \gamma\mu,
+	$$
+	where $g$ is the acceleration due to gravity, $\gamma$ is a constant called the drag coefficient and $v = v(t)$ denotes the velocity of the object.
+	\begin{enumerate}[\bfseries 1)]
+		\item If force has units of $kg m/s^2$, what must the units for $\gamma$  be? Does this make sense for the quantity it is meant to be describing?
+		\item Complete the following sentence: A solution to the differential equation above is a [ ] whose graph is a curve in the[ ]-[ ] plane.
+		\item Assuming $m = 10$ and $\gamma = 2$, investigate the behaviour of the above differential equation without solving it. \textit{Hint: if $v = 40$, then $\frac{dv}{dt} = 1.8$. This means that the slope of a solution curve $v = v(t)$ is positive (with value of the slope being $1.8$) at any point where $v = 40$. Use this idea to draw a slope field for values $40 \le v \le 60$}.
+		\item Verify that the constant function $v(t) = 49$ solves the differential equation. This solution is known as an \textit{equilibrium solution}, corresponding in this case to a balance between drag and gravity (sometimes called the \textit{terminal velocity} of the object).
+		\item Finally, solve this differential equation using separation of variables and draw some solution curves, called \textit{integral curves}, for various integration constants. How are these curves related to your slope field and the equilibrium solution.
+	\end{enumerate}
+\end{document}
