@@ -1,0 +1,137 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+	%
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 1 \_ week 1 Selected Solutions} \hfill \large \textbf{W. Huang}
+		\rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\textbf{I. Practice Problems}\par
+	\textbf{A.} For each of the following differential equations compute the general solution by integration and fix the constant of integration according to the initial condition $y(0) = 1$.
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item $
+					y^\prime
+					= 3x^2 + 2x + 3 \Rightarrow
+					y(x)
+					= \int (3x^2 + 2x + 3)dx
+					= x^3 + x^2 + 3x + C
+					$
+					Hence $y(0) = C = 1$.
+		\item $
+					y^\prime 
+					= −2 \sin(2x) + 2 \cos(2x) \Rightarrow 
+					y(x)
+					= \int f(x)dx
+					= \cos (2x) + \sin (2x) + C
+					$.
+					Hence $y(0) = 1 + C = 1$ and $C = 0$.
+		\item $
+					y^\prime = (x + 1)e^{−x^2−2x}
+					$
+					so that
+					$
+					y(x) = \int (x + 1)e^{−x^2−2x} dx
+					$.
+					Introduce $u = x^2 + 2x$ then $du = 2(x + 1) dx$ and $y(x) = \frac{1}{2}\int e^{-u}du =-\frac{1}{2} e^{-u} + C = -\frac{1}{2}e^{-x^2-2x} + C$. Hence $y(0) = -\frac{1}{2} + C = 1$ and $C = 3/2$.
+		\item $y^\prime = e^{-x}\cos x$ so that $y(x) = \int \cos xe^{-x}dx + C$. Use integration by parts: $y(x) = -\int $ $\cos x d(e^{-x}) + C = -\cos xe^{-x} + \int e^{-x}(-\sin x)dx + C$. Use integration by parts a second time: $\int e^{-x}(-\sin x)dx = \int \sin x d(e^{-x}) = \sin xe^{-x} - \int e^{-x}\cos xdx = \sin x e^{-x} - y(x)$. Thus, we have an equation: $y(x) = -\cos x e^{-x} + \sin xe^{-x} - y(x) + C$. Solving it and adding the integration constant we get the solution $y(x) = \frac{1}{2}(e^{-x}(\sin x - \cos x) + C)$. AS $y(0) = -\frac{1}{2}+C/2=1$ we find $C = 3$.
+		\item $y^\prime = 3/(1 − x) \Rightarrow y(x) = \int \frac{3}{1-x}dx = -3\ln \left\lvert 1-x \right\rvert + C$, so that $y(0) = C = 1$.
+	\end{enumerate}
+	%
+	\textbf{B.} Solve each of the following differential equations by separation of variables. Whenever possible write the general solution in explicit form. For each solution fix the constant of integration according to the given initial condition.
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item $y^\prime = −x/y,\ y(0) = −2$.  Separating variables we have on the left-hand side: $H(y) = \int ydy = \frac{y^2}{2}$ and on the right-hand side $-\int x dx = -\frac{x^2}{2} + C$. Next we solve $H(y) = \frac{y^2}{2} = u\ \Leftrightarrow\ y = H^{-1}(u) = \pm \sqrt{2u}$ for $u \ge 0$. Hence the explicit general solution to the ODE is given by $y(x) = H^{-1}(-\frac{x^2}{2}+C)=\pm \sqrt{2C-x^2}$ for $\left\lvert x\right\rvert \le \sqrt{2C}$. From the initial condition $y(0) = \pm \sqrt{2C} = -2$. Hence we have to choose the minus sign in front of the square root, and $C = 2$. Finally, the solution to the initial value problem is given by: $y(x)=-\sqrt{4-x^2}$.
+		\item $y^\prime = (y^2 + 1)/y,\ y(0) = 1$. Separating variables we have on the left-hand side $H(y) = \int \frac{y}{1+y^2}dy = \frac{1}{2}\int \frac{d(1+y^2)}{1+y^2}dy = \frac{1}{2}\ln (1+y^2)$ and on the right-hand side $\int dx = x+C$. Next we solve $H(y)=\frac{1}{2}\ln (1+y^2) = u\ \Leftrightarrow\ 1 + y^2 = e^{2u},\ \Leftrightarrow\ y = H^{-1}(u)=\pm \sqrt{e^{2u}-1}$ for $u \ge 0$. Hence the explicit general solution to the ODE is given by $y(x) = H^{-1}(x+C) = \pm \sqrt{e^{2x+2C}-1}$. From the initial condition $y(0) = \pm \sqrt{e^{2C}-1} = 1$. Hence we have to choose the plus sign in front of the square root, and $e^{2C}-1=1,\ \Leftrightarrow\ C = \frac{1}{2}\ln 2$. Finally, the solution to the initial value problem is given by: $y(x) = \sqrt{e^{2x+\ln2}-1} = \sqrt{2e^{2x}-1}$.
+		\item $y^\prime = (1+y^2)e^x,\ y(0) = -1$. Separating variables we have on the left-hand side $H(y) = \int \frac{1}{1+y^2}dy = \arctan(y)$ and on the right-hand side $\int e^x dx = e^x + C$. Next we solve $H(y) = \arctan(y) = u,\ \Leftrightarrow\ y = H^{-1}(u) = \tan u$, for all $u \in \left[-\pi/2,\ \pi/2\right]$. Hence the explicit general solution to the ODE is given by $y(x) = H^{-1}(e^x + C) = \tan(e^x + C)$. From the initial condition $y(0) = \tan(1+C)=-1$. Hence we have to choose $1 + C = -\pi/4$. Finally, the solution to the initial value problem is given by: $y(x) = \tan (e^x-1-\pi/4)$.
+		\item $y^\prime = ye^x - 2e^x + y - 2,\ y(0) = 0$. One should notice that the right-hand side is actually separable: $ye^x - 2e^x + y - 2 = (y-2)(e^x+1)$. Separating variables we have on the left-hand side $H(y) = \int \frac{1}{y-2}dy = \ln \left\lvert y-2\right\rvert$ and on the right-hand side $\int (e^x + 1)dx = e^x + x + C$. Next we solve $H(y) = \ln \left\lvert y-2\right\rvert = u,\ \Leftrightarrow\ \left\lvert y-2\right\rvert = e^u,\ \Leftrightarrow\ y = H^{-1}(u) = \pm e^u + 2$. Hence the explicit general solution to the ODE is given by $y(x) = H^{-1}(e^x + x + C) = \pm e^{e^x+x+C}+2$.  From the initial condition $y(0) = \pm e^{1+C}+2 = 0$. Hence we have to choose the minus sign in front of the exponential, and $e^{1+C}=2,\ \Leftrightarrow\ C=\ln 2-1$. Finally, the solution to the initial value problem is given by: $y(x) = -e^{e^x+x+\ln 2-1}+2$.
+	\end{enumerate}
+	%
+	\textbf{C.} For each of the differential equations
+	$$
+	\text{\textbf{1.)}}\ y^\prime = −y/x − x/y,\quad
+	\text{\textbf{2.)}}\ y^\prime = 2x + y − 5
+	$$
+	use an appropriate substitution to reduce it to a separable form and hence apply the separation of variables method to determine the general solution y(x) of the original differential equation.
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item the right-hand side depends only on the ratio $y/x$, hence we use the substitution $y = xz(x)$, which implies $y^\prime = z + xz^\prime$ so that the ODE takes the form $z + xz^\prime = -z - z^{-1}$ or $xz^\prime = -2z - z^{-1}$.  This is a separable equation. Separating variables we have on the left-hand side $H(z) = \int \frac{dz}{2z + z^{-1}} = \int \frac{zdz}{2z^2+1} = \frac{1}{4}\int \frac{d(2z^2+1)}{2z^2+1} = \frac{1}{4}\ln (2z^2+1)$ and on the right-hand side $-\int \frac{dx}{x} = -\ln \left\lvert x\right\rvert + C$. We solve correspondingly
+		$$
+		H(z)
+		= \frac{1}{4}\ln(2z^2+1)
+		= u\ \Leftrightarrow\ z^2 = \frac{1}{2}(e^{4u}-1)\ \Leftrightarrow\ z
+		= H^{-1}(u)
+		= \pm \sqrt{\frac{1}{2}(e^{4u}-1)}
+		$$
+		Thus we have the general solution for $z(x)$
+		$$
+		z(x)
+		= H^{-1}(-\ln \left\lvert x\right\rvert + C)
+		= \pm \sqrt{\frac{1}{2}(e^{-4\ln|x|+4C}-1)}
+		= \pm \sqrt{\frac{1}{2}(x^{-4}e^{4C}-1)}
+		$$
+		and the general solution of the original ODE is found from the above as
+		$$
+		y(x)
+		= xz(x)
+		= \pm x\sqrt{\frac{1}{2x^4}(e^{4C}-x^4)}
+		= \pm \frac{1}{x}\sqrt{\frac{1}{2}(D-x^4)}, \quad D = e^{4C}
+		$$
+		\item This ODE is solved by introducing the substitution z = 2x + y − 5, so taking into account $y_0 = z$ we arrive at the ODE
+		$$
+		z^\prime = 2 + y^\prime \quad \Leftrightarrow \quad z^\prime = 2 + z 
+		$$
+		which is separable and is solved via introducing on the left-hand side $H(z)=\int \frac{dz}{2+z} = \ln |2+z|$,  and on the right-hand side $\int dx = x + C$. Solving $H(z) = \ln |2 + z| = u\ \Leftrightarrow\ z = \pm e^u - 2 = H^{-1}(u)$ we therefore have the general solution for $z(x)$ as $z(x) = H^{-1}(x + C) = \pm e^{x+C}-2 = De^x-2$ so that finally
+		$$
+		y
+		= z - 2x + 5
+		= De^x - 2 - 2x + 5
+		= De^x - 2x + 3
+		$$
+	\end{enumerate}
+	%
+	\textbf{II. Homework Problems}\par
+	Solutions will be discussed in Week 5, session 4.\par
+	%
+	\textbf{III. Further Exploration}\par
+	\textbf{A.} The motion of a falling object of mass m may be given by
+	$$
+	m\frac{dv}{dt} = mg - \gamma \mu,
+	$$
+	\textbf{where $g$ is the acceleration due to gravity, $\gamma$ is a constant called the drag coefficient and $v = v(t)$ denotes the velocity of the object.}
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item The units for $\gamma$, the drag coefficient must be $kg/s$, since every term in the expression must have units of force.
+		\item A solution to the differential equation above is a function $v(t)$ whose graph is a curve in the $t-v$ plane.
+		\item Use the hint to sketch the slope field and check your answer with Mathematica.
+		\item The constant function $v(t) = 49$ has vanishing derivative. On the other hand, $mg − \gamma \mu = 10(9.8) − 2(49) = 0$, so $v(t)$ solves the differential equation.
+		\item $v(t) = 49 + Ce^{-t/5}$ Compare your integral curves with the slope fields found in the earlier exercise and note that the equilibrium solution appears when $C = 0$.
+	\end{enumerate}
+\end{document}

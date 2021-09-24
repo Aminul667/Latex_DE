@@ -1,0 +1,285 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns, arrows.meta}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+
+\fancyfoot{}
+\raggedbottom
+
+% title page
+\long\def\mytitle{
+	\begin{titlepage}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+
+		\vspace*{\stretch{1}}
+
+		\begin{singlespace}
+			{\centering
+				{\huge\bfseries MTH5123 Differential Equations\\}
+				\vspace{0.5cm}
+
+				{\Large Lecture Notes\\}
+				\vspace{0.5cm}
+
+				{\Large Week 2}
+
+				\vfill
+				\LARGE Weini Huang
+				\vspace{0.5cm}
+				
+				\LARGE School of Mathematical Sciences\\
+				\LARGE Queen Mary University of London\\
+
+				\vspace{0.5cm}
+				\LARGE Autumn 2020\\
+				}
+		\end{singlespace}
+	\end{titlepage}
+}
+
+\begin{document}
+	\pagestyle{empty}
+	\mytitle
+	%
+	Consider equations of the type
+	\begin{equation}\label{eq:1}
+		y^\prime = \left(\frac{y}{x}\right)
+	\end{equation}
+	Such ODEs do not change if we rescale $x \to kx$ and $y \to ky$ for any real constant factor $k \ne 0$, hence they are known under the name \textbf{scale-invariant} first order ODEs. To reduce them to separable equations one introduces a new function $z(x) = y(x)/x$ which implies $y(x) = xz(x)$. Differentiating this equation gives $y^\prime = z(x) + xz^\prime(x),$ and \ref{eq:1} can be rewritten in the form $z + xz^\prime = F(z)$ or equivalently
+	\begin{equation}\label{eq:2}
+		z^\prime = \frac{1}{x}[F(z) - z]
+	\end{equation}
+	which is indeed separable.\par
+	\textbf{Example:}\\
+	Solve the equation
+	$$
+	xy^\prime = y - xe^{y/x}.
+	$$
+	\textbf{Solution:}\\
+	After dividing both sides by $x$ we see that the equation is of the form \ref{eq:1} with the right-hand side $F(z) = z − e^z$. Therefore it is equivalent to the separable equation
+	$$
+	z^\prime = - \frac{1}{x}e^z.
+	$$
+	Solving it by standard means leads to $e^{-z} = \ln|x| + C$ or
+	$$
+	z = -\ln(\ln|x|+C).
+	$$
+	Finally the general solution to the original ODE is
+	$$
+	y(x) = -x\ln(\ln|x| + C).
+	$$
+	%
+	%command for section, subsection and page on header
+	\numberwithin{equation}{section}
+	\pagestyle{fancy}
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[RE]{\nouppercase \leftmark}
+	\fancyhead[LO]{\nouppercase \rightmark}
+
+	\section{First order linear ODEs}
+	%
+	This class of equations is given by
+	%
+	\begin{equation}\label{eq:1.10}
+		y^\prime = A(x) y + B(x),
+	\end{equation}
+	%
+	where the two functions $A(x) \ne 0$ and $B(x)$ are known. These equations are called \textbf{linear} (in $y$), because $y$ and its derivative $y^\prime$ occur only to the first power, they are not multiplied together, nor do they appear as the argument of a function (such as $\sin y,\ \exp(y)$, etc.). If $B(x) = 0$, the equation is called \textbf{homogeneous}, if $B(x) \ne 0$ it is called \textbf{inhomogeneous}.\par
+	\textbf{Example:}\\
+	$y^\prime \sin(x)y \quad \text{homogeneous}$\\
+	$y^\prime e^xy + x \quad \text{inhomogeneous}$\\
+	$y^\prime 1 - y^2 + x \quad \text{nonlinear}$\par
+	The method of solution of such equations proceeds in two steps:\par
+	\textbf{Step 1:} Solve the \textit{homogeneous} equation $y^\prime = A(x)y$, which is separable. The general solution is found to be
+	%
+	\begin{equation}\label{eq:1.11}
+		\int \frac{dy}{y} = \int A(x)dx + C \Rightarrow \ln|y| = \int A(x)dx + C
+	\end{equation}
+	%
+	and finally
+	%
+	\begin{equation}\label{eq:1.12}
+		y = De^{\int A(x)dx},
+	\end{equation}
+	%
+	where $D \in \mathbb{R}$ is an arbitrary real constant (also called a free parameter).\par
+	\textbf{Step 2} is known as the variation of parameter method. It amounts to looking for the solution of (\ref{eq:1.10}) in the form
+	%
+	\begin{equation}\label{eq:1.13}
+		y = D(x)e^{\int A(x)dx},
+	\end{equation}
+	%
+	where $D(x)$ is now an unknown function to be determined by substituting (\ref{eq:1.13}) to (\ref{eq:1.10}). This gives
+	$$
+	y^\prime
+	= D^\prime(x)e^{\int A(x)dx} + A(x)D(x)e^{\int A(x)dx}
+	= A(x)D(x)e^{\int A(x)dx} + B(x),
+	$$
+	which after cancelling equal terms on both sides is equivalent to
+	%
+	\begin{equation}\label{eq:1.14}
+		D^\prime e^{\int A(x)dx} = B(x).
+	\end{equation}
+	%
+	This allows us to write $D^\prime (x) = e^{-\int A(x)dx}B(x)$ and to recover $D(x)$ by simple integration
+	%
+	\begin{equation}\label{eq:1.15}
+		D(x) = \int e^{-\int A(x)dx}B(x)dx + C
+	\end{equation}
+	%
+	finally yielding the general solution of (\ref{eq:1.10}) in the form
+	%
+	\begin{equation}
+		y(x) = e^{\int A(x)dx}\left(\int e^{-A(x)dxB(x)dx} + C\right)\quad \forall C \in \mathbb{R}
+	\end{equation}
+	%
+	\textbf{Note:} An alternative method to derive the same result is the \textit{integrating factor method}, as you have seen in Calculus 2.\par
+	\textbf{Example:}\\
+	Solve the equation
+	$$
+	y^\prime + 2xy = x
+	$$
+	\textbf{Solution:}\\
+	First we solve $y^\prime + 2xy = 0$ by separation of variables obtaining $y = De^{-x^2}$, where $D$ is an arbitrary constant. Now we assume $D = D(x)$ and substitute $y = D(x)e^{-x^2}$ to the full non-homogeneous equation:
+	$$
+	y^\prime = D^\prime (x)e^{-x^2} + D(x)(-2x)e^{-x^2}.
+	$$
+	Thus, we have
+	$$
+	D^\prime(x)e^{-x^2} + D(x)(-2x)e^{-x^2} + 2xD(x)e^{-x^2} = x
+	$$
+	which implies $D^\prime(x) = xe^{x^2}$, hence $D(x) = \int xe^{x^2}dx = \frac{1}{2}e^{x^2}+C$. Finally, the general solution to the original ODE is given by
+	$$
+	y(x)
+	= \left(\frac{1}{2}e^{x^2}+C\right)e^{-x^2}
+	= \frac{1}{2} + Ce^{-x^2}.
+	$$
+	
+	\section{Exact first order ODEs.}
+	%
+	\textbf{Exact ODEs} are of the form
+	%
+	\begin{equation}\label{1.17}
+		P(x, y) + Q(x, y)\frac{dy}{dx} = 0.
+	\end{equation}
+	%
+	We would like to find solutions of this class of ODEs in \textit{implicit form} $F(x, y) = C,\ y = y(x)$, for a constant $C$. Using the chain rule we observe that
+	%
+	\begin{equation}\label{1.18}
+		\frac{dF(x, y(x))}{dx}
+		= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{dy}{dx}
+		= 0,
+	\end{equation}
+	%
+	which coincides with (\ref{1.17}) if we define
+	%
+	\begin{equation}\label{1.19}
+		P(x,y) = \frac{\partial F}{\partial x}, \quad
+		Q(x,y) = \frac{\partial F}{\partial y}.
+	\end{equation}
+	%
+	Using these definitions we have
+	%
+	\begin{equation}\label{1.20}
+		\frac{\partial}{\partial y}P(x,y) = \frac{\partial^2F}{\partial y\partial x}, \quad
+		\frac{\partial}{\partial x}Q(x,y) = \frac{\partial^2F}{\partial x\partial y}.
+	\end{equation}
+	%
+	If F is twice differentiable in both $x$ and $y$ with continuous second order partial derivatives, we have (according to the \textit{mixed derivatives theorem} in Calculus 2)
+	%
+	$$
+		\frac{\partial^2 F}{\partial y \partial x} = \frac{\partial^2 F}{\partial x \partial y},
+	$$
+	%
+	and we conclude that the equation
+	%
+	\begin{equation}\label{1.21}
+		\frac{\partial }{\partial y}P(x,y) = \frac{\partial}{\partial x}Q(x,y)
+	\end{equation}
+	%
+	must hold. Equation (\ref{1.21}) is the crucial condition for (\ref{1.17}) to be exact. For any exact ODE the general solution can always be written in the implicit form $F(x, y) = C$.\\
+	To determine the form of the function $F(x, y)$, one may start with the first equation in (\ref{1.19}) by integrating it over the variable $x$ to
+	%
+	\begin{equation}\label{1.22}
+		Q(x,y)
+		= \frac{\partial F}{\partial y}\quad \Rightarrow
+		F(x,y)
+		= \int P(x,y)dx + g(y), 
+	\end{equation}
+	%
+	where the function $g(y)$ is an arbitrary function of the variable $y$, yet to be determined. To find $g(y)$ we use the second equation in (\ref{1.19})
+	%
+	\begin{equation}\label{1.23}
+		Q(x,y)
+		= \frac{\partial F}{\partial y}
+		= \frac{\partial}{\partial y}\int P(x,y)dx + g^\prime(y),
+	\end{equation}
+	%
+	which gives
+	%
+	\begin{equation}\label{1.24}
+		g^\prime(y)
+		= Q(x,y) - \frac{\partial}{\partial y}\int P(x,y)dx
+	\end{equation}
+	%
+	The missing function $g(y)$ can then be found by straightforward integration of this equation.\par
+	\textbf{Example:}\\
+	Show that the equation
+	$$
+	3x^2 + y - (3y^2-x)\frac{dy}{dx} = 0
+	$$
+	is exact and find its general solution in implicit form.\par
+	\textbf{Solution:}\\
+	We identify $P(x, y) = 3x^2 + y$, hence $\frac{\partial P}{\partial y} = 1$. Similarly, $Q(x,y) = -(3y^2-x)$, hence $\frac{\partial Q}{\partial x} = 1$. Since $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$ the equation is exact.\\
+	We find its implicit solution in the form $F(x, y) = C$ by
+	$$
+	F(x,y)
+	= \int P(x,y)dx + g(y)
+	= \int (3x^2 + y)dx + g(y)
+	= x^3 + xy + g(y),
+	$$
+	where $g(y)$ is yet undetermined. We further have
+	$$
+	\frac{\partial F}{\partial y}
+	= x + g^\prime(y)
+	= Q(x,y)
+	= -(2y^2 - x), \Rightarrow g^\prime(y) = -3y^2.
+	$$
+	This allows us to find
+	$$
+	g(y) = \int (-3y^2)dy = -y^3 + C_1,
+	$$
+	where $C_1$ is an arbitrary constant. There is no need to keep $C_1$, as it can always be absorbed into the constant $C$. The general solution of the original equation in implicit form is obtained as
+	$$
+	F(x,y) = x^3+xy-y^3 = C.
+	$$
+	\textbf{Note:}\\
+	The same ODE can be presented in a different form, for example:
+	$$
+	\frac{dy}{dx} = \frac{3x^2+y}{3y^2-x}
+	$$
+	One needs to recognize the equivalence of this equation to the form of an exact ODE by then applying the same procedure for a solution.
+\end{document}

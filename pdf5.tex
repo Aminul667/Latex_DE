@@ -1,0 +1,121 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+	%
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 1 \_ Week 2 Part} \hfill \large \textbf{W. Huang}
+	\end{singlespace}
+	%
+	\rule{\textwidth}{0.4pt}
+	%
+	\begin{itemize}
+		\item Each Coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Practice problems (you will get help on this part in session 4 of week 3. You should work on this before you go to this session.)
+			\item Homework problems ((to be submitted through QMquiz under QMplus > week 1)
+			\item Exploration problems (to help you understand concepts discussed during lecture,not optional and examinable)
+		\end{enumerate}
+		%
+		\item \textcolor{red}{You must submit Week 1 and 2 homework problems of Coursework 1 together through the corresponding QMplus quiz under week 1 before the deadline, which is on the Friday afternoon of week 4 (Oct. 16th, 17:00). Otherwise, you will receive 0 for this coursework (which worths $5\%$ for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 in week 5.}
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this module}.
+		\item A selection of solutions to coursework problems will be posted on QMPlus after the homework deadline. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	%
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	%
+	\textbf{I. Practice Problems}\par
+
+	\textbf{A.} Determine the general solutions of the following differential equations. For each solution fix the arbitrary constant according to the given initial condition.
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item $y^\prime = -xy,\quad y(0) = -2$
+		\item $y^\prime = x\cos(x)y,\quad y(0) = 1$
+		\item $y^\prime = -y/(1+x), \quad y(0) = -1$
+		\item $y^\prime = y/(4-x^2), \quad y(0) = 1$
+		\item $y^\prime = y/(x^2 + 2x + 2), \quad y(0) = 2$
+	\end{enumerate}
+	%
+	\textbf{B.} Solve the initial value problems associated with the following inhomogeneous linear differential equations.
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item $y^\prime = y\frac{3x^2}{1+x^3} + x^2 + x^5,\quad x>-1,\quad y(0) = -1$
+		\item $y^\prime = -y\tan x+\cos x, \quad -\pi/2 < x < \pi/2,\quad y(0) = 2$
+	\end{enumerate}
+	%
+	\textbf{C.} Determine the general solution of the following differential equations
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item $y^\prime = 3y + 5,\quad y(0) = 2$
+		\item $y^\prime = -2xy + 2x, \quad y(0) = 0$
+	\end{enumerate}
+	%
+	and solve the associated initial value problems.\\
+	\textbf{D.} Determine the general solution to the linear inhomogeneous differential equation
+	$$
+	y^\prime = \frac{x}{1+x^2}y+\sqrt{\frac{1+x^2}{1-x^2}}
+	$$
+	\textbf{II. Homework}\par
+	Submit through QM quiz under MTH5123 qmplus page > Week 1\\
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	%
+	\textbf{III. Further Exploration: Integrating Factors}\par
+	\textbf{A.} In the Week 2 Lecture Notes, there is a reference to solving first-order linear ODEs using the “\textit{Integrating Factor Method} from Calculus 2.” We shall learn (or review?!) this method in the subsequent exercises. Consider the differential equation
+	$$
+	\frac{dy}{dx} + \frac{1}{2}y = \frac{1}{2}e^{x/3}.
+	$$
+	%
+	\begin{enumerate}[\bfseries 1)]
+		\item Using techniques discussed in lecture, find the general solution to this equation and sketch the integral curve passing through the initial condition $y(0) = 1$.
+		\item In the next three exercises, we now use the integrating factor method to solve this differential equation a second time. Multiply the ODE by the function $\mu(x)$ and compare the left hand side with the quantity
+		$$
+		\frac{d}{dy}[\mu(x)y] = \frac{d\mu}{dx}y+\mu\frac{dy}{dx}.
+		$$
+		What differential equation must $\mu(x)$ satisfy in order for the left side of the original ODE to agree with the equation above? \textit{Answer}:$\frac{d\mu}{dx} = \frac{1}{2}\mu$.
+		\item Complete the following sentence: A function whose derivative equals $\frac{1}{2}$ times the original function is given by [ ]. Your answer to this sentence can be checked using separation of variables or ordinary integration, depending on your approach.
+		\item Verify that by using $\mu(x) = Ce^{x/2}$, the original ODE can be rewritten as
+		$$
+		\frac{d}{dx}[e^{x/2}y] = \frac{1}{2}e^{5x/6}.
+		$$
+		Integrate both sides of this equation to find the general solution
+		$$
+		y(x) = \frac{3}{5}e^{x/3} + Ce^{-x/2}.
+		$$
+		Once you’ve imposed the initial condition $y(0) = 1$, compare your answer with the solution you found using the methods from lecture in the first exercise of this section.
+	\end{enumerate}
+	%
+	\textbf{B.} \textit{More challenging, but achievable}: Using the above example as a guide, can you write down a general procedure for using an integrating factors $\mu(x)$ to solve a general first-order linear ODE of the form
+	$$
+	\frac{dy}{dx} = A(x)y + B(x)?
+	$$
+\end{document}
