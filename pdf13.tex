@@ -1,0 +1,247 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+
+% title page
+\long\def\mytitle{
+	\begin{titlepage}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+
+		\vspace*{\stretch{1}}
+
+		\begin{singlespace}
+			{\centering
+					{\huge\bfseries MTH5123 Differential Equations\\}
+					\vspace{0.5cm}
+
+					{\Large Lecture Notes\\}
+					\vspace{0.5cm}
+
+					{\Large Week 5}
+
+					\vfill
+					\LARGE Weini Huang
+					\vspace{0.5cm}
+					
+					\LARGE School of Mathematical Sciences\\
+					\LARGE Queen Mary University of London\\
+
+					\vspace{0.5cm}
+					\LARGE Autumn 2020\\
+					}
+		\end{singlespace}
+	\end{titlepage}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase \leftmark}
+\fancyhead[R]{\thepage}
+
+\raggedbottom
+
+\begin{document}
+	\mytitle
+	%
+	\section{Euler type equation}
+	\textbf{Note:}\\
+	Certain second-order linear ODEs with nonconstant coefficients can be reduced to corresponding ODEs with constant coefficients by special substitutions. Consider, for example, the \textit{Euler type} equation
+	%
+	\begin{equation}\label{2.28}
+		ax^2y^{\prime\prime} + bxy^\prime +cy = 0,\ x>0,\ a,\ b,\ c = \text{const}..
+	\end{equation}
+	%
+	This equation can be reduced to one with constant coefficients by introducing the new variable $x = e^t$ so that $y(x) = y[x(t)] = z(t)$. By the chain rule we have
+	%
+	\begin{equation}\label{2.29}
+		\dot{z} = \frac{dz}{dt} = \frac{dy}{dx}\frac{dx}{dt} = \frac{dy}{dx}e^t\ \Rightarrow \ y^\prime = e^{-t}\dot{z}.
+	\end{equation}
+	%
+	Differentiating $z$ another time yields
+	%
+	\begin{equation*}
+		\ddot{z}
+		= \frac{d}{dt}\dot{z}
+		= \frac{d}{dt}\left[\frac{dy}{dx}e^t\right]
+		= \left(\frac{d}{dt}\frac{dy}{dx}\right)e^t + \frac{dy}{dx}e^t
+		= \frac{d^2y}{dx^2}\frac{dx}{dt}e^t + \frac{dy}{dt}e^t
+		= \frac{d^2y}{dx^2}e^{2t}+\frac{dy}{dx}e^t.
+	\end{equation*}
+	%
+	Solving this equation for $y^{\prime\prime} = \frac{d^2y}{dx^2}$ gives
+	%
+	\begin{equation}\label{2.30}
+		y^{\prime\prime} = e^{-2t}(\ddot{z}-\dot{z}).
+	\end{equation}
+	%
+	Substituting (\ref{2.29}) and (\ref{2.30}) into (\ref{2.28}) the latter is reduced to the equation with constant coefficients
+	%
+	\begin{equation}
+		a\ddot{z} + (b-a)\dot{z} + cz=0,
+	\end{equation}
+	%
+	which can be solved for $z(t)$ by the standard method given above. One then recovers the original solution $y(x) = z(t)|_{t = \ln x}$
+	%
+	\section{Linear inhomogeneous 2nd-order ODEs with constant coefficients and $f(x)\neq 0$}
+	The general solution of the inhomogeneous equation (2.17) with $f(x)\neq 0,$ viz. (2.14), can be recovered from the general solution of the corresponding homogeneous equation with $f(x) = 0$, viz. (2.13), by extending the variation of parameter method that we already applied successfully to solving first-order linear inhomogeneous equations. As an example, we consider second-order ODE’s of the form (2.17)
+	\begin{equation}\label{2.32}
+		a_2\frac{d^y}{dx^2} + a_1\frac{dy}{dx}+a_0y = f(x).
+	\end{equation}
+	\subsection*{First: find $y_h(x)$ to the corresponding homogenous ODE}
+	The characteristic equation corresponding to (2.32) is given by $M_2(\lambda) = a_2\lambda^2 + a_1\lambda + a_0 = 0$. It has the two roots
+	%
+	\begin{equation}\label{2.33}
+		\lambda_1 = \frac{-a_1+\sqrt{a_1^2-4a_2a_0}}{2a_2},\ \lambda_2 = \frac{-a_1-\sqrt{a_1^2-4a_2a_0}}{2a_2},
+	\end{equation}
+	%
+	which are real and distinct as long as $a_1^2-4a_2a_0 > 0$. Considering for simplicity only this case, we have learned that we can write the general solution to the homogeneous equation as
+	%
+	\begin{equation}\label{2.34}
+		y_h(x) = c_1e^{\lambda_1x} + c_2e^{\lambda_2x},
+	\end{equation}
+	%
+	where $c_1$ and $c_2$ are two real constants.
+	%
+	\subsection*{Second: Find $y_p(x)$ based on The variation of parameter method}
+	According to the variation of paramter method we will look for a solution of the full inhomogeneous equation (\ref{2.32}) in the form of
+	%
+	\begin{equation}\label{2.35}
+		y(x) = c_1(x)e^{\lambda_1x} + c_2e^{\lambda_2x}.
+	\end{equation}
+	%
+	We have to show that this ansatz works, and if so, whether it will yield a particular or possibly even the general solution. Differentiating (\ref{2.35}) yields
+	\begin{equation}\label{2.36}
+		\frac{dy}{dx} = c_1(x)\lambda_1e^{\lambda_1x} + c_2(x)\lambda_2e^{\lambda_2x}+c_1^\prime(x)e^{\lambda_1x} + c_2^\prime(x)e^{\lambda_2x}
+	\end{equation}
+	with $c_{1,2}^\prime \equiv \frac{dc_{1,2}}{dx}$. To simplify this expression before we proceed further, we impose the additional condition
+	%
+	\begin{equation}\label{2.37}
+		c_1^\prime(x)e^{\lambda_1x}+c_2^\prime(x)e^{\lambda_2x}=0
+	\end{equation}
+	%
+	on the two functions $c_{1,2}(x)$. This implies that
+	%
+	\begin{equation}\label{2.38}
+		\frac{dy}{dx} = c_1(x)\lambda_1e^{\lambda_1x} + c_2(x)\lambda_2e^{\lambda_2x},
+	\end{equation}
+	%
+	which facilitates the following second differentiation
+	\begin{equation}\label{2.39}
+		\frac{d^2y}{dx^2} = c_1(x)\lambda_1^2e^{\lambda_1x}+c_2(x)\lambda_2^2e^{\lambda_2x}+c_1^\prime(x)\lambda_1e^{\lambda_1x}+c_2^\prime(x)\lambda_2e^{\lambda_2x}.
+	\end{equation}
+	%
+	Now we substitute (\ref{2.35}), (\ref{2.38}) and (\ref{2.39}) into the left-hand side of (\ref{2.32}) giving
+	%
+	\begin{equation}\label{2.40}
+		\begin{gathered}
+			a_2\frac{d^2y}{dx^2} + a_1\frac{dy}{dx}+a_0y
+			= c_1(x)e^{\lambda_1x}(a_2\lambda_1^2+a_1\lambda_1+a_0)\\
+			+ c_2(x)e^{\lambda_2x}(a_2\lambda_2^2+a_1\lambda_2+a_0) + a_2(c_1^\prime(x)\lambda_1e^{\lambda_1x} + c_2^\prime(x)\lambda_2e^{\lambda_2x}).
+		\end{gathered}
+	\end{equation}
+	%
+	Remembering that both $\lambda_11$ and $\lambda_2$ are roots of the characteristic equation, that is $a_2\lambda_1^2+a_1\lambda_1+a_0=0$ and $a_2\lambda_2^2+a_1\lambda_2+a_0=0$ we see that (\ref{2.32}) and (\ref{2.40}) together imply the relation
+	%
+	\begin{equation}\label{2.41}
+		c_1^\prime(x)\lambda_1e^{\lambda_1x} + c_2^\prime(x)\lambda_2e^{\lambda_2x} = f(x)/a_2.
+	\end{equation}
+	%
+	Now we compare (\ref{2.37}) and (\ref{2.41}). Multiplying (\ref{2.37}) with the factor $−\lambda_2$ and adding to (\ref{2.41}) gives
+	%
+	\begin{equation}\label{2.42}
+		c_1^\prime(x)e^{\lambda_1x}(\lambda_1-\lambda_2) = f(x)/a_2,
+	\end{equation}
+	%
+	which allows us to find $c_1(x)$ by straightforward integration,
+	%
+	\begin{equation}\label{2.43}
+		c_1(x) = \frac{1}{(\lambda_1-\lambda_2)}\left(\int f(x)e^{-\lambda_1x}dx+C_1\right),
+	\end{equation}
+	%
+	where $C_1$ is a real constant. Similarly, multiplying (\ref{2.37}) with the factor $\lambda_1$ and subtracting from (\ref{2.41}) gives
+	%
+	\begin{equation}\label{2.44}
+		c_2^\prime(x)e^{\lambda_2x}(\lambda_2-\lambda_1) = f(x)/a_2.
+	\end{equation}
+	%
+	Hence
+	%
+	\begin{equation}\label{2.45}
+		c_2(x) = -\frac{1}{(\lambda_1-\lambda_2)a_2}\left(\int f(x)e^{-\lambda_2x}dx+C_2\right),
+	\end{equation}
+	%
+	where $C_2$ is a real constant. Collecting everything together we find that a solution to the inhomogeneous equation (\ref{2.32}) is given by
+	%
+	\begin{equation}\label{2.46}
+		y(x) = \frac{1}{(\lambda_1-\lambda_2)a_2}\left\{e^{\lambda_1x}\left(\int f(x)e^{-\lambda_1x}dx+C_1\right)-e^{\lambda_2x}\left(\int f(x)e^{-\lambda_2x}dx+C_2\right)\right\}.
+	\end{equation}
+	%
+	Putting $f(x) = 0$ in (\ref{2.46}) and introducing the notation
+	$$
+	\frac{C_1}{\lambda_1-\lambda_2} = c_1,\ -\frac{C_2}{\lambda_1-\lambda_2}=c_2
+	$$
+	we see that the solution (\ref{2.46}) reduces to
+	%
+	\begin{equation}\label{2.47}
+		y_h(x) = c_1e^{\lambda_1x} + c_2e^{\lambda_2x},
+	\end{equation}
+	%
+	which is the general solution of the corresponding homogeneous equation. Accordingly, our corresponding solution $y(x)$ of the inhomogeneous equation can be written as $y_g(x) = y_h(x) + y_p(x)$, where
+	%
+	\begin{equation}\label{2.48}
+		y_p(x) = \frac{1}{(\lambda_1-\lambda_2)a_2}\left\{e^{\lambda_1x}\int f(x)e^{-\lambda_1x}dx - e^{\lambda_2x}\int f(x)e^{-\lambda_2x}dx\right\}
+	\end{equation}
+	%
+	is a particular solution of the inhomogeneous equation. Hence, the variation of parameter method did indeed yield the general solution $y_g(x) = y(x)$ of (\ref{2.32}).\par
+	\textbf{Note:}
+	\begin{enumerate}
+		\item Although the solution (\ref{2.46}) (or equivalently the pair (\ref{2.47}), (\ref{2.48})) was formally derived for real $\lambda_1 \neq \lambda_2$ it retains its validity for complex conjugate roots $\lambda_1 = \alpha + i\beta$ and $\lambda_2 = \alpha−i\beta$ with $\beta \neq 0$ as long as one uses complex coefficients $c_1,\ c_2$. To bring the solution onto a real form one uses Euler’s formula (2.27). One can even use (\ref{2.46}) in the limit $\lambda_1 \to \lambda_2$ (that is, $\beta \to 0$)by using L’Hopital’s rule, as will be demonstrated later on by an example.
+		\item Although the variation of parameter method is of general validity for arbitrary $f(x)$, its implementation relies on our ability to perform the integrals $\int f(x)e^{-\lambda_2x}dx$ explicitly. In practical terms, for finding explicit forms of the solution it is sometimes easier to guess a particular solution $y_p(x)$ of the inhomogeneous equation and then to combine it with the general solution $y_h(x)$ of the corresponding homogeneous equation into the general solution $y_g(x) = y_h(x) + y_p(x)$ of the inhomogeneous one according to our theory.
+	\end{enumerate}
+	%
+	\section{Educated guess method for linear inhomogeneous 2nd-order ODEs with constant coefficients and $f(x) = P(x)e^{ax}$}
+	If the right-hand side has the form $f(x) = P(x)e^{ax}$, where $P(x)$ is a polynomial of degree $k$, and $a \neq \lambda_1,\ a \neq \lambda_2$ (which means that $e^{ax}$ is not a solution of the homogeneous equation), then a particular solution can always be found in the form $y_p(x) = Q(x)e^{ax}$ with some polynomial $Q(x) = d_kx^k + \ldots d_1x+d_0$ of the same degree. We may refer to such a method of finding particular solutions as the educated guess method.\par
+	\textbf{Example:} Find a particular solution of the ODE
+	$$
+	y^{\prime\prime} + 2y^\prime - 3y = 0.
+	$$
+	\textbf{Solution:} Here $a = 2$ and $P(x) = x$ is of first degree. First we need to check that $e^{2x}$ is not a solution of $y^{\prime\prime} + 2y^\prime - 3y = 0$, which is indeed the case. Then we look for a solution in the form $y_p(x) = (d_1(x) + d_0)e^{2x}$. Differentiating gives
+	$$
+	y^\prime_p = e^{2x}(2d_0+d_1+2d_1x),\ y^{\prime\prime} = e^{2x}(4d_0+4d_1+4d_1x),
+	$$
+	which by substitution into the left-hand side of the inhomogeneous equation and collecting similar terms yields
+	$$
+	y^{\prime\prime} + 2y^\prime_p-3y_p = e^{2x}(5d_0+6d_1+5d_1x).
+	$$
+	Matching the coefficients to the right-hand side $xe^{2x}$ we find $d_1 = 1/5$ and $d_0 = -\frac{6d_1}{5} = -6/25$. Thus a particular solution to the given ODE is
+	$$
+	y_p(x) = \left(\frac{1}{5}x-\frac{6}{25}\right)e^{2x}.
+	$$
+	Another version of the educated guess method exits in the case of two complex conjugate roots $\lambda_1 = \alpha + i\beta,\ \lambda_2 = \alpha − i\beta$. Here, if the right-hand side has the form $f(x) = P(x) \cos (ax)$ or $f(x) = P(x) \sin (ax)$, where $P(x)$ is a polynomial of degree $k$, and $ia \neq \lambda_1,\ ia \neq \lambda_2$ (which means that $e^{iax} = \cos(ax) + i\sin(ax)$ is not a solution of the homogeneous equation), then such a particular solution can always be found in the form
+	%
+	\begin{equation}\label{2.49}
+		y_p(x) = Q(x)(A\cos(ax)+B\sin(ax))
+	\end{equation}
+	%
+	with some coefficients $A,\ B$ and some polynomial $Q(x) = d_kx^k + \ldots + d_1x+1$ (note that the last coefficient of the polynomial can be chosen to be equal to one).
+\end{document}

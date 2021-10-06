@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+    %
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 2 \_ Week 4 Part} \hfill \large \textbf{W. Huang}
+    \rule{\textwidth}{0.4pt}
+	\end{singlespace}
+  %
+	\begin{itemize}
+		\item Each Coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Practice problems (you will get help on this part in Week 5 session 4. You should work on this before you go to this session.)
+			\item Homework problems (to be submitted through QMquiz under QMplus > week 3)
+			\item Exploration problems (to help you understand concepts discussed during lecture, not optional and examinable)
+		\end{enumerate}
+		\item \textcolor{red}{You must submit Week 3 and 4 homework problems of Coursework 2 together through the corresponding QMplus quiz under week 3 before the deadline, which is on the Friday afternoon of week 6 (Oct. 30th, 17:00). Otherwise, you will receive
+		0 for this coursework (which worths 5\% for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 in week 8 after the reading week.}
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this module}.
+		\item A selection of solutions to coursework problems will be posted on QMPlus after the homework deadline. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	%
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	%
+	\textbf{I. Practice Problems}\par
+	\begin{enumerate}[\bfseries A.]
+		\item Find the general solutions of the following linear homogeneous differential equations of second order:
+		\begin{enumerate}[\bfseries 1)]
+			\item $y^{\prime \prime} + y^\prime - 12y = 0$
+			\item $6y^{\prime \prime} + 5y^\prime - 6y = 0$
+			\item $y^{\prime \prime} + 2y^\prime 17y = 0$
+			\item $y^{\prime \prime} + 2y^\prime + 3y = 0$
+			\item $16y^{\prime \prime} + 8y^\prime + y = 0$
+		\end{enumerate}
+		\item Solve the following initial value problems:
+		\begin{enumerate}[\bfseries 1)]
+			\item $10y^{\prime \prime} - y^\prime - 3y = 0,\quad y(0) = 1,\ y^\prime = 0$
+			\item $y^{\prime \prime} - 2y^\prime -3y = 0, \quad y(0) = 2,\ y^\prime(0) = -3$
+			\item $y^{\prime \prime} - 4y^\prime -5y = 0, \quad y(0) = -1,\ y^\prime(0) = -1$
+			\item $y^{\prime \prime} - 4y^\prime + 13y = 0, \quad y(0) = 4,\ y^\prime(0) = 0$
+		\end{enumerate}
+		\item Assign to each of the following linear homogeneous differential equations
+		\begin{enumerate}[\bfseries 1)]
+			\item $2y^{\prime \prime} - 8y^\prime + 8y = 0$
+			\item $y^{\prime \prime} + y^\prime - 2y = 0$
+			\item $y^{\prime \prime} + 2y^\prime + 2y = 0$
+		\end{enumerate}
+		a correct solution from the list:
+		\begin{enumerate}[\bfseries i)]
+			\item $y = e^{-x}(2\cos x - \sqrt{2}sin x)$
+			\item $y = e^x + \frac{1}{7}e^{-2x}$
+			\item $y = e^{2x}(x+1)$.
+		\end{enumerate}
+		\item Determine the general solution for the homogeneous linear differential equation
+		$$
+		y^{\prime \prime}-2y^\prime+y=0.
+		$$
+		Fix the constants of integration by the initial condition $y(2) = 1,\ y^\prime (2) = −2$ and write down the explicit form of the corresponding solution to the initial value problem.
+	\end{enumerate}
+	%
+	\textbf{II. Homework}\\
+	Submit through QM quiz under MTH5123 qmplus page > Week 3.\\
+	\rule{\textwidth}{0.4pt}
+	%
+	\textbf{III. Further Exploration: More Practice with 2nd Order Linear ODEs}
+	\begin{enumerate}[\bfseries A.]
+		\item In each exercise below, solve the initial value problem and determine the value of $\alpha$ (if any) so that the solution approaches zero as $t \to \infty$. Sketch/Graph the solution curve.
+		\begin{enumerate}[\bfseries 1)]
+			\item $\ddot{y} + 5\dot{y} + 6y = 0,\ y(0) = \alpha,\ \dot{y}(0) = 3$.
+			\item $4\ddot{y} - y = 0,\ y(0) = 2,\ \dot{y}(0) = \alpha$
+			\item $\ddot{y} + (2\alpha - 1)\dot{y} + \alpha (\alpha -1)y = 0$
+		\end{enumerate}
+		\item Consider the equation $a\ddot{y} + b\dot{y} + cy = f$, where $a,\ b,\ c$ and $f$ are all constants. Find all constant (equilibrium) solutions of this ODE. Let $y_{eq}$ denote an equilibrium solution to the equation and set $Y = y-y_{eq}$,  measuring the deviation of a solution $y$ from an equilibrium solution. Find the differential equation satisfied by $Y$. Why (or in what circumstances) might we choose to study the differential equation for $Y$ instead of the original equation?
+	\end{enumerate}
+\end{document}
