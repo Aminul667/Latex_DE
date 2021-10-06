@@ -1,0 +1,244 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{tcolorbox}
+\usepackage{physics}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+
+% title page
+\long\def\mytitle{
+	\begin{titlepage}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+
+		\vspace*{\stretch{1}}
+
+		\begin{singlespace}
+			{\centering
+					{\huge\bfseries MTH5123 Differential Equations\\}
+					\vspace{0.5cm}
+
+					{\Large Lecture Notes\\}
+					\vspace{0.5cm}
+
+					{\Large Week 4}
+
+					\vfill
+					\LARGE Weini Huang
+					\vspace{0.5cm}
+					
+					\LARGE School of Mathematical Sciences\\
+					\LARGE Queen Mary University of London\\
+
+					\vspace{0.5cm}
+					\LARGE Autumn 2020\\
+					}
+		\end{singlespace}
+	\end{titlepage}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\raggedbottom
+
+\begin{document}
+	\mytitle
+	%
+	\section{Linear ODEs of second order: general facts}
+	\subsection{General form and Initial Value Problem of Linear second-order ODEs}
+	\textbf{Linear ODEs of second order} are equations of the form
+	%
+	\begin{equation}\label{2.5}
+		a_2(x) \frac{d^2y}{dx^2}+a_1(x)\frac{dy}{dx}+a_0(x)y=f(x),
+	\end{equation}
+	%
+	where $a_0(x),\ a_1(x),\ a_2(x)$ as well as $f(x)$ are assumed to be continuous real functions in some interval $A < x < B$, and $a_2(x) \neq 0$. A \textit{general solution} of this ODE is the set of functions \textit{containing all possible solutions} of that equation.\par
+	\textbf{The Initial value problem for this ODE} is composed by the ODE itself and initial conditions $y(a) = b_1$ and $y^\prime (a) = b2$, which refer to the value of $y(x)$ and $y^\prime(x)$ when the independent variable $x = a$. Rewriting this 2nd-order ODE as a system of two 1st-order ODEs in normal form (see equation (2.3) before and the corresponding example in week 3), it follows from the generalised Picard-Lindel\"{o}f Theorem that for any $a \in (A, B)$ and any initial conditions
+	%
+	\begin{equation}\label{2.6}
+		y(a) = b_1,\quad y^\prime(a) = b_2
+	\end{equation}
+	the ODE (\ref{2.5}) has one and only one solution.
+	%
+	\begin{tcolorbox}[colback=white, arc=0pt]
+		*Reference notes for better understanding, not examinable\par
+		Last week (week 3), we showed that using vector notation we can write down a system of 2 first-order ODEs in normal form as
+		$
+		\dot{y} = \vb{f}(t,\vb{y}),\ 
+		\vb{y}
+		=
+		\begin{pmatrix}
+			y_1 \\
+			y_2
+		\end{pmatrix},\ 
+		\vb{f}
+		=
+		\begin{pmatrix}
+			f_1(t, y_1, y_2)\\
+			f_2(t, y_1, y_2)
+		\end{pmatrix}
+		$.
+		By imposing the initial conditions at $t = a,\ y_1(a) = b_1,\ y_2(a) = b_2$, where $b_1$ and $b_2$ are given constants, we have the initial value problem for the system.In this setting, we have the following generalisation of the \textbf{Picard–Lindel\"{o}f Theorem:}\par
+		\textbf{Theorem:} The initial value problem for the has one and only one solution in a
+		cuboid domain $\mathcal{D}$ of the form $|t − a| \leq A$ and $|y_1 − b_1| \leq B1,\ |y_2 − b_2| \leq B_2$ provided the functions $f_1(t, y_1, y_2),\ f_2(t, y_1, y_2)$ and all the partial derivatives $\frac{\partial f_i}{\partial y_j}$ for all choices of
+		$i,\ j$ are continuous in $\mathcal{D}$.\par
+		According to the transformation in week 3, we can rewrite the linear 2nd-order ODE as  system of two 1st-order ODEs as
+		\begin{gather*} 
+			\dot{y_1} = y_2, \\ 
+			\dot{y_2} = - \frac{a_0(x)}{a_2(x)}y_1-\frac{a_1(x)}{a_2(x)}y_2+\frac{f(x)}{a_2(x)}.
+		\end{gather*}
+	\end{tcolorbox}
+	%
+	\textbf{Example:}\\
+	Solving the second order ODE derived from Newton’s Second Law $m\ddot{y} = f(t,y,\dot{y})$ for a particle of mass $m$ proceeds by specifying the initial position of the particle, $y(t = 0) = y_0$, and the initial \textit{velocity}, $\dot{y}(t = 0) = v_0$. This uniquely determines the evolving dynamics.\par
+	\textbf{Linearity of 2nd-order ODEs}\\
+	We will use the short-hand notation $\mathcal{L}(y)$ for the left-hand side of (\ref{2.5}) so that this equation can be written as
+	\begin{equation}\label{2.7}
+		\mathcal{L}(y) = f,\ \mathcal{L}\equiv a_2(x)\frac{d^2y}{dx^2}+a_1(x)\frac{dy}{dx}+a_0(x)y.
+	\end{equation}
+	If $f(x) = 0$ the equation
+	\begin{equation}\label{2.8}
+		\mathcal{L}(y) = 0
+	\end{equation}
+	is called \textbf{homogeneous}, if $f(x)\neq 0$
+	\begin{equation}\label{2.9}
+		\mathcal{L}(y) = f
+	\end{equation}
+	\textbf{inhomogeneous}. \textbf{Linearity} on the left hand side of (\ref{2.5}) is represented by the property
+	\begin{equation}\label{2.10}
+		\mathcal{L}(c_1y_1 + c_2y_2) = c_1\mathcal{y_1}+c_2\mathcal{}(y_2)
+	\end{equation}
+	%
+	for any two (two-times differentiable) functions $y_1(x)$ and $y_2(x)$ and arbitrary constant parameters $c_1, c_2 \in \mathbb{R}$. Linearity implies that if $y_1(x),\ y_2(x),\ \ldots,\ y_k(x)$ are any $k$ solutions of the homogeneous equation, then \textit{any linear combination}
+	$$
+	c_1y_1(x) + c_2y_2(x) + \ldots + c_ky_k(x)
+	$$
+	is a solution of the same equation for an arbitrary choice of constant parameters $c_k$ Using this property one can prove the following\par
+	\textbf{Theorem:} Theorem based on the linearity to find the general solution of inhomogeneous ODEs\par
+	Suppose that $y_p(x)$ is a particular solution of the inhomogeneous equation (\ref{2.9}) and that $y_h(x)$ is the general solution of the corresponding homogeneous equation (\ref{2.8}). Then the general solution $y_g(x)$ of the inhomogeneous equation is given by
+	\begin{equation}\label{2.11}
+		y_g(x) = y_h(x) + y_p(x).
+	\end{equation}
+	%
+	\textbf{Proof:}\\
+	Suppose $y_g(x)$ solves (\ref{2.9}). As $y_p(x)$ is also a solution of this equation we have
+	$$
+	\mathcal{L}(y_g ) = f\quad \text{and}\quad \mathcal{L}(y_p) = f.
+	$$
+	Taking the difference $y_g(x) − y_p(x)$ we get
+	$$
+	\mathcal{L}(y_p-y_g) = \mathcal{L}(y_g) - \mathcal{L}(y_p) = f - f = 0
+	$$
+	because of linearity. This means that $y_h = y_g−y_p$ must solve the corresponding homogeneous equation (\ref{2.8}), hence trivially $y_g = y_h + y_p$. But if we take for $y_h$ the general solution of the homogeneous equation, accordingly $y_g$ must yield the general solution of the inhomogeneous one.\par
+	\textbf{Note:}\\
+	This theorem implies that to find the general solution of the inhomogeneous equation (\ref{2.9}) we first need to find the general solution $y_h(x)$ of the corresponding homogeneous equation (\ref{2.8}) and then a particular solution $y_p(x)$ of the inhomogeneous equation. The general solution is then obtained by simply adding them together.
+	%
+	\subsection{Linear 2nd-order ODEs with constant coefficients $a_1,\ a_2,\ a_3\ \in \mathbb{R}$}
+	We are considering equation (\ref{2.5}), where $a_0,\ a_1,\ a_2$ are now given real numbers,
+	\begin{equation}\label{2.12}
+		a_2\frac{d^2y}{dx^2}+a_1\frac{dy}{dx}+a_0y = f(x).
+	\end{equation}
+	This equation defines an especially important type of ODE, which allows a full analysis and explicit solutions (not only for $n = 2$ but for similar equations of any order).\\
+	A general solution to such second order ODEs must contain two arbitrary constants (or free parameters). The values of these parameters will be fixed if we impose initial conditions involving the specification of the value $y(a)$ of the function at some point $x = a$ as well as the first derivative at the same point $\frac{dy}{dx}|_{x=a}$, see (\ref{2.6}).\\
+	Note that for the ODE (\ref{2.12}) with constant coefficients the conditions of the Picard-Lindel\"{o}f theorem are satisfied \textit{everywhere} (because rewritten as a system of first order ODEs, by definition (\ref{2.12}) yields functions on the right-hand side of this system of ODEs that fulfill the conditions of this theorem). Hence the solution to any initial value problem is unique for $x \in (−\infty, \infty)$. Due to this fact, if one is able to find a family of solutions to such an equation depending on two free parameters such that one is able to satisfy arbitrary initial conditions, one can be sure that this family represents the general solution to this problem.
+	%
+	\subsection{Linear homogeneous 2nd-order ODEs with constant coefficient, $f(x) = 0$}
+	As a special case of (\ref{2.8}), if $f(x) = 0$ in (\ref{2.12}) we have the \textit{homogeneous} equation
+	\begin{equation}\label{2.13}
+		a_2\frac{d^y}{dx^2}+a_1\frac{dy}{dx}+a_0y = 0
+	\end{equation}
+	We will look for solutions in the form of $y=e^{\lambda x}$. Substituting this ansatz into (\ref{2.13}) and canceling the common factor $e^{\lambda x} \neq 0$ we obtain the \textbf{characteristic equation}
+	\begin{equation}\label{2.14}
+		M_2(\lambda) = a_2\lambda ^2 +a_1\lambda + a_0 = 0.
+	\end{equation}
+	%
+	According to the \textbf{fundamental theorem of algebra} this polynomial equation of degree 2 (i.e., quadratic equation) must have exactly two \textbf{roots} including multiplicities (for example $\lambda^2-2\lambda+1 = (\lambda-a)^2=0$ has a single root $\lambda = 1$ of multiplicity two, or equivalently, two equal roots $\lambda_1 = \lambda_2 = 1$). Roots may be either \textit{real} or may come in \textit{complex conjugate pairs}. Accordingly, we have three different cases:
+	%
+	\begin{enumerate}
+		\item We start with the simplest situation where the roots are real and, moreover,distinct: $\lambda_1 \neq \lambda_2 \in \mathbb{R}$ and $M_2(\lambda_j)=0,\ j=1,2$. In this case we prove that the general solution to (\ref{2.13}) is given by the family
+		\begin{equation}\label{2.15}
+			y_h(x) = c_1e^{\lambda_1x} + c_2e^{\lambda_2 x},
+		\end{equation}
+		where $c_1,\ c_2$ are real constants.\\
+		First of all, each $y_i(x) = e^{\lambda_i x},\ i=1,2$ is a solution. Hence linearity,cf. (\ref{2.10}), implies that the linear combination (\ref{2.15}) is indeed a solution to (\ref{2.13}). To see that this family provides the general solution we check that using the solution (\ref{2.15}) one can satisfy any initial condition of the form
+		\begin{equation}\label{2.16}
+			y(0) = b_1,\quad y^\prime(0) = b_2.
+		\end{equation}
+		In other words, one can always find a set of coefficients $c_1,\ c_2$ that the solution $y_h(x)$ for such a choice will satisfy (\ref{2.16}). Plugging (\ref{2.16}) into (\ref{2.15}), one sees that the initial conditions generate a system of two linear equations for two unknown coefficients,
+		\begin{equation}\label{2.17}
+			\begin{gathered}
+				c_1+c_2 = b_1\\
+				\lambda_1c_ + \lambda_2c_2 = b_2
+			\end{gathered}
+		\end{equation}
+		As you know from your course of Linear Algebra, such a system has a (unique) solution provided the matrix of coefficients
+		\begin{equation}\label{2.18}
+			A_2
+			=
+			\begin{pmatrix}
+				1 & 1\\
+				\lambda_1 & \lambda_2
+			\end{pmatrix}
+		\end{equation}
+		is non-singular (i.e., invertible), which is equivalent to the condition $D_2 = \det A_2 \neq 0$. We see that
+		$$
+		D_2 = \det A_2 = \det
+		\begin{pmatrix}
+			1 & 1\\
+			\lambda_1 & \lambda_2
+		\end{pmatrix}
+		= (\lambda_2-\lambda_1),
+		$$
+		which is obviously nonzero due to our assumption that $\lambda_1 \neq \lambda_2$.\\
+		\textbf{Note:}\\
+		In all cases considered below it is possible to proceed in a similar way and to demonstrate that arbitrary initial conditions (\ref{2.16}) can always be satisfied with an appropriate choice of parameters in the proposed general solution. Explicit verification of that fact is however somewhat lengthy and will not be performed in these lecture notes.
+		\item Suppose now that the roots of the characteristic equation (\ref{2.14}) come in complex conjugate pairs,
+		\begin{equation}\label{2.19}
+			\lambda_1 = \alpha + i\beta,\ \lambda_2 = \alpha - i\beta\quad \text{with}\quad \beta \neq 0.
+		\end{equation}
+		The corresponding general real solution of the homogeneous equation (\ref{2.13}) is given by
+		\begin{equation}\label{2.20}
+			y_h(x)=(A\cos (\beta x) + B\sin (\beta x))e^{\alpha x},
+		\end{equation}
+		where $A,\ B$ are real constants. Alternatively, the solution can be written down in the form of (\ref{2.15}),
+		\begin{equation}\label{2.21}
+			y_h(x) = c_1e^{\lambda_1 x}+c_2e^{\lambda_2 x},
+		\end{equation}
+		but here with complex coefficients ci (by imposing the condition of $y_h(x)$ to be real). The equivalence of these two forms can be shown by using \textbf{Euler’s formula}
+		\begin{equation}\label{2.22}
+			e^{i\theta} = \cos\theta + i\sin\theta, \quad \forall \theta \in \mathbb{R}.
+		\end{equation}
+		Applying it to (\ref{2.19}) and (\ref{2.21}) in the form of $e^{\pm i\beta x} = \cos\beta x \pm i\sin\beta x$ yields
+		$$
+		y_h(x) = [(c_1+c_2)\cos \beta x + i(c_1-c_2)\sin \beta x]e^{\alpha x}
+		$$
+		Matching this result to (\ref{2.20}), we see that if we set $A = c_1 + c_2$ and $B = i(c_1 − c_2)$ with $A,\ B$ real (or, equivalently, $c_1 = (A − iB)/2,\ c_2 = (A + iB)/2)$, this is equivalent to (\ref{2.20}).
+		\item Finally, suppose that the root is real with multiplicity two, $\lambda_1 = \lambda_2 = \lambda$. It is left as an exercise to you to check that the general solution is given by
+		$$
+		y_h(x) = (c_2x+c_1)e^{\lambda x}
+		$$
+		with two real constants $c_2,\ c_1$.
+	\end{enumerate}
+	%
+\end{document}

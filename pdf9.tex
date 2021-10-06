@@ -1,0 +1,273 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+
+\begin{document}
+    %
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 2 - Week 3 - Selected Solutions} \hfill \large \textbf{W. Huang}
+		\rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\textbf{I. Practice Problems}\par
+	\textbf{A.} Determine which of the following differential equations are exact differential equations. If an equation is exact, determine its general solution first in implicit form and then (if possible) in explicit form.
+	\begin{enumerate}[\bfseries 1)]
+		\item $(1-y\sin(x))+\cos(x)y^\prime = 0$: Denoting $P(x,y) = 1-y\sin x,\ Q(x,y) = \cos x$ we have $\frac{\partial P}{\partial y} = -\sin x = \frac{\partial Q}{\partial x}$, hence the equation is exact. The general solution is looked for in implicit form $F(x, y) = C$, where $F = \int P(x,y)dx = \int (1-y\sin x)dx = x + y\cos x +g(y)$, where $g(y)$ is to be determined from the condition $Q = \frac{\partial F}{\partial y} = \cos x + g^\prime (y)$. We therefore conclude that $g^\prime(y) = 0$ so that $g(y) = const$. Thus the solution in implicit form is $x + y \cos x = C$, whereas the explicit form is $y = (C-x)/\cos x$.
+		\item $\frac{x}{\sqrt{x^2+y^2}}+\frac{y}{\sqrt{x^2+y^2}}y^\prime = 0$: Denoting $P=x/\sqrt{x^2+y^2},\ Q = y/\sqrt{x^2+y^2}$ we have $\frac{\partial P}{\partial y} = -\frac{xy}{(x^2+y^2)^{3/2}} = \frac{\partial Q}{\partial x}$, hence the equation is exact. The general solution can be looked for in implicit form $F(x, y) = C$, where
+		$$
+		F =
+		\int P(x,y)dx
+		=\int \frac{x}{\sqrt{x^2+y^2}}dx
+		=\sqrt{x^2+y^2}+g(x),
+		$$
+		where $g(y)$ is to be determined from the condition $Q=\frac{\partial F}{\partial y}=y/\sqrt{x^2+y^2}+g^\prime (y)$. We therefore conclude that $g^\prime (y) = 0$ so that $g(y) = const$. Thus the solution in implicit form is $\sqrt{x^2+y^2}=C>0$, whereas explicitly $y=\pm \sqrt{C^2-x^2}$ for $|x|<C$.
+		\item $-x + (x-y)y^\prime = 0$: Denoting $P = -x$ and $Q = x-y$ we have $\frac{\partial P}{\partial y}=0 \neq \frac{\partial Q}{\partial x} = 1$,  so the equation is not exact.
+		\item $x^2 + y/x + y^\prime \ln |xy| = 0$: Denoting $P = x^2+y/x,\ Q=\ln |xy|$ we have $\frac{\partial P}{\partial y} = \frac{1}{x} = \frac{\partial Q}{\partial x}$, so the equation is exact. The general solution can be looked for in implicit form $F(x, y) = C$, where
+		$$
+		F
+		= \int P(x,y)dx
+		= \int (x^2+y/x)dx
+		= \frac{x^3}{3} + y\ln |x| + g(y),
+		$$
+		where $g(y)$ is to be determined from the condition $Q=\frac{\partial F}{\partial y} = \ln |x| + g^\prime(y)$. We conclude that $g^\prime (y) = \ln |y|$ so that $g(y) = -y + y\ln |y| + const$. The solution in implicit form is given by $\frac{x^3}{3}+y\ln |x|-y\ln |y| = C$. It is however impossible to find $y(x)$ explicitly.
+		\item $2xy^2+4x^3+2(x^2+1)yy^\prime=0$: Denoting $P=2xy^2+4x^3,\ Q = 2(x^2+1)y$ we have $\frac{\partial P}{\partial y}=4xy=\frac{\partial Q}{\partial x}$ so the equation is exact. The general solution can be looked for in implicit form $F(x, y) = C$, where
+		$$
+		F
+		= \int P(x,y)dx
+		= \int (2xy^2+4x^3)dx
+		= x^2y^2+x^4+g(y),
+		$$
+		where $g(y)$ is to be determined from the condition $Q=\frac{\partial F}{\partial y} = 2x^2y+g^\prime (y)$. We conclude that $g^\prime(y)=2y$ so that $g(y) = y^2+const$. The solution in the implicit form is given by $x^2+y^2+x^4+y^2=C$ or $y(x)=\pm \sqrt{\frac{C-x^4}{1+x^2}}$ explicitly.
+	\end{enumerate}
+	%
+	\textbf{B.} Please note that the following solution writeups should serve only as an outline or guide to your written justifications and not as a template or model for your answers.
+	\begin{enumerate}[\bfseries 1)]
+		\item Find a value of the parameter $b$ such that the following differential equation is exact and solve it for that value of the parameter:
+		$$
+		\frac{y-xb}{yx}+\frac{x}{y}y^\prime = 0.
+		$$
+		\textbf{Solution:} Denoting $P(x,y) = \frac{y-xb}{yx},\ Q(x,y) = \frac{x}{y^2}$ we have $\frac{\partial P}{\partial y} = \frac{yx-x(y-bx)}{y^2x^2} = \frac{b}{y^2}$, whereas $\frac{\partial Q}{\partial x} = \frac{1}{y^2}$, hence only when $b = 1$ the equation is exact. For such value of $b$ the general solution is looked for in implicit form $F(x, y) = C$, where
+		$$
+		F
+		= \int P(x,y)dx
+		= \int \frac{y-x}{yx}dx
+		= \int \left(\frac{1}{x}-\frac{1}{y}\right)dx
+		= \ln |x|-\frac{x}{y}+g(y),
+		$$
+		where $g(y)$ is to be determined from the condition $Q=\frac{\partial F}{\partial y}=\frac{x}{y^2}+g^\prime (y)$. We therefore conclude that $g^\prime(y) = 0$ so that $g(y) = const$. Thus the solution in implicit form is $\ln |x|-\frac{x}{y}+C$, whereas the explicit form is $y = x/(\ln |x|-C)$.
+		\item Find all functions $f(y)$ such that the following differential equation becomes exact:
+		$$
+		x^2+\frac{f(y)}{xy}+\ln |xy|\frac{dy}{dx} = 0
+		$$
+		and solve it in implicit form for a particular choice such that $f(1) = 1$.\\
+		\textbf{Solution:} Denoting $P(x,y) = x^2+\frac{f(y)}{xy},\ Q(x,y)=\ln |xy|$ we have $\frac{\partial P}{\partial y}=\frac{1}{x}\frac{d}{dy}\left(\frac{f(y)}{y}\right)$, whereas $\frac{\partial Q}{\partial x}=\frac{1}{x}$, hence the equation is exact only if $\frac{d}{dy}\left(\frac{f(y)}{y}\right)=1$ or equivalently $f(y)/y = y + C$ which finally gives $f(y)=y^2+Cy$, with any constant $C$. The condition $f(1) = 1 + C = 1$ makes us to choose $C = 0$. For such value of $C$ the general solution is looked for in implicit form $F(x, y) = C$, where
+		$$
+		F
+		= \int P(x,y)dx
+		= \int \left(x^2+\frac{y}{x}\right)dx
+		= \frac{x^3}{3}+y\ln |x| +g(y),
+		$$
+		where $g(y)$ is to be determined from the condition $Q = \frac{\partial F}{\partial y}=\ln |x| + g^\prime (y)$. We therefore conclude that $g^\prime (y) = \ln |y|$ so that $g(y)=\int \ln |y|dy = y\ln |y|-y$.  Thus the solution in implicit form is $\frac{x^3}{3}+y\ln |x| + y\ln |y|-y=C$.
+	\end{enumerate}
+	%
+	\textbf{C.} Consider the initial value problem
+	$$
+	\frac{dy}{dx} = f(x,y),\ f(x,y) = \sqrt{y^2+x^2},\ y(0) = 0.
+	$$
+	Show that the Picard-Lindel\"{o}f Theorem ensures the existence and uniqueness of the solution in some rectangular domain $\mathcal{D}=(|x-a|\leq A,\ |y-b|\leq B)$ and give the values for $a, b$. Demonstrate that for any $B$ the value of $A$ ensuring that the Picard-Lindel\"{o}f Theorem guarantees the existence and uniqueness cannot exceed unity, $A < 1$. Find for which values of $B$ the value of $A = 1/2$ is possible.\\
+	\textbf{Solution:} The right-hand side $f(x, y)$ is continuous everywhere, and its derivative $\frac{\partial f}{\partial y}$ satisfies $\left\lvert \frac{\partial f}{\partial y}\right\rvert = \frac{|y|}{\sqrt{x^2+y^2}}\leq 1,\ \forall (x,y)$ hence is bounded. In our case the initial conditions $a = 0$ and $b = y(0) = 0$, hence in the rectangular domain $\mathcal{D} = (|x|\leq A,\ |y|\leq B)$ the solution to the ODE exists and is unique provided $A \leq B/M$ with
+	$$
+	M = \max_\mathcal{D}\sqrt{y^2+x^2} = \sqrt{A^2+B^2}.
+	$$
+	The last condition implies
+	$$
+	A < B/M = B/\sqrt{A^2+B^2}\leq 1
+	$$
+	as required. For $A = 1/2$ we have the inequality: $A=1/2 \leq B/\sqrt{(1/2)^2+B^2}$ yielding $\frac{1}{4}\left(\frac{1}{4}+B^2\right)\leq B^2$ or, equivalently, $\frac{3}{4}B^2\geq \frac{1}{16}$, which finally gives $B \geq \frac{1}{\sqrt{12}}$. For such values
+	of $B$ the value $A = 1/2$ is possible.\par
+	%
+	\textbf{D.} Determine the general solution of the exact differential equation
+	$$
+	1-\frac{x}{x^2+y^2}-\frac{y}{x^2+y^2}y^\prime .
+	$$
+	Write down the explicit solution for the initial condition $y(0) = e$.
+	\textbf{Solution:} Denoting
+	$$
+	P(x,y) = 1-\frac{x}{x^2+y^2},\ Q(x,y) = -\frac{y}{x^2+y^2}
+	$$
+	we have
+	$$
+	\frac{\partial P}{\partial y}=\frac{2yx}{(x^2+y^2)^2}=\frac{\partial Q}{\partial x},
+	$$
+	hence the equation is exact.\\
+	The general solution is looked for in implicit form $F(x, y) = C$, where
+	$$
+	F
+	= \int P(x,y)dx
+	= \int \left(1-\frac{x}{x^2+y^2}\right)dx
+	= x-\frac{1}{2}\ln (x^2+y^2)+g(y),
+	$$
+	where $g(y)$ is to be determined from the condition
+	$$
+	Q = \frac{\partial F}{\partial y} = -\frac{y}{x^2+y^2}+g^\prime(y).
+	$$
+	We therefore conclude that $g^\prime (y) = 0$ so that $g(y) = const$. Thus the solution in implicit form is
+	$$
+	x-\frac{1}{2}\ln (x^2+y^2) = C.
+	$$
+	This can be further rewritten as
+	$$
+	e^{2(x-C)} = x^2+y^2,
+	$$
+	which gives the explicit solution
+	$$
+	y = \pm \sqrt{e^{2(x+1)}-x^2}.
+	$$
+	We have $y(0) = \pm e^{-C}=e$, hence we choose the plus sign and $C = -1$ and finally obtain
+	$$
+	y = \sqrt{e^{2(x+1)}-x^2}.
+	$$
+	%
+	\textbf{E.} Consider the initial value problem
+	$$
+	\frac{dy}{dx} =f(x, y), \quad f(x, y) = \sqrt{y^2+p^2},\quad y(1) = 0,
+	$$
+	where $p > 0$ is a real parameter. Show that the Picard-Lindel\"{o}f Theorem ensures the uniqueness and existence of a solution to the above problem in a rectangular domain $|x-a|\leq A,\ |y|\leq B$. Find the value of the Lipschitz constant $K$ for the above problem for a given $A$ and $B$. Write down the maximal value of the width $A$ for a given value of $B$.\\
+	\textbf{Solution:} The right-hand side $f(x, y)$ is continuous everywhere, and its derivative $\frac{\partial f}{\partial y}$ satisfies
+	$$
+	\left\lvert \frac{\partial f}{\partial y}\right\rvert = |y|/\sqrt{p^2 + y^2} <1, 
+	$$
+	so is bounded. In our case of initial conditions $a = 1$ and $b = y(1) = 0$, hence in the rectangular domain
+	$$
+	\mathcal{D} = (|x-1|\leq A,\ |y|\leq B)
+	$$
+	the solution to the ODE exists and is unique provided $A < B/M$ with $M=\max_\mathcal{D}\sqrt{y^2+p^2}$. The value of the Lipschitz constant in such a domain is
+	$$
+	K
+	= \max_\mathcal{D} \left\lvert \frac{\partial f}{\partial y}\right\rvert
+	= \max_\mathcal{D}\left\lvert \frac{y}{\sqrt{y^2+p^2}}\right\rvert,  
+	$$
+	that is, we should look for a maximum in the interval $-B<y<B$. The foundation to be maximized is even and as we have
+	$$
+	\frac{d}{dy}\left(\frac{y}{\sqrt{y^2+p^2}}\right)
+	= \frac{\sqrt{y^2+p^2}-\frac{y^2}{\sqrt{y^2+p^2}}}{y^2+p^2}
+	= \frac{p^2}{(p^2+y^2)^{3/2}} > 0
+	$$
+	it is growing with y. Hence the maximum is achieved at the end of the interval for $y = \pm B$, and the Lipschitz constant in such a domain is given by
+	$$
+	K = \frac{B}{\sqrt{B^2+p^2}}.
+	$$
+	Finally, as for a given $B$ we have
+	$$
+	M = \sqrt{p^2 + B^2}
+	$$
+	(as the function $f(x,y) = \sqrt{p^2+y^2}$ obviously grows with $y$) this implies that the width $A$ should satisfy
+	$$
+	A < \frac{B}{M} = \frac{B}{\sqrt{p^2+B^2}}.
+	$$
+	Therefore the maximal value of the width is
+	$$
+	A = \frac{B}{\sqrt{p^2 + B^2}}.
+	$$
+	%
+	\textbf{II. Homework Problems}\par
+	Solutions will be discussed in Week 8, session 4 (see module session schedule in Qmplus as well).\par
+	%
+	\textbf{III: Solution is shown in the follow presentation slides. You can search more
+	materials online about variations of the basic Solow-Swan growth model.}
+	%
+	\section*{Solow’s fundamental differential equation}
+	Solow’s differential equation is outlined by
+	\begin{equation}
+		\{\ \text{Rate of change of capital stock}\ \} = \{\ \text{rate of investment}\ \} - \{\ text{rate of depreciation}\ \}
+	\end{equation}
+	and is defined by
+	\begin{equation}
+		\frac{dk}{dt} = sf(k) - \delta k
+	\end{equation}
+	%
+	\section*{Solving Solow’s differential equation analytically}
+	$$
+	\frac{dk}{dt} = sAk^\alpha - \delta k
+	$$
+	To solve analytically, we make a change of variable by defining
+	\begin{equation}\label{eq:26}
+		y = Ak^{1-\alpha}
+	\end{equation}
+	Using the chain rule, we obtain
+	$$
+	\frac{dy}{dt} = (1-\alpha)Ak^{-\alpha}\frac{dk}{dt}
+	$$
+	and rewrite it as
+	$$
+	\frac{dk}{dt} = \frac{1}{a-\alpha}\frac{k^\alpha}{A}\frac{dy}{dt}
+	$$
+	Substituting this into the left-hand side of the Solow model, we obtain the equation
+	$$
+	\frac{1}{1-\alpha}\frac{k^\alpha}{A}\frac{dy}{dt} = sAk^\alpha - \delta K
+	$$
+	Then, dividing both sides by $k^\alpha$ and multiplying by $A$ gives
+	$$
+	\frac{1}{1-\alpha}\frac{dy}{dt} = sA^2-\delta k^{1-\alpha} = sA^2 - \delta y
+	$$
+	and simplifying yields
+	\begin{equation}\label{eq:27}
+		\frac{dy}{dt} = (1-\alpha)(sA^2-\delta y)
+	\end{equation}
+	%
+	\section*{Separation of Variables}
+	\begin{gather*}
+		\frac{dy}{dt} = (1-\alpha)(sA^2 - \delta y)\\
+		\frac{dy}{sA^2-\delta y} = (1-\alpha)dt\\
+		-\frac{1}{\delta}\ln (sA^2-\delta y) = (1-\alpha)t+C\\
+		\ln (sA^2-\delta y) = -\delta(1-\alpha)t+C\\
+		sA^2-\delta y=Ce^{-\delta(1-\alpha)t}
+	\end{gather*}
+	The result is
+	$$
+	y = \frac{sA^2}{\delta}+Ce^{-\delta(1-\alpha)t}
+	$$
+	where $C$ is an arbitrary constant. Then replacing our $y$ with $Ak^{1-\alpha}$ we obtain
+	\begin{equation}\label{eq:28}
+		Ak^{1-\alpha} = \frac{sA^2}{\delta} + Ce^{-\delta(1-\alpha)t}
+	\end{equation}
+	Use initial condition $k(0) = k_0$ to find $C$.
+	\begin{equation}\label{29}
+		C = Ak_0^{1-\alpha} - \frac{sA^2}{\delta}
+	\end{equation}
+	Substitute $C$ into equation (\ref{eq:26}) to obtain level of capital ( $k$ at time $t$).
+	\begin{equation}\label{30}
+		k = \left[\frac{sA^2}{\delta}+\left(Ak_0^{1-\alpha}-\frac{sA^2}{\delta}\right)e^{-\delta(1-\alpha)t}\right]^{\frac{1}{1-\alpha}}.
+	\end{equation}
+	As $t \to \infty$, the right hand side tends to zero, so $k \to k_s$.
+	%
+	\section*{Conclusion}
+	\begin{itemize}
+		\item Solow’s economic growth model is a great example of how we can use differential equations in real life.
+		\item The model can be modified to include various inputs including growth in the labor force and technological improvements.
+		\item The key to short-run growth is increased investments, while technology and efficiency improve long-run growth.
+	\end{itemize}
+\end{document}

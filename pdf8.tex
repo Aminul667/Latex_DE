@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+	%
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 2 \_ Week 3 part} \hfill \large \textbf{W. Huang}
+	\end{singlespace}
+	%
+	\rule{\textwidth}{0.4pt}
+	%
+	\begin{itemize}
+		\item Each Coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Practice problems (you will get help on this part in Week 4 session 4. You should work on this before you go to this session.)
+			\item Homework problems (to be submitted through QMquiz under QMplus > week 3)
+			\item Exploration problems (to help you understand concepts discussed during lecture, not optional and examinable)
+		\end{enumerate}
+		\item \textcolor{red}{You must submit Week 3 and 4 homework problems of Coursework 2 together through the corresponding QMplus quiz under week 3 before the deadline, which is on the Friday afternoon of week 6 (Oct. 30th, 17:00). Otherwise, you will receive 0 for this coursework (which worths 5\% for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 in week 8 after the reading week.}
+		\item A selection of solutions to coursework problems will be posted on QMPlus after the homework deadline. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item \item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	%
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	%
+	\textbf{I.} Practice Problems\par
+	\textbf{A.} Determine which of the following differential equations are exact differential equations. If an equation is exact, determine its general solution first in implicit form and then (if possible) in explicit form.
+	\begin{enumerate}[\bfseries 1)]
+		\item $(1-y\sin(x)) + \cos(x)y^\prime = 0$
+		\item $\frac{x}{\sqrt{x^2+y^2}} + \frac{y}{\sqrt{x^2+y^2}}y^\prime = 0$
+		\item $-x + (x-y)y^\prime = 0$
+		\item $x^2+y/x + \ln|xy|\frac{dy}{dx} = 0$
+		\item $2xy^2 + 4x^3 + 2(x^2+1)yy^\prime = 0$ 
+	\end{enumerate}
+	\textbf{B.} When solving the following two exercises on exact equations, sharpen your writing skills by explaining your reasoning in complete sentences and justifying your steps.
+	\begin{enumerate}[\bfseries 1)]
+		\item Find a value of the parameter b such that the following differential equation is exact and solve it for that value of the parameter:
+		$$
+		\frac{y-xb}{yx} + \frac{x}{y^2}y^\prime = 0
+		$$
+		\item Find all functions $f(y)$ such that the following differential equation becomes exact:
+		$$
+		x^2+\frac{f(y)}{xy}+y^\prime \ln|xy| = 0
+		$$
+		and solve it in implicit form for a particular choice such that $f(1) = 1$.
+	\end{enumerate}
+	\textbf{C.} Consider the initial value problem
+	$$
+	\frac{dy}{dx} = f(x,y), \quad f(x,y)=\sqrt{y^2+x^2}, \quad y(0)=0.
+	$$
+	Show that the Picard-Lindel\"{o}f Theorem ensures the existence and uniqueness of the solution in some rectangular space $\mathcal{D} = (|x − a| \leq A, |y − b| \leq B)$ and give the values for $a, b$. Demonstrate that for any $B$ the value of $A$ ensuring that the Picard-Lindel\"{o}f Theorem guarantees the existence and uniqueness cannot exceed unity, $A < 1$. Find for which values of $B$ the value of $A = 1/2$ is possible.
+	%
+	\textbf{D.} Determine the general solution of the exact differential equation
+	$$
+	1-\frac{x}{x^2+y^2}-\frac{y}{x^2+y^2}y^\prime = 0.
+	$$
+	Write down the explicit solution for the initial condition $y(0) = e$.\par
+	%
+	\textbf{E.} Consider the initial value problem
+	$$
+	\frac{dy}{dx} = f(x,y),\quad f(x,y) = \sqrt{y^2+p^2},\quad y(1) = 0,
+	$$
+	where $p > 0$ is a real parameter. Show that the Picard-Lindel\"{o}f Theorem ensures existence and uniqueness of a solution to the above IVP on a rectangular domain $|x−1| \leq A, |y| \leq B$. Find the value of the Lipschitz constant $K$ for the above problem for a given $A$ and $B$. Write down the maximal value of the width $A$ for a given value of $B$.\par
+	%
+	\rule{\textwidth}{0.4pt}
+	\textbf{II. Homework}\\
+	Submit through QM quiz under MTH5123 qmplus page > Week 3\par
+	\rule{\textwidth}{0.4pt}
+	%
+	\textbf{III. Further Exploration: Writing down and solving the Solow-Swan growth mode}\\
+	\textbf{A.} In Week $1$, we discussed the prevalence (and utility) of using ODEs to model physical and biological phenomena. In this exercise, we will practice in using ODEs to model an economics problem, \textbf{the Solow-Swan growth model}. This model was developed in 1957 by economist Robert Solow, who later received Nobel Prize of Economics.\par
+	Solow’s growth model is a first-order, non-linear differential equation, that modelling the change of capital stock $K$ over time $t$. There are various versions of Solow-Swan growth model. In a simple version, the rate of change of capital stock equals to the rate of investment minus the rate of depreciation. Suppose the rate of investment is a function of capital as $sAK^\alpha$. Here, $s$ is a constant representing savings rate. $AK^\alpha$ refers to the output under a given capital, where $A$ is a positive constant representing total factor productivity, a residual that measures the output not explained by the amount of inputs. Another constant $\alpha \in (0, 1)$ represents the elasticity of output with respect to capital. The rate of depreciation is the decrease in the economic value of the capital stock, which is assumed to be linearly proportion to the capital stock with a constant rate $\delta$.
+	%
+	\begin{enumerate}[(1)]
+		\item write down the ODE model for this Solow’s growth model using the following basic principles: a. identify the dependent and independent variables as well as the constants for this economic system; b. write down the ODE of your dependent variable over the independent variable by using the notations given in the above description of this system.
+		\item Solve the corresponding ODE under the initial condition $K(0) = K_0$. (Hint: substitute $AK^{1-\alpha}$ by a new variable, separation of variables method )
+		\item Using the solution obtained in (2) to check how will the capital stock become when time goes to infinity (which can also be described as the behaviour of the solution for this Initial Value Problem)?
+	\end{enumerate}
+	%
+\end{document}
