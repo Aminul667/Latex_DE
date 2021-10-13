@@ -1,0 +1,192 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{physics}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase \leftmark}
+\fancyhead[R]{\thepage}
+
+\raggedbottom
+
+% title page
+\long\def\mytitle{
+	\begin{titlepage}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+
+		\vspace*{\stretch{1}}
+
+		\begin{singlespace}
+			{\centering
+					{\huge\bfseries MTH5123 Differential Equations\\}
+					\vspace{0.5cm}
+
+					{\Large Lecture Notes\\}
+					\vspace{0.5cm}
+
+					{\Large Week 8}
+
+					\vfill
+					\LARGE Weini Huang
+					\vspace{0.5cm}
+					
+					\LARGE School of Mathematical Sciences\\
+					\LARGE Queen Mary University of London\\
+
+					\vspace{0.5cm}
+					\LARGE Autumn 2020\\
+					}
+		\end{singlespace}
+	\end{titlepage}
+}
+
+\begin{document}
+	\mytitle
+	%
+	\section{Autonomous systems of two first order ODEs}
+	\subsection{ General properties of autonomous systems}
+	%
+	\textbf{Definition:}\\
+	\textbf{A system of ODEs} in \textit{normal form}
+	\begin{equation}\label{4.1}
+		\vb{\dot{y}} = \vb{f}(t,\vb{y}),\ 
+		\vb{y}=
+		\begin{pmatrix}
+			y_1\\
+			y_2
+		\end{pmatrix},\ 
+		\vb{f} =
+		\begin{pmatrix}
+			f_1(t,y_1,y_2)\\
+			f_2(t,y_1,y_2)
+		\end{pmatrix}
+	\end{equation}
+	is called \textbf{autonomous} if all functions on the right-hand side of the equation do not depend \textit{explicitly} on the variable $t$, i.e.,
+	%
+	\begin{equation}\label{4.2}
+		f_1(t, y_1, y_2) = f_1(y_1, y_2) , f_2(t, y_1, y_2) = f_2(y_1, y_2). 
+	\end{equation}
+	%
+	A part $\mathcal{G}$ of the two-dimensional space $\mathbb{R}^2$ described by the coordinates $y_1,\ y_2$, where both functions $f_1(y_1, y_2)$ and $f_2(y_1, y_2)$ are well-defined, is called the phase space of this system. We will consider only cases where the phase space is the whole $(y_1, y_2)$ plane $\mathbb{R^2}$.\par
+	Furthermore, we will only consider systems where the right-hand sides $f_1,\ f_2$ are continuous and where all partial derivatives $\partial f_i/\partial y_j$ are also continuous everywhere in the phase space. The Picard-Lindel\"{o}f Theorem will then ensure the uniqueness of solutions for any initial conditions, that is, globally in the whole phase space.\par
+	\textbf{Dynamical systems.}\par
+	We will think of t as time, and of the system’s dynamics as an evolution in time. However, it is frequently convenient to consider on equal footing not only an evolution from the initial conditions towards the “future” (that is, for $0 \leq t < \infty$) but also from the initial conditions towards the “past” (that is, for $-\infty < t \leq 0$). Systems like (\ref{4.1})  are called \textbf{dynamical systems.}\par
+	\textbf{Trajectories and equilibra.}\par
+	%
+	Every solution of an autonomous system $\vb{\dot{y}} = \vb{f}(\vb{y})$ given by
+	\begin{equation}\label{4.3}
+		y_1 = y_1(t),\ y_2 = y_2(t)
+	\end{equation}
+	describes a curve in the phase space, parametrized by the parameter $-\infty < t < \infty$. These curves are called trajectories of the dynamical system. In the particular case where the system of ODEs allows a constant solution such that for any time t we have $y_1(t) = a_1 = const,\ y_2(t) = a_2 = const$, the curve degenerates to a single point in the phase space with the coordinate vector
+	$
+	\vb{a}
+	=
+	\begin{pmatrix}
+		a_1\\
+		a_2
+	\end{pmatrix}
+	$.
+	Such a point represented by a constant vector $y(t) = a$ can be a solution of (\ref{4.1}), (\ref{4.2}) only if simultaneously the right-hand sides of
+	$$
+	f_1(\vb{a}) = 0,\ f_2(\vb{a}) = 0
+	$$
+	vanish for the same vector a. Such special points are called \textbf{equilibria}, or synonymously \textbf{stationary points, singular points and fixed points}.
+	%
+	\begin{enumerate}
+		\item Any two trajectories either completely coincide, or do not have any common points. This is a consequence of the uniqueness of solutions of the initial value problems for (\ref{4.1}), (\ref{4.2}) ensured by the Picard-Lindel\"{o}f Theorem: If two different trajectories had a common point, then using this point as an initial value we would have two different solutions to the initial value problem, which is impossible. This \textbf{non-intersection property} in turn implies that:
+		\item Any solution of (\ref{4.1}), (\ref{4.2}) cannot reach an equilibrium point in finite time. Because if a is an equilibrium point, the constant solution $\vb{\tilde{y}}(t) = \vb{a}$ is a (degenerate) trajectory for all times $t$. But if $\vb{y}(t)$ is a solution which does not coincide with $\vb{a}$, according to $1$. above the trajectory representing $\vb{y}(t)$ cannot have a common point with the one representing $\vb{\tilde{y}}(t)$, that is, $\forall t\ \vb{y}(t) \neq \vb{a}$. To be more precise,  solutions $y(t)$ can approach equilibrium points only for $t \to \pm \infty$.
+	\end{enumerate}
+	%
+	Next our focus will be to understand the typical behaviour of solutions to a general pair of first-order autonomous ODEs (\ref{4.1}), (\ref{4.2}). As in this case the phase space is the two-dimensional plane, $(y_1, y_2)$, and two autonomous ODEs then takes the form
+	\begin{equation}\label{4.4}
+		\dot{y_1} = f_1(y_1, y_2),\ \dot{y} = f_2(y_1, y_2)
+	\end{equation}
+	Our analysis will proceed by establishing typical features of the solutions of (\ref{4.4}) in the phase space $(y_1, y_2)$. A special role is played by the equilibria which, as we know already, in our case are given by the solutions of the pair of equations
+	%
+	\begin{equation}\label{4.5}
+		f_1(y_1, y_2) = 0,\ f_2(y_1, y_2) = 0.
+	\end{equation}
+	%
+	In general, these equations may have several solutions. Our goal will be to investigate typical trajectories of (\ref{4.4}) in the vicinity of a given solution $y_1 = y_{1c},\ y_2 = y_{2c}$ of (\ref{4.5}). Here we will assume that such a solution is isolated, that is, there exists $R > 0$ such that inside the circle $(y_1-y_{1c})^2+(y_2-y_{2c})^2 \leq R^2$ there are no other solutions of (\ref{4.5}).
+	%
+	\section{Linearization of autonomous systems of two first order ODEs}
+	\subsection{Linearize a nonlinear ODE system around its equilibrium}
+	When investigating trajectories in the close proximity of an isolated fixed point we can always assume that $y_{1c} = y_{2c} = 0$, which is equivalent to placing the origin of the coordinate system in the $(y_1, y_2)$ plane on the chosen equilibrium. This can always be achieved by transforming into new coordinates $(y_1, y_2)\to (\tilde{y_1}, \tilde{y_2})$ defined by $\tilde{y_1} \equiv y_1-y_{1c},\ \tilde{y_2}\equiv y_2-y_{2c}$. Hence, by assuming for sake of simplicity that the coordinates $(y_1, y_2)$ are such that there is a fixed point at $(0, 0)$, we will further assume that the functions $f_1(y_1, y_2)$ and $f_2(y_1, y_2)$ can be expanded in a Taylor series around the origin. Taking into account $f_1(0, 0) = f_2(0, 0) = 0$ and denoting
+	%
+	\begin{equation}\label{4.6}
+		a_{11} = \frac{\partial f_1(y_1,y_2)}{\partial x}|_{0,0},\ a_{12} = \frac{\partial f_1(y_1, y_2)}{\partial y}|_{0,0},
+	\end{equation}
+	%
+	%
+	\begin{equation}\label{4.7}
+		a_{21} = \frac{\partial f_2(y_1,y_2)}{\partial x}|_{0,0},\ a_{22} = \frac{\partial f_2(y_1, y_2)}{\partial y}|_{0,0}
+	\end{equation}
+	%
+	we arrive at the system of two ODEs
+	%
+	\begin{equation}\label{4.8}
+		\dot{y_1} = a_{11}y_1 + a_{12}y_2 + O(y_1^2,\ y_2y_1, y_2^2),\ \dot{y} = a_{21}y_1 + a_{22}y_2 + O(y^2_1,\ y_2y_1, y_2^2),
+	\end{equation}
+	%
+	where $O(\ldots)$ stands for all terms of order $(\ldots)$ or higher. We see that by neglecting these higher-order terms the local behaviour of the trajectories close to the chosen isolated fixed point is governed by the system of two linear ODEs
+	%
+	\begin{equation}\label{4.9}
+		\dot{y_1} = a_{11}y_1 + a_{12}y_2,\ \dot{y} = a_{21}y_1 + a_{22}y_2
+	\end{equation}
+	%
+	They can be rewritten in \textbf{matrix form} as
+	%
+	\begin{equation}
+		\begin{pmatrix}
+			\dot{y_1}\\
+			\dot{y}
+		\end{pmatrix}
+		= A
+		\begin{pmatrix}
+			y_1\\
+			y_2
+		\end{pmatrix},\ 
+		A
+		=
+		\begin{pmatrix}\label{.10}
+			a_{11} & a_{12}\\
+			a_{21} & a_{22}
+		\end{pmatrix}
+	\end{equation}
+	%
+	and even more concisely as
+	%
+	\begin{equation}\label{4.11}
+		\vb{\dot{y}} = A\vb{y},\ 
+		\vb{y}
+		=
+		\begin{pmatrix}
+			y_1\\
+			y_2
+		\end{pmatrix}.
+	\end{equation}
+	%
+	The above procedure is called the linearization of the system of ODEs around a given fixed point.\\
+	Further progress with the analysis of such systems heavily relies on understanding the properties of $2 \times 2$ matrices. We thus proceed with a very brief review in week 9 on this subject tailored to our goals.
+\end{document}

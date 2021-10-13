@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+	%
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 3 Week 6 part} \hfill \large \textbf{W. Huang}
+		\rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\begin{itemize}
+		\item Each Coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Practice problems (you will get help on this part in Week 8 session 4. You should work on this before you go to this session.)
+			\item Homework problems (to be submitted through QMquiz under QMplus > week 5)
+			\item Exploration problems (to help you understand concepts discussed during lecture, not optional and examinable)
+		\end{enumerate}
+		\item \textcolor{red}{You must submit Week 5 and 6 homework problems of Coursework 3 together through the corresponding QMplus quiz under week 5 before the deadline, which is on the Friday afternoon of week 9 (Nov. 20th, 17:00). Otherwise, you will receive 0 for this coursework (which worths 5\% for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 of week 10 after the reading week.
+		}
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this modul.}
+		\item A selection of solutions to coursework problems will be posted on QMPlus after the homework deadline. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	\rule{\textwidth}{0.4pt}
+	%
+	\newpage
+	\textbf{I. Practice Problems}\par
+	\begin{enumerate}[\bfseries A.]
+		\item Find the solution to the following IVP for the given ODE
+		$$
+		x^2\frac{d^2y}{dx^2} - 2y = 0,\quad y(1) = 0,\ y^\prime(1) = 1.
+		$$
+		\item Consider the following boundary value problem (BVP)
+		$$
+		\frac{1}{\cos x}\frac{d^y}{dx^2} + \left(\frac{\sin x}{\cos^2x}\right)\frac{dy}{dx} = 0,\ y(0) = 0,\ y(\frac{\pi}{4}) = 2
+		$$
+		Show that the left-hand side of the ODE can be written down in the form $\frac{d}{dx}(r(x)\frac{dy}{dx})$ for some function $r(x)$. Use this fact to determine the solution to the above BVP.
+		\item Find the solution to the following Boundary Value Problem for the second order inhomogeneous differential equation
+		$$
+		\frac{d^2y}{dx^2} = x,\ y(-1) = 0,\ y(1) = 0.
+		$$
+		\item Find the solution of the following Boundary Value Problem for the second order linear inhomogeneous differential equation,
+		$$
+		(x+1)\frac{d^y}{dx^2} + \frac{dy}{dx} = f(x),\ f(x) = -1,\ y(0) = 0,\ y^\prime(1) = 0.
+		$$
+		Hint: the left-hand side of the ODE can be written down in the form $\frac{d}{dx}(r(x)\frac{dy}{dx})$ for some function $r(x)$ and use this fact to determine the general solution of the associated homogeneous ODE $y_h(x)$. Based on $y_h(x)$, using the variation of parameter method to find the general solution to the inhomogeneous ODE $y_g(x)$. Useful formula: $\int \ln zdz = z(\ln z -1)+c$.
+	\end{enumerate}
+	\textbf{II. Homework}\\
+	Submit through QM quiz under MTH5123 qmplus page > Week 5\\
+	\textbf{III. No exploration questions this week.}
+\end{document}

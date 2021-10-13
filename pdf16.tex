@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase \leftmark}
+\fancyhead[R]{\thepage}
+
+\raggedbottom
+
+% title page
+\long\def\mytitle{
+	\begin{titlepage}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+
+		\vspace*{\stretch{1}}
+
+		\begin{singlespace}
+			{\centering
+					{\huge\bfseries MTH5123 Differential Equations\\}
+					\vspace{0.5cm}
+
+					{\Large Lecture Notes\\}
+					\vspace{0.5cm}
+
+					{\Large Week 6}
+
+					\vfill
+					\LARGE Weini Huang
+					\vspace{0.5cm}
+					
+					\LARGE School of Mathematical Sciences\\
+					\LARGE Queen Mary University of London\\
+
+					\vspace{0.5cm}
+					\LARGE Autumn 2020\\
+					}
+		\end{singlespace}
+	\end{titlepage}
+}
+
+\begin{document}
+	\mytitle
+	%
+	\section{Boundary Value Problems for second-order Linear ODEs}
+	\subsection{Definition of B.V.P}
+	So far we have considered the \textbf{initial value} problem for second order ODEs
+	%
+	\begin{equation}\label{3.1}
+		a_2(x)y^{\prime\prime} + a_1(x)y^\prime + a_0(x)y = f(x)
+	\end{equation}
+	%
+	by specifying two conditions for the function $y(x)$ and its derivative at one and the same value of the independent variable $x = a$ (or, if the independent variable was interpreted as time $t$, the conditions were specified at $t = a$). We will always assume that all the coefficients $a_0(x),\ a_1(x),\ a_2(x)$ and the function $f(x)$ are continuous in some interval $[x1, x2]$, and $a_2(x) \neq 0$ in that interval. As we have discussed at the beginning of Section 2.1, according to the generalised Picard-Lindel\"{o}f Theorem any Initial Value Problem $y(a) = b,\ y_0 (a) = b_1$ for $a \in [x_1, x_2]$ has one and only one solution in the interval $[x_1, x_2]$.\\
+	In this section we are going to consider the different situation when some conditions are specified at the endpoints, or boundaries, of an interval of the independent variable, that is, at $x = x_1$ and $x = x_2$ with $x_1 < x_2$. This problem is known as a \textbf{Boundary Value Problem} and the conditions are called \textit{boundary conditions}. We are then interested in finding the solution $y(x)$ to a given ODE (which we consider to be linear) inside the interval $x_1 \leq x \leq x_2$.
+	%
+	\subsection{ Linear Boundary Conditions}
+	We will consider only linear boundary conditions, where the left-hand sides of the conditions are linear combinations of the function and its derivatives at the same point and the right-hand sides are given constants, for example
+	$$
+	y(x_1) = b_1,\ y(x_2) = b_2\quad \text{or}\quad y^\prime(x_1) = b_1,\ y^\prime(x_2) = b_2, 
+	$$
+	or most generally
+	\begin{equation}\label{3.2}
+		\alpha y^\prime (x_1) + \beta y(x_1) = b_1,\ \gamma y^\prime (x_2) + \delta y(x_2) = b_2,
+	\end{equation}
+	where $\alpha,\ \beta,\ \gamma,\ \delta$ are given real constants such that $|\alpha| + |\beta| > 0,\ |\gamma| + |\delta| > 0$.
+	%
+	\subsection{Homogeneous Boundary Value Problem}
+	If the constants $b_1,\ b_2$ on the right-hand side are equal to zero, the corresponding boundary condition is called homogeneous, otherwise it is inhomogeneous. If all boundary conditions are homogeneous and the ODE itself is also homogeneous, the corresponding boundary value problem is called homogeneous as well.\par
+	\textbf{Example:}\\
+	Consider the B.V.P.
+	$$
+	y^{\prime\prime} + y = f(x),\ y(0) = 0,\ y^\prime(\pi) = 0.
+	$$
+	Write down the general solution of the above ODE for the special choice $f(x) = e^x$ and use it to solve the corresponding B.V.P.\par
+	\textbf{Solution:}\\
+	The characteristic equation $\lambda^2 + 1 = 0$ has two complex conjugate roots $\lambda_1 = −i,\ \lambda_2 = i$ so that the general solution of the homogeneous equation can be written as
+	$$
+	y_h(x) = c_1\cos x + c_2 \sin x.
+	$$
+	A particular solution for the special choice $f(x) = e^x$ can be found by the \textit{variation of parameter method} where
+	\begin{align*}
+		y_p(x)
+		&= \frac{1}{(\lambda_1 - \lambda_2)a_2}\left\{e^{\lambda_1x}\int f(x)e^{-\lambda_1x}dx - e^{\lambda_2x}\int f(x)e^{-\lambda_2 x}dx\right\}\\
+		&= \frac{1}{(i+i)\times 1}\left\{e^{ix}\int e^xe^{-ix}dx - e^{-ix}\int e^xe^{ix}dx\right\}\\
+		&= \frac{1}{(i+i)\times 1}\left\{e^{ix}\int e^{(1-i)x}dx - e^{-ix}\int e^{(1+i)x}dx\right\}\\
+		&= \frac{1}{(i+i)\times 1}\left\{e^{ix}e^{(1-i)x}\frac{1}{1-i} - e^{-ix}e^{(1+i)x}\frac{1}{1+i}\right\}\\
+		&= \frac{e^x}{2i}\frac{1+i - (1-i)}{1-i^2} = \frac{e^x}{2}
+	\end{align*}
+	%
+	Hence, the general solution to the inhomogeneous equation is given by
+	$$
+	y_g(x) = c_1\cos x + c_2\sin x + \frac{1}{2}e^x.
+	$$
+	Differentiating yields
+	$$
+	y^\prime_g(x) = -c_1\sin x + c_2\cos x + \frac{1}{2}e^x.
+	$$
+	Combining these two equations with the boundary conditions leads to
+	$$
+	y(0) = c_1 + \frac{1}{2} = 0,\ y^\prime(\pi) = -c_2+\frac{1}{2}e^\pi = 0,
+	$$
+	which gives $c_1 = −1/2$ and $c_2 = \frac{1}{2}e^\pi$. The solution to the B.V.P. is thus given by
+	$$
+	y(x) = \frac{1}{2}(-\cos x + e^\pi\sin x + e^x).
+	$$
+	\section{Existence and uniqueness of solutions to B.V.P.}
+	The main difference between a Boundary Value Problem (B.V.P.) and an Initial Value Problem is that the B.V.P. may have \textit{(i) no solution, (ii) a unique solution or (iii) infinitely many solutions}.\par
+	\textbf{Example:}
+	\begin{enumerate}
+		\item B.V.P. $y^{\prime\prime} + y = 0,\ y(0) = 0,\ y(\pi) = 1$ \textbf{does not have any} solution, since all solutions satisfying $y(0) = 0$ necessarily have the form $y(x) = c \sin x$ for some $c$, and they all vanish at $x = \pi$.
+		\item B.V.P. $y^{\prime\prime + y = 0},\ y(0) = 0,\ y(\pi) = 0$ has \textbf{infinitely many} solutions $y(x) = c \sin x$ for any choice of $c$.
+		\item B.V.P. $y^{\prime\prime} + y = 0,\ y(0) = 1,\ y(\pi/2) = 1$ has the \textbf{unique} solution $y(x) = \cos x+ \sin x$.	
+	\end{enumerate}
+	This general situation is explained by the following
+	%
+	\subsection{Theorem of the Alternative}
+	\textbf{Theorem:} Consider the Boundary Value Problem for the second order ODE (\ref{3.1}), where all functions $a_0(x),\ a_1(x),\ a_2(x)$ and $f(x)$ are continuous, $a_2(x) \neq 0$, and all boundary conditions are linear and given by (\ref{3.2}). Only \textit{two alternative situations} are possible:
+	\begin{enumerate}
+		\item Either the B.V.P. has a \textbf{unique solution} for any $f(x)$ and any values $b_1$ and $b_2$ of the right-hand sides in the boundary conditions (\ref{3.2}), or
+		\item the corresponding homogeneous problem has \textbf{infinitely many solutions}, and the inhomogenous problem has \textbf{infinitely many solutions} for some choices of $f(x)$ and right-hand sides in the boundary conditions, and for other choices \textbf{does not have solutions at all}.
+	\end{enumerate}
+	%
+	\subsubsection{Applications of this theorem}
+	\begin{enumerate}[(a)]
+		\item the \textbf{homogeneous B.V.P.} has only the trivial \textbf{zero} solution\\
+		$\Rightarrow\ $ the \textbf{inhomogeneous B.V.P.} has only \textbf{one} solution for any right-hand side  
+		\item the \textbf{homogeneous B.V.P.} has at least one \textbf{non-zero} solution\\
+		$\Rightarrow\ $ the \textbf{inhomogeneous B.V.P.} has either \textbf{infinitely many}  solutions or none
+	\end{enumerate}
+	%
+	\textbf{Example:}
+	Find the smallest positive value of the parameter $b > 0$ such that the B.V.P. 
+	$$
+	y^{\prime\prime} + b^2y = 0,\ y(0) = 5,\ y(1) = -5
+	$$
+	does not have any solution.\par
+	\textbf{Solution:}\\
+	According to the Theorem of the Alternative the above inhomogeneous problem may not have a solution only if the corresponding homogeneous problem
+	$$
+	y^{\prime\prime} + b^2y = 0,\ y(0) = 0,\ y(1) = 0
+	$$
+	does have a non-zero solution. We know that solutions of $y^{\prime\prime} + b^2y = 0$ must have the form $y(x) = A \sin (bx) + B \cos (bx)$. The first boundary condition $y(0) = 0$ selects $B = 0$, so we must have $y(x) = A \sin (bx)$. The second boundary condition yields $y(1) = A \sin (b) = 0$ and together with $b > 0$ selects the values $b = \pi,\ 2\pi,\ 3\pi,\ \ldots$. For these values the homogeneous problem has a nonzero solution (for example, for $b = \pi$ the solution is $y(x) = A\sin (\pi x)\forall A \neq 0$. so we have the second alternative: Either the original inhomogeneous problem has infinitely many solutions, or none at all. Which of these two cases occurs has to be checked case by case by inspecting the corresponding inhomogeneous problem.\par
+	Consider first $b = \pi$ so that the general solution of the inhomogeneous problem is $y(x) = A \sin (\pi x) + B \cos (\pi x)$. The condition $y(0) = 5$ yields $B = 5$, and now $y(1) = A \sin \pi + 5 \cos \pi = −5$ for any choice of $A$. Thus for $b = \pi$ the B.V.P. has infinitely many solutions of the form $y(x) = A \sin (\pi x) + 5 \cos (\pi x)$.\par
+	Now consider $b = 2\pi$ for which the solution of the inhomogeneous problem must be of the form $y(x) = A \sin (2\pi x) + B \cos (2\pi x)$. Then $y(0) = B = 5$, but in this case we necessarily have $y(1) = A \sin (2\pi) + 5 \cos (2\pi) = 5$ in contradiction to the second boundary condition. This implies that the boundary value problem does not have any solution. We conclude that $b = 2\pi$ is the required minimal positive value of the parameter $b$.
+	\subsubsection{Proof of this theorem}
+	*This proof is not covered by the lectures and is not examinable (from now until the end of the proof). It is left for students who are interested to work themselves through more mathematical details.\par
+	We will provide a proof only in the simplest case of ODEs with constant coefficients on the left-hand side,
+	$$
+	a_2(x) = a_2 ,\ a_1(x) = a_1 ,\ a_0(x) = a_0\ \forall x \in [x_1, x_2].
+	$$
+	We furthermore suppose for simplicity that the associated characteristic equation $a_2\lambda^2 + a_1\lambda + a_0 = 0$ has only distinct real roots $\lambda_1 \neq \lambda_2$. In this case we know that the general solution $y_g(x)$ of the inhomogeneous equation (given by the sum of the general solution of the homogeneous equation $y_h(x)$ and any particular solution of the inhomogeneous equation $y_p(x)$) can be written as
+	%
+	\begin{equation}\label{3.3}
+		y_g(x) = c_1e^{\lambda_1 x} + c_2e^{\lambda_2 x} + y_p(x)
+	\end{equation}
+	%
+	with constants $c_1,\ c_2$. Now we should fix these constants by satisfying the linear boundary conditions (\ref{3.2}). Substituting the solution (\ref{3.3}) into these boundary conditions and shifting the $y_p$-dependent terms onto the right-hand side we get a system of two linear algebraic equations for the coefficients $c_1,\ c_2$.\\
+	For example, the boundary condition $\alpha y^\prime (x_1) + \beta y(x_1) = b_1$ yields
+	$$
+	\alpha (c_1\lambda_1e^{\lambda_1x_1} + c_2\lambda_2e^{\lambda_2x_1} + y_p^\prime (x_1)) + \beta (c_1e^{\lambda_1x_1} + c_2e^{\lambda_2x_1} + y_p(x_1)) = b_1
+	$$
+	or equivalently, after rearranging,
+	%
+	\begin{equation}\label{3.4}
+		(\beta e^{\lambda_1x_1} + \alpha\lambda_1 e^{\lambda_1x_1})c_1 + (\beta e^{\lambda_2x_1} + \alpha \lambda_2e^{\lambda_2x_1})c_2 = b_1 - \beta y_p(x_1) - \alpha y^\prime_p(x_1).
+	\end{equation}
+	%
+	Similarly, the second boundary condition gives at $x = x_2$
+	%
+	\begin{equation}\label{3.5}
+		(\delta e^{\lambda_1x_2} + \gamma\lambda_1 e^{\lambda_1x_2})c_1 + (\delta e^{\lambda_2x_2} + \gamma \lambda_2e^{\lambda_2x_2})c_2 = b_2 - \delta y_p(x_2) - \gamma y^\prime_p(x_2).
+	\end{equation}
+	%
+	Note that the coefficients of this system on the left-hand side depend on the left-hand sides of the boundary conditions but not on the right-hand sides $b_1,\ b_2$ and not on the function $f(x)$.\\
+	From the course in Linear Algebra we know that the solution of the system for $c_1,\ c_2$ dependends on the value of the determinant D of the coefficient matrix associated to this system of linear algebraic equations
+	$$
+	D
+	= \det
+	\begin{pmatrix}
+		\beta e^{\lambda_1x_1} + \alpha\lambda_1e^{\lambda_1x_1} & \beta e^{\lambda_2x_1} + \alpha\lambda_2e^{\lambda_2x_1}\\
+		\delta e^{\lambda_1x_2} + \gamma\lambda_1e^{\lambda_1x_2} & \delta e^{\lambda_2x_2} + \gamma\lambda_2e^{\lambda_2x_2}
+	\end{pmatrix}
+	$$
+	Namely,
+	\begin{itemize}
+		\item If $D \neq 0$ the system has a unique solution for the coefficients $c_1,\ c_2$ for any choice of the right-hand sides in equations (\ref{3.4}), (\ref{3.5}). Substituting these coefficients into (\ref{3.3}) we get the unique solution of the original B.V.P. Note that for the corresponding homogeneous problem (that is, with $b_1 = b_2 = 0$ and $f(x) \equiv 0$) also $y_p(x) = 0$ and the right-hand sides in the corresponding algebraic equations (\ref{3.4}), (\ref{3.5}) will be zero. Then the homogeneous problem will only have the trivial zero solution $y_h(x) = 0$ for $x \in [x_1, x_2]$.
+		\item If $D = 0$ the homogeneous linear algebraic system (\ref{3.4}), (\ref{3.5}) (i.e., with all right-hand sides zero) will have infinitely many non-zero solutions. At the same time the inhomogeneous linear systems with the same left-hand side will have either infinitely many solutions or none at all. If it has infinitely many different solutions for coefficients $c_1,\ c_2$, each solution will generate the corresponding different solution to the original B.V.C., which then will have infinitely many solutions as well.
+	\end{itemize}
+	%
+	\textbf{Note:}\\
+	If the characteristic equation has two complex-conjugate roots $\lambda_{1,2} = a \pm ib$, any particular solution $y_p(x)$ of the inhomogeneous equation can be written as
+	%
+	\begin{equation}\label{3.6}
+		y_g(x) = e^{ax}(c_1 \cos bx + c_2\sin bx) + y_p(x),
+	\end{equation}
+	%
+	and the proof can be performed along similar lines.
+\end{document}

@@ -1,0 +1,123 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{mathtools}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+
+\begin{document}
+	%
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Fall 2020}\\
+		\large \textbf{Coursework 4 - part 1: Week 8} \hfill \large \textbf{W. Huang}
+		\rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\begin{itemize}
+		\item This coursework consists of two parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Tutorial problems (you will get help on this part in tutorials. You should work on this before you go to tutorials.)
+			\item Homework problems (to be announced in QMquiz under week 9).
+		\end{enumerate}
+		\item Homework problems of week 8 and 9 will announced together in the end of week 9 in the format of QMquiz under Qmplus week 9. Different from the first three QMquiz where you had unlimited attempts with 4 weeks to work with, \textcolor{red}{for this quiz you can only have two attempts and 2 weeks to work with}. This is to prepare you to get used to the more strict format of the final exam, where a single attempt with limited hours are allowed according to school exam regulations.\\
+		\textcolor{red}{The deadline of the upcoming QMquiz is on the Friday afternoon of week 11 (Dec. 4th, 17:00)}. If you miss the deadline, you will receive 0 for this coursework (which worths 5\% for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 of week 12.
+		\item You have to solve the homework problems by yourself. Submitting homework questions on time is critical for you to achieve good grade in this module.
+		\item A selection of solutions to coursework problems will be posted on QMPlus, see our module schedule. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week}.
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	\rule{\textwidth}{0.4pt}
+	%
+	\newpage
+	\textbf{I. Tutorial Problems}
+	\begin{enumerate}[\bfseries A.]
+		\item Sketch the following parametric curves.
+		\begin{enumerate}[\bfseries 1)]
+			\item $
+			\begin{dcases}
+				y_1(t) = t + 1\\
+				y_2(t) = 2t − 3
+			\end{dcases}
+			\text{for $0 \leq t < \infty$}.
+			$
+			\item $
+			\begin{dcases}
+				y_1(t) = t^2 - 1\\
+				y_2(t) = 4t + 3
+			\end{dcases}
+			\text{for $0 \leq t < \infty$}.
+			$
+			\item $
+			\begin{dcases}
+				y_1(t) = 5\cos t\\
+				y_2(t) = 4\sin t
+			\end{dcases}
+			\text{for $0 \leq t < 4\pi$}.
+			$
+		\end{enumerate}
+		Hint: This is a revision of content from Calculus.\\
+		$y_1(t)$ Connections with our lecture in week 8:\\
+		we can consider the parametric equations above are particular solutions to some ODE systems. Here, $x$ and $y$ are variables depending on the independent variable $t$. Here, the phase plane is the $xy$ plane, which does not include the dimension for $t$. The arrows on the sketched trajectory should indicate how $y_1(t)$ and $y_2(t)$ changes when $t$ increases.
+		\item Compute all equilibria of the following ODE systems
+		\begin{enumerate}[\bfseries 1)]
+			\item $$
+			\dot{y_1} = x^2-4y,\quad \dot{y_2} = (x+2)y.
+			$$
+			\item $$
+			\dot{y_1} = y^2+xy,\quad \dot{y_2} = x^2-2y-5x+2.
+			$$
+		\end{enumerate}
+		\item In this exercise we practice graphing parametric curves in both cartesian and polar coordinates.
+		\begin{enumerate}[\bfseries 1)]
+			\item Graph the parametric curve given by
+			$
+			\begin{dcases}
+				y_1(t) = e^{-t}\sin 3t\\
+				y_2(t) = e^{-t}\cos 3t
+			\end{dcases}
+			\text{for $0 \leq t < \infty$}.
+			$
+			\item Graph the curve defined by the function $r = 4 \sin \theta$ in the cartesian coordinate. Hint: Multiply both sides by $r$ and use the transformation $y_1 = r \cos \theta,\ y_2 = r \sin \theta$ to rewrite the equation in Cartesian coordinates $(y_1, y_2)$.
+			\item Graph $r = \theta$ in the cartesian coordinate. Write 1-2 sentences comparing the graphs of 1) and 3).
+		\end{enumerate}
+		\item In week 1 lecture, we learned the logistic equation, which is an application of using first order ODE in biology to model population growth (see our typed lecture notes and Week1 session 1-2 if you are not familiar with this example). In this model, the change of population size $P$ over time t is governed by a 1st-order non-linear seperable differential equation.
+		$$
+		\frac{dP}{dt} = rP(1-\frac{P}{M}).
+		$$
+		Here, $r$ is the per capita growth rate, M is the maximum population size, and both are parameters not variables.\\
+		Now, we move to a system of 2 first-order ODEs by adding another species consuming this population. Let us call $P(t)$ the population size of the prey species and $K(t)$ the population size of the predator species, this system can be modelled as
+		$$
+		\frac{dP}{dt} = rP(1-\frac{P}{M} - aPK),\ \frac{dK}{dt} = aPK - dK.
+		$$
+		Here, $a$ is the predation rate, $d$ is the death rate of the predator, and both are parameters not variables.
+		\begin{enumerate}[\bfseries 1)]
+			\item Compute all equilibria of the above ODE system. Hint: the equilibria might contain some or all parameters, $r,\ M,\ a,\ d$, which are all positive numbers.
+			\item Based on the results in (1), find out the parameter condition that the two species can exist together in an equilibrium state.
+			\item If one of the species go extinct, i.e. $P = 0$ or $K = 0$, write down the ODE for the dynamics of the remaining species and computer the corresponding equilibria.
+		\end{enumerate}
+	\end{enumerate}
+	\textbf{III. Homework problems of week 8 and 9 will announced together in the end of week 9 in the format of QMquiz under week 8.}\par
+	No exploration equations. Spend your time on thinking thoroughly on the practice questions.
+\end{document}
