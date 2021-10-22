@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\pagestyle{empty}
+\raggedbottom
+
+\begin{document}
+    %
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Autumn 2020}\\
+		\large \textbf{Coursework 4 week 9} \hfill \large \textbf{W. Huang}
+    %
+    \rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\begin{itemize}
+		\item This coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item practice problems (you will get help on this part in tutorials. You should work on this before you go to tutorials.)
+			\item Homework problems (to be announced in QMquiz under week 9)
+			\item More Practice to connect week 9 and 10 learning
+		\end{enumerate}
+		\item Homework problems of week 8 and 9 are announced together in the end of week 9 in the format of QMquiz under Qmplus week 9. Different from the first three QMquiz where you had unlimited attempts with 4 weeks to work with, \textcolor{red}{for this quiz you can only have two attempts and 2 weeks to work with}. This is to prepare you to get used to the more strict format of the final exam, where a single attempt with limited hours are allowed according to school exam regulations.\\
+		\textcolor{red}{The deadline of the upcoming QMquiz is on the Friday afternoon of week 11 (Dec. 4th, 17:00)}. If you miss the deadline, you will receive 0 for this coursework (which worths 5\% for your final mark). The correct answer will be shown in QMquiz after the submission deadline. Feedbacks about common mistakes will be discussed in the subsequent session 4 of week 12.
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this module.}
+		\item A selection of solutions to coursework problems will be posted on QMPlus, see our module schedule. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	\rule{\textwidth}{0.4pt}
+	%
+	\textbf{I. Practice Problems}
+	\begin{enumerate}[\bfseries A.]
+		\item Determine the eigenvalues and eigenvectors of the following matrices:
+		$$
+		\begin{bmatrix}
+			0 & 1\\
+			-1 & 0
+		\end{bmatrix}\quad
+		\begin{bmatrix}
+			2 & 0\\
+			0 & -3
+		\end{bmatrix}\quad
+		\begin{bmatrix}
+			1 & 1\\
+			4 & 1
+		\end{bmatrix}
+		$$
+		\item Find and sketch the solution of the following initial value problems
+		\begin{enumerate}[\bfseries 1)]
+			\item $\dot{y_1} = -\frac{1}{2}y_1 + \frac{5}{2}y_2,\ \dot{y_2} = \frac{5}{2}y_1 - \frac{1}{2}y_2,\ y_1(0) = a,\ y_2(0) = b$.
+			\item $\dot{y_1} = -y_1 + 5y_2,\ \dot{y_2} = -y_1 + y_2,\ y_1(0) = 0,\ y_2(0) = 4$.
+		\end{enumerate}
+		\item
+		\begin{enumerate}[\bfseries (1)]
+			\item Linearize $\dot{y_1} = y_1+e^y_2-\cos y_2,\ \dot{y_2} = 3y_1 - y_2-\sin y_2$ around the fixed point at $y_1 = y_2 = 0$ and find the eigenvalues.
+			\item Linearize the following equation $\dot{y_1} = -2y_1 − 3y_2 + y^5_1,\ \dot{y_2} = y_1 + y_2 − y^2_2$ around the fixed point at $y_1 = y_2 = 0$ and find the eigenvalues.
+		\end{enumerate}
+		\item 
+		\begin{enumerate}[\bfseries (1)]
+			\item Compute all equilibria of the non-linear ODE system
+			$$
+			\dot{y_1} = -y_1 + 3y_2 − y^2_1 + 3y_1y_2,\ \dot{y_2} = −3y_1 - y_2,
+			$$
+			and linearise this ODE systems around its equilibria seperately and write down their matrix forms.
+			\item Determine the general solution of the linearised system at $y = 0$. Find the function $x(t)$ that solves the initial value problem for the system above specified by the initial conditions
+			$$
+			y_1(0) = a,\ y_2(0) = b
+			$$
+			and express it in terms of real-valued functions. Sketch the trajectories of this autonomous system in phase space when $a = b = 1$.
+		\end{enumerate}
+	\end{enumerate}
+	\rule{\textwidth}{0.4pt}\\
+	\textbf{III. More Practice: graphing trajectories and analysis of dynamical systems}\par
+	Consider the dynamical system given by
+	$$
+	\begin{cases}
+		\dot{y_1} = y_2\\
+		\dot{y_2} = -2y_1 + 2y_2
+	\end{cases}
+	$$
+	\begin{enumerate}
+		\item Rewrite the system in matrix form and find the eigenvalues and eigenvectors of the associated coefficient matrix.
+		\item Find the general solution of the system of ODEs, justifying your answer.
+		\item Sketch the trajectory corresponding to the initial condition $y_1(0) = 0,\ y_2(0) = 1$.
+	\end{enumerate}
+	\vspace{2cm}
+	\textit{Dynamical systems appear in numerous fields, including signal processing, control systems, communications, medicine and finance, for example. Models incorporating continuous dynamical systems (such as the ones studied in this module) with discrete dynamical systems have more recently appeared in robotics, real-time software, aeronautics, ground transportation systems and computer-aided verification, to name a few. A quick Google Scholar search with the keywords “Linear Dynamical Systems” and any of the subject areas above will reveal a large number of peer-reviewed articles for you to explore. I strongly suggest taking a look at a few of these links to see some of the interesting options available to you after getting your Maths degree!}
+\end{document}
