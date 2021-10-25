@@ -1,0 +1,731 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+  %
+	\begin{center}
+		\vspace*{8cm}
+		\Huge MA202 –Differential Equations\\
+		\LARGE LECTURE 14
+  \end{center}
+  \newpage
+  %
+	\section*{Fundamental matrices}
+	\begin{itemize}
+		\item Suppose that $\vb{x}^{(1)}(t),\ \ldots,\ \vb{x}^{(n)}(t)$ form a fundamental set of solutions for $\vb{x}^\prime = P(t)\vb{x}$ on $\alpha < t <\beta$.
+		\item The matrix
+		$$
+		\Psi (t)=
+		\begin{pmatrix}
+			x_1^{(1)}(t) & \ldots & x_1^{(n)}(t)\\
+			\vdots & \ddots & \vdots\\
+			x_n^{(1)}(t) & \ldots & x_n^{(n)}(t)
+		\end{pmatrix},
+		$$
+		whose columns are $\vb{x}^{(1)}(t),\ \ldots,\ \vb{x}^{(n)}(t)$, is a fundamental matrix for the system $\vb{x}^\prime = P(t)$. This matrix is nonsingular since its columns are linearly independent, and hence $\det \Psi \neq 0$.
+		\item Note also that since $\vb{x}^{(1)}(t),\ \ldots,\ \vb{x}^{(n)}(t)$ are solutions of $\vb{x}^\prime = p(t)\vb{x},\ \Psi$ satisfies the matrix differential equation $\Psi ^\prime = P(t)\Psi$.
+	\end{itemize}
+	%
+	\section*{Example 1:}
+	\begin{itemize}
+		\item Consider the homogeneous equation $\vb{x}^\prime = A\vb{x}$ below
+		$$
+		\vb{x}^\prime =
+		\begin{pmatrix}
+			1 & 1\\
+			4 & 1
+		\end{pmatrix}
+		$$
+		\item The fundamental solutions for this system are:
+		$$
+		\vb{x}^{(1)}(t) =
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix}e^{3t},\ 
+		\vb{x}^{(2)}(t) =
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}e^{-t}
+		$$
+		\item Thus a fundamental matrix for this system is
+		$$
+		\Psi(t) =
+		\begin{pmatrix}
+			e^{3t} & e^{-t}\\
+			2e^{3t} & -2e^{-t}
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Fundamental matrices and the general solution}
+	\begin{itemize}
+		\item The general solution of $\vb{x}^\prime = P(t)\vb{x}$
+		$$
+		\vb{x} = c_1\vb{x}^{(1)}(t) + \ldots + c_n\vb{x}^{(n)}
+		$$
+		can be expressed $\vb{x} = \Psi (t)\vb{c}$, where $\vb{c}$ is a constant vector with components $c_1,\ \ldots,\ c_n$:
+		$$
+		\vb{x} = \Psi(t)\vb{c}=
+		\begin{pmatrix}
+			x_1^{(1)}(t) & \ldots & x_1^{(n)}(t)\\
+			\vdots & \ddots & \vdots\\
+			x_n^{(1)}(t) & \ldots & x_n^{(n)}(t)
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1\\
+			\vdots\\
+			c_n
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Fundamental matrix and the initial value problem}
+	\begin{itemize}
+		\item Consider an initial value problem
+		$$
+		\vb{x}^\prime = P(t)\vb{x},\ \vb{x}(t_0) = \vb{x}^0
+		$$
+		where $\alpha < t_0 < \beta$ and $\vb{x}^0$ is a given initial vector.
+		\item Now the solution has the form $\vb{x} = \Psi (t)\vb{c}$, hence we choose $\vb{c}$ so as to satisfy $\vb{x}(t_0) = \vb{x}^0$. 
+		\item Recalling $\Psi (t_0)$ is nonsingular, it follows that
+		$$
+		\Psi(t_0)\vb{c} = \vb{x^0} \Rightarrow \vb{c} = \Psi^{-1}(t_0)\vb{x}^0
+		$$
+		\item Thus our solution $\vb{x} = \Psi(t)\vb{c}$ can be expressed as
+		$$
+		\vb{x} = \Psi(t)\Psi^{-1}(t_0)\vb{x^0}
+		$$
+	\end{itemize}
+	%
+	\section*{Recall: Theorem 7.4.4}
+	\begin{itemize}
+		\item Let
+		$$
+		\vb{e}^{1} =
+		\begin{pmatrix}
+			1\\
+			0\\
+			0\\
+			\vdots \\
+			0
+		\end{pmatrix},\ 
+		\vb{e}^{2} =
+		\begin{pmatrix}
+			0\\
+			1\\
+			0\\
+			\vdots \\
+			0
+		\end{pmatrix},\ \ldots,\ 
+		\vb{e}^{n} =
+		\begin{pmatrix}
+			0\\
+			0\\
+			0\\
+			\vdots \\
+			1
+		\end{pmatrix}
+		$$
+		\item Let $\vb{x}^{(1)},\ \ldots,\  \vb{x}^{(n)}$ be solutions of $\vb{x}^\prime = P(t)\vb{x}$ on $I: \alpha < t < \beta$ that satisfy the initial conditions
+		$$
+		\vb{x}^{(1)}(t_0) = \vb{e}^{(1)},\ \ldots,\ \vb{x}^{(n)}(t_0) = \vb{e}^{(n)},\ \alpha<t_0<\beta
+		$$
+		Then $\vb{x}^{(1)},\ \ldots,\ \vb{x}^{(n)}$ are fundamental solutions of $\vb{x}^\prime = P(t)\vb{x}$.
+	\end{itemize}
+	%
+	\section*{Fundamental matrix and theorem 7.4.4}
+	\begin{itemize}
+		\item Suppose $\vb{x}^{(1)}(t),\ \ldots,\ \vb{x}^{(n)}(t)$ form the fundamental solutions given by Thm 7.4.4. Denote the corresponding fundamental matrix by $\Phi(t)$. Then columns of $\Phi(t)$ are $\vb{x}^{(1)}(t),\ \ldots,\ \vb{x}^{(n)}(t)$, and hence
+		$$
+		\Phi(t_0) = 
+		\begin{pmatrix}
+			1 & 0 & \ldots & 0\\
+			0 & 1 & \ldots & 0\\
+			\vdots & \vdots & \ddots & \ldots\\
+			0 & 0 & \ldots & 1
+		\end{pmatrix} = \vb{I}
+		$$
+		\item Thus $\Phi^{-1}(t_0) = I$, and the hence the general solution to the corresponding initial value problem is
+		$$
+		\vb{x} = \Phi(t)\Phi^{-1}(t_0)\vb{x}^0 = \Phi(t)\vb{x}^0
+		$$
+		\item It follows that for any fundamental matrix $\Phi(t)$,
+		$$
+		\vb{x} = \Psi(t)\Psi^{-1}(t_0)\vb{x}^0 = \Phi(t)\vb{x}^0\Rightarrow \Phi(t) = \Psi(t)\Psi^{-1}(t_0)
+		$$
+	\end{itemize}
+	%
+	\section*{The fundamental matrix $\Phi$ and varying initial conditions}
+	\begin{itemize}
+		\item Thus when using the fundamental matrix $\Phi(t)$, the general solution to an IVP is (noting that $\Phi^{-1}(t_0)$ is the unit matrix)
+		$$
+		\vb{x} = \Phi(t)\Phi^{-1}(t_0)\vb{x}^0 = \Phi(t)\vb{x}^0
+		$$
+		\item This representation is useful if same system is to be solved for many different initial conditions, such as a physical system that can be started from many different initial states.
+		\item Also, once $\Phi(t)$ has been determined, the solution to each set of initial conditions can be found by matrix multiplication, as indicated by the equation above.
+		\item Thus $\Phi(t)$ represents a linear transformation of the initial conditions $\vb{x}^0$ into the solution $\vb{x}(t)$ at time $t$.
+	\end{itemize}
+	%
+	\section*{Example 2: Find $\Phi(t)$ for $2 \times 2$ system (1 of 5)}
+	\begin{itemize}
+		\item Find $\Phi(t)$ such that $\Phi(0) = I$ for the system below.
+		$$
+		\vb{x}^\prime = 
+		\begin{pmatrix}
+			1 & 1\\
+			4 & 1
+		\end{pmatrix}\vb{x}
+		$$
+		\item Solution: First, we must obtain $\vb{x}^{(1)}(t)$ and $\vb{x}^{(2)}(t)$ such that
+		$$
+		\vb{x}^{(1)}(0) = 
+		\begin{pmatrix}
+			1\\
+			0
+		\end{pmatrix},\ 
+		\vb{x}^{(2)}(0) =
+		\begin{pmatrix}
+			0\\
+			1
+		\end{pmatrix}
+		$$
+		\item We know from previous results that the general solution is
+		$$
+		\vb{x} = c_1
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}e^{-t}
+		$$
+		\item Every solution can be expressed in terms of the general solution, and we use this fact to find $\vb{x}^{(1)}(t)$ and $\vb{x}^{(2)}(t)$.
+	\end{itemize}
+	%
+	\section*{Example 2: Use general solution (2 of 5)}
+	\begin{itemize}
+		\item Thus, to find $\vb{x}^{(1)}(t)$, express it in terms of the general solution
+		$$
+		\vb{x}^{(1)}(t) = c_1
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix}e^{3t} + c_2
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}e^{-t}
+		$$
+		and then find the coefficients $c_1$ and $c_2$. 
+		\item To do so, use the initial conditions to obtain
+		$$
+		\vb{x}^{(1)}(0) = c_1
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}=
+		\begin{pmatrix}
+			1\\
+			0
+		\end{pmatrix}
+		$$
+		or equivalently,
+		$$
+		\begin{pmatrix}
+			1 & 1\\
+			2 & -2
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1\\
+			c_2
+		\end{pmatrix}=
+		\begin{pmatrix}
+			1\\
+			0
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 2: Solve for $\vb{x}^{(1)}(t)$ (3 of 5)}
+	\begin{itemize}
+		\item To find $\vb{x}^{(1)}(t)$, we therefore solve
+		$$
+		\begin{pmatrix}
+			1 & 1\\
+			2 & -2
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1\\
+			c_2
+		\end{pmatrix}=
+		\begin{pmatrix}
+			1\\
+			0
+		\end{pmatrix}
+		$$
+		by row reducing the augmented matrix:\\
+		$
+		\begin{pmatrix}
+			1 & 1 & 1\\
+			2 & -2 & 0
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 1 & 1\\
+			0 & -4 & 0
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 1 & 1\\
+			0 & 1 & 1/2
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 0 & 1/2\\
+			0 & 1 & 1/2
+		\end{pmatrix}\to
+		\begin{matrix}
+			c_1 & & =1/2\\
+			& c_2 & =1/2
+		\end{matrix}
+		$
+		\item Thus
+		$$
+		\vb{x}^{(1)}(t) = \frac{1}{2}
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix}e^{3t} + \frac{1}{2}
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}e^{-t}=
+		\begin{pmatrix}
+			\frac{1}{2}e^{3t} + \frac{1}{2}e^{-t}\\
+			e^{3t} - e^{-t}
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	\section*{Example 2: Solve for $\vb{x}^{(2)}(t)$ (4 of 5)}
+	\begin{itemize}
+		\item To find $\vb{x}^{(2)}(t)$, we similarly solve
+		$$
+		\begin{pmatrix}
+			1 & 1\\
+			2 & -2
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1\\
+			c_2
+		\end{pmatrix}=
+		\begin{pmatrix}
+			1\\
+			0
+		\end{pmatrix}
+		$$
+		by row reducing the augmented matrix\\
+		$
+		\begin{pmatrix}
+			1 & 1 & 0\\
+			2 & -2 & 1
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 1 & 0\\
+			0 & -4 & 1
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 1 & 0\\
+			0 & 1 & -1/4
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 0 & 1/4\\
+			0 & 1 & -1/4
+		\end{pmatrix}\to
+		\begin{matrix}
+			c_1 & & =1/4\\
+			& c_2 & =-1/4
+		\end{matrix}
+		$
+		\item Thus
+		$$
+		\vb{x}^{(2)}(t) = \frac{1}{4}
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix}e^{3t} - \frac{1}{4}
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}e^{-t}=
+		\begin{pmatrix}
+			\frac{1}{4}e^{3t} - \frac{1}{4}e^{-t}\\
+			\frac{1}{2}e^{3t} + \frac{1}{2}e^{-t}
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	\section*{Example 2: Obtain $\Phi(t)$ (5 of 5)}
+	\begin{itemize}
+		\item The columns of $\Phi(t)$ are given by $\vb{x}^{(1)}(t)$ and $\vb{x}^{(2)}(t)$, and thus from the previous slide we have
+		$$
+		\Phi(t) =
+		\begin{pmatrix}
+			\frac{1}{2}e^{3t} + \frac{1}{2}e^{-t} & \frac{1}{4}e^{3t} - \frac{1}{4}e^{-t}\\
+			e^{3t} - e^{-t} & \frac{1}{2}e^{3t} + \frac{1}{2}e^{-t}
+		\end{pmatrix}
+		$$
+		\item Note $\Phi(t)$ is more complicated than $Psi(t)$ found in Ex 1. However, now that we have $\Phi(t)$, it is much easier to determine the solution to any set of initial conditions.
+		$$
+		\Psi(t) =
+		\begin{pmatrix}
+			e^{3t} & e^{-t}\\
+			2e^{3t} & -2e^{-t}
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Matrix exponential functions}
+	\begin{itemize}
+		\item Consider the following two cases:
+		\begin{itemize}
+			\item[\labelitemi] The solution to $x^\prime = ax,\ x(0) = x_0$, is $x = x_0e^{at}$, where $e^0 = 1$.
+			\item[\labelitemi] The solution to $\vb{x}^\prime = A\vb{x},\ \vb{x}(0) = \vb{x}^0$, is $\vb{x} = \Phi(t)\vb{x}^0$, where $\Phi(0) = I$. 
+		\end{itemize}
+		\item Comparing the form and solution for both of these cases, we might expect $\Phi(t)$ to have an exponential character.
+		\item Indeed, it can be shown that $\Phi(t) = e^{At}$, where
+		$$
+		e^{At} = \sum_{n=0}^{\infty}\frac{A^nt^n}{n!} = I+\sum_{n=1}^{\infty}\frac{A^nt^n}{n!}
+		$$
+		is a well defined matrix function that has all the usual properties of an exponential function. See text for details.
+		\item Thus the solution to $\vb{x}^\prime = A\vb{x},\ \vb{x}(0) = \vb{x}^0$, is $\vb{x} = e^{At}\vb{x}^0$. 
+	\end{itemize}
+	%
+	\section*{Example 3: Matrix exponential function}
+	\begin{itemize}
+		\item Consider the diagonal matrix $A$ below
+		$$
+		A =
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2
+		\end{pmatrix}
+		$$
+		\item Then
+		$$
+		A^2 = 
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2
+		\end{pmatrix}
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2^2
+		\end{pmatrix},\ A^3=
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2^2
+		\end{pmatrix}
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2
+		\end{pmatrix} =
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2^3
+		\end{pmatrix},\ldots
+		$$
+		\item In general,
+		$$
+		A^n =
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 2^n
+		\end{pmatrix}
+		$$
+		\item Thus
+		$$
+		e^{At} = \sum_{n=0}^{\infty}\frac{A^nt^n}{n!} = \sum_{n=0}^\infty
+		\begin{pmatrix}
+			1/n! & 0\\
+			0 & 2^n/n!
+		\end{pmatrix}t^n =
+		\begin{pmatrix}
+			e^t & 0\\
+			0 & e^{2t}
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Coupled systems of equations}
+	\begin{itemize}
+		\item Recall that our constant coefficient homogeneous system
+		$$
+		\begin{matrix}
+			x_1^\prime = a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n\\
+			\vdots\\
+			x_n^\prime = a_{n1}x_1 + a_{n2}x_2 + \ldots + a_{nn}x_n,
+		\end{matrix}
+		$$
+		written as $\vb{x}^\prime = A\vb{x}$ with
+		$$
+		\vb{x}(t) = 
+		\begin{pmatrix}
+			x_1(t)\\
+			\vdots\\
+			x_n(t)
+		\end{pmatrix},\ A =
+		\begin{pmatrix}
+			a_{11} & \ldots & a_{1n}\\
+			\vdots & \ddots & \vdots\\
+			a_{n1} & \ldots & a_{nn}
+		\end{pmatrix},
+		$$
+		is a system of coupled equations that must be solved simultaneously to find all the unknown variables. 
+	\end{itemize}
+	%
+	\section*{Uncoupled systems and diagonal matrices}
+	\begin{itemize}
+		\item In contrast, if each equation had only one variable, solved for independently of other equations, then task would be easier.
+		\item In this case our system would have the form
+		$$
+		\begin{matrix}
+			x_1^\prime = d_{11} x_1 + 0x_2 +\ldots + 0x_n\\
+			x_2^\prime = 0 x_1 + d_{22}x_2 +\ldots + 0x_n\\
+			\vdots\\
+			x_n^\prime = 0 x_1 + 0x_2 +\ldots + d_{nn}x_n,
+		\end{matrix}
+		$$
+		or $\vb{x}^\prime = \vb{D}\vb{x}$, where $\vb{D}$ is a diagonal matrix:
+		$$
+		\vb{x}(t) =
+		\begin{pmatrix}
+			x_1(t)\\
+			\vdots\\
+			x_n(t)
+		\end{pmatrix},\ \vb{D} =
+		\begin{pmatrix}
+			d_{11} & 0 & \ldots & 0\\
+			0 & d_{22} & \ldots & 0\\
+			\vdots & \vdots & \ddots & \vdots\\
+			0 & 0 & \vdots & d_{nn}
+		\end{pmatrix}
+		$$ 
+	\end{itemize}
+	%
+	\section*{Uncoupling: Transform matrix $\vb{T}$}
+	\begin{itemize}
+		\item In order to explore transforming our given system $\vb{x}^\prime = A\vb{x}$ of coupled equations into an uncoupled system $\vb{x}^\prime = \vb{D}\vb{x}$, where $\vb{D}$ is a diagonal matrix, we will use the eigenvectors of $A$.
+		\item Suppose $A$ is $n \times n$ with $n$ linearly independent eigenvectors $\xi^{(1)},\ \ldots,\ \xi^{(n)}$, and corresponding eigenvalues $\lambda_1,\ \ldots,\ \lambda_2$.
+		\item Define $n \times n$ matrices $\vb{T}$ and $\vb{D}$ using the eigenvalues \& eigenvectors of $A$:
+		$$
+		\vb{T}=
+		\begin{pmatrix}
+			\xi_1^{(1)} & \ldots & \xi_1^{(n)}\\
+			\vdots & \ddots & \vdots\\
+			\xi_n^{(1)} & \ldots & \xi_n^{(n)}
+		\end{pmatrix},\ \vb{D} =
+		\begin{pmatrix}
+			\lambda_1 & 0 & \ldots & 0\\
+			0 & \lambda_2 & \ldots & 0\\
+			\vdots & \vdots & \ddots & \vdots\\
+			0 & 0 & \ldots & \lambda_n
+		\end{pmatrix}
+		$$
+		\item Note that $\vb{T}$ is nonsingular, and hence $\vb{T}^{-1}$ exists.
+	\end{itemize}
+	%
+	\section*{Uncoupling: $\vb{T}^{-1}A\vb{T} = \vb{D}$}
+	\begin{itemize}
+		\item Recall here the definitions of $A, \vb{T}$ and $\vb{D}$:
+		$$
+		A =
+		\begin{pmatrix}
+			a_{11} & \ldots & a_{1n}\\
+			\vdots & \ddots & \vdots\\
+			a_{n1} & \ldots & a_{nn}
+		\end{pmatrix},\ 
+		\vb{T}=
+		\begin{pmatrix}
+			\xi_1^{(1)} & \ldots & \xi_1^{(n)}\\
+			\vdots & \ddots & \vdots\\
+			\xi_n^{(1)} & \ldots & \xi_n^{(n)}
+		\end{pmatrix},\ 
+		\vb{D} =
+		\begin{pmatrix}
+			\lambda_1 & 0 & \ldots & 0\\
+			0 & \lambda_2 & \ldots & 0\\
+			\vdots & \vdots & \ddots & \vdots\\
+			0 & 0 & \ldots & \lambda_n
+		\end{pmatrix}
+		$$
+		\item Then the columns of $A\vb{T}$ are $A\xi^{(1)},\ \ldots,\ A\xi^{(n)}$, and hence
+		$$
+		A\vb{T} =
+		\begin{pmatrix}
+			\lambda_1\xi_1^{(1)} & \ldots & \lambda_n\xi_1^{(n)}\\
+			\vdots & \ddots & \vdots\\
+			\lambda_1\xi_n^{(1)} & \ldots & \lambda_n\xi_n^{(n)}
+		\end{pmatrix} = \vb{T}\vb{D}
+		$$
+		\item It follows that $\vb{T}^{-1}A\vb{T} = \vb{D}$.
+	\end{itemize}
+	%
+	\section*{Similarity transformations}
+	\begin{itemize}
+		\item Thus, if the eigenvalues and eigenvectors of $A$ are known, then $A$ can be transformed into a diagonal matrix $\vb{D}$, with
+		$$
+		\vb{T}^{-1}A\vb{T} = \vb{D}
+		$$
+		\item This process is known as a \textbf{similarity transformation}, and $A$ is said to be \textbf{similar} to $\vb{D}$. Alternatively, we could say that $\vb{A}$ is \textbf{diagonalizable}.
+		$$
+		A =
+		\begin{pmatrix}
+			a_{11} & \ldots & a_{1n}\\
+			\vdots & \ddots & \vdots\\
+			a_{n1} & \ldots & a_{nn}
+		\end{pmatrix},\ 
+		\vb{T}=
+		\begin{pmatrix}
+			\xi_1^{(1)} & \ldots & \xi_1^{(n)}\\
+			\vdots & \ddots & \vdots\\
+			\xi_n^{(1)} & \ldots & \xi_n^{(n)}
+		\end{pmatrix},\ 
+		\vb{D} =
+		\begin{pmatrix}
+			\lambda_1 & 0 & \ldots & 0\\
+			0 & \lambda_2 & \ldots & 0\\
+			\vdots & \vdots & \ddots & \vdots\\
+			0 & 0 & \ldots & \lambda_n
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 4: Find the transformation matrix $\vb{T}$ (1 of 2)}
+	\begin{itemize}
+		\item For the matrix $A$ below, find the similarity transformation matrix $\vb{T}$ and show that $A$ can be diagonalized.
+		$$
+		A = 
+		\begin{pmatrix}
+			1 & 1\\
+			4 & 1
+		\end{pmatrix}
+		$$
+		\item We already know that the eigenvalues are $\lambda_1 = 3,\ \lambda_2 = -1$ with corresponding eigenvectors
+		$$
+		\xi^{(1)}(t) =
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix},\ \xi^{(2)}(t) =
+		\begin{pmatrix}
+			1\\
+			-2
+		\end{pmatrix}
+		$$
+		\item Thus
+		$$
+		\vb{T} =
+		\begin{pmatrix}
+			1 & 1\\
+			2 & -2
+		\end{pmatrix},\ \vb{D} =
+		\begin{pmatrix}
+			3 & 0\\
+			0 & -1
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 4: Similarity transformation (2 of 2)}
+	\begin{itemize}
+		\item To find $\vb{T}^{-1}$, augment the identity to $\vb{T}$ and row reduce:\\
+		$
+		\begin{pmatrix}
+			1 & 1 & 1 & 0\\
+			2 & -2 & 0 & 1
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 1 & 1 & 0\\
+			0 & -4 & -2 & 1
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 1 & 1 & 0\\
+			0 & 1 & 1/2 & -1/4
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 0 & 1/2 & 1/4\\
+			0 & 1 & 1/2 & -1/4
+		\end{pmatrix}\to \vb{T}^{-1}
+		\begin{pmatrix}
+			1/2 & 1/4\\
+			1/2 & -1/4
+		\end{pmatrix}
+		$
+		\item Then
+		\begin{align*}
+			\vb{T}^{-1}A\vb{T} &=
+			\begin{pmatrix}
+				1/2 & 1/4\\
+				1/2 & -1/4
+			\end{pmatrix}
+			\left[
+				\begin{pmatrix}
+					1 & 1\\
+					4 & 1
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 1\\
+					2 & -2
+				\end{pmatrix}
+			\right]\\
+			&=
+			\begin{pmatrix}
+				1/2 & 1/4\\
+				1/2 & -1/4
+			\end{pmatrix}
+			\begin{pmatrix}
+				3 & -1\\
+				6 & 2
+			\end{pmatrix} =
+			\begin{pmatrix}
+				3 & 0\\
+				0 & -1
+			\end{pmatrix} = \vb{D}
+		\end{align*}
+		\item Thus $A$ is similar to $\vb{D}$, and hence $A$ is diagonalizable.
+	\end{itemize}
+\end{document}

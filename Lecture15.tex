@@ -1,0 +1,532 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+\usepackage{mathtools}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+    %
+	\begin{center}
+		\vspace*{8cm}
+		\Huge MA202 –Differential Equations\\
+		\LARGE LECTURE 15
+  \end{center}
+  \newpage
+  %
+	\section*{Nonhomogeneous linear systems}
+	\begin{itemize}
+		\item The general theory of a nonhomogeneous system of equations
+		\begin{align*}
+			&x_1^\prime = p_{11}(t)x_1 + p_{12}(t)x_2 + \ldots + p_{1n}(t)x_n + g_1(t)\\
+			&x_2^\prime = p_{21}(t)x_1 + p_{22}(t)x_2 + \ldots + p_{2n}(t)x_n + g_2(t)\\
+			&\vdots\\
+			&x_n^\prime = p_{n1}(t)x_1 + p_{n2}(t)x_2 + \ldots + p_{nn}(t)x_n + g_n(t)
+		\end{align*}
+		parallels that of a single nth order linear equation. 
+		\item This system can be written as $\vb{x}^\prime = \vb{P}(t)\vb{x} + \vb{g}(t)$, where
+		$$
+		\vb{x}(t)=
+		\begin{pmatrix}
+			x_1(t)\\
+			x_2(t)\\
+			\vdots\\
+			x_n(t)
+		\end{pmatrix},\ \vb{g}(t) =
+		\begin{pmatrix}
+			g_1(t)\\
+			g_2(t)\\
+			\vdots\\
+			g_n(t)
+		\end{pmatrix},\ \vb{P}(t) =
+		\begin{pmatrix}
+			p_{11}(t) & p_{12}(t) & \ldots & p{1n}(t)\\
+			p_{21}(t) & p_{22}(t) & \ldots & p{2n}(t)\\
+			\vdots & \vdots & \ddots & \vdots\\
+			p_{n1}(t) & p_{n2}(t) & \ldots & p{nn}(t)
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{General solution}
+	\begin{itemize}
+		\item The general solution of $\vb{x}^\prime = \vb{P}(t)\vb{x} + \vb{g}(t)$ on $I: \alpha < t < \beta$ has the form
+		$$
+		\vb{x} = c_1\vb{x}^{(1)}(t) + c_2\vb{x}^{(2)}(t) + \ldots + c_n\vb{x}^{(n)}(t) + \vb{v}(t)
+		$$
+		where
+		$$
+		c_1\vb{x}^{(1)}(t) + c_2\vb{x}^{(2)}(t) + \ldots + c_n\vb{x}^{(n)}(t)
+		$$
+		is the general solution of the homogeneous system $\vb{x}^\prime = \vb{P}(t)\vb{x}$ and $\vb{v}(t)$ is a particular solution of the nonhomogeneous system $\vb{x}^\prime = \vb{P}(t)\vb{x} + \vb{g}(t)$.
+	\end{itemize}
+	%
+	\section*{Diagonalisation}
+	\begin{itemize}
+		\item Suppose $\vb{x}^\prime = \vb{A}\vb{x} + \vb{g}(t)$, where $\vb{A}$ is an $n \times n$ diagonalizable constant matrix.
+		\item Let $\vb{T}$ be the nonsingular transform matrix whose columns are the eigenvectors of $\vb{A}$, and $\vb{D}$ the diagonal matrix whose diagonal entries are the corresponding eigenvalues of $\vb{A}$.
+		\item Suppose $\vb{x}$ satisfies $\vb{x}^\prime = \vb{A}\vb{x}$, let $\vb{y}$ be defined by $\vb{x} = \vb{Ty}$.
+		\item Substituting $\vb{x} = \vb{Ty}$ into $\vb{x}^\prime = \vb{Ax} + \vb{g}(t)$, we obtain
+		\begin{align*}
+			\vb{T}\vb{y}^\prime &= \vb{ATy} + \vb{g}(t).\\
+			\text{or}\quad \vb{y}^\prime &= \vb{T}^{-1}\vb{ATy} + \vb{T}^{-1}\vb{g}(t)\\
+			\text{or} \quad \vb{y}^\prime &= \vb{Dy} + \vb{h}(t),\ \text{where}\ \vb{h}(t) = \vb{T}^{-1}\vb{g}(t).
+		\end{align*}
+		\item Note that if we can solve diagonal system $\vb{y}^\prime = \vb{Dy} + \vb{h}(t)$ for $\vb{y}$, then $\vb{x} = \vb{Ty}$ is a solution to the original system.
+	\end{itemize}
+	%
+	\section*{Solving the diagonal system}
+	\begin{itemize}
+		\item Now $\vb{y}^\prime = \vb{Dy} + \vb{h}(t)$ is a diagonal system of the form
+		$$
+		\begin{rcases}
+			y_1^\prime = r_1y_1 + 0y_2 + \ldots + 0y_n + h_1(t)\\
+			y_2^\prime = 0y_1 + r_2y_2 + \ldots + 0y_n + h_2(t)\\
+			\vdots\\
+			y_n^\prime = 0y_1 + 0y_2 + \ldots + r_ny_n + h_n(t)
+		\end{rcases} \Leftrightarrow
+		\begin{pmatrix}
+			y_1^\prime\\
+			y_2^\prime\\
+			\vdots\\
+			y_n^\prime		
+		\end{pmatrix}=
+		\begin{pmatrix}
+			r_1 & 0 & \ldots & 0\\
+			0 & r_2 & \ldots & 0\\
+			\vdots & \vdots & \ddots & \ldots\\
+			0 & 0 & \ldots & r_n
+		\end{pmatrix}
+		\begin{pmatrix}
+			y_1\\
+			y_2\\
+			\vdots\\
+			y_n
+		\end{pmatrix} +
+		\begin{pmatrix}
+			h_1\\
+			h_2\\
+			\vdots\\
+			h_n
+		\end{pmatrix}
+		$$
+		where $r_1,\ \ldots,\ r_n$ are the eigenvalues of $\vb{A}$.
+		\item Thus $\vb{y}^\prime = \vb{Dy} + \vb{h}(t)$ is an uncoupled system of $n$ linear first order equations in the unknowns $y_k(t)$, which can be isolated
+		$$
+		y_k^\prime = r_ky_k + h_k(t),\ k=1,\ldots,n
+		$$
+		and solved separately:
+		$$
+		y_k = e^{r_kt}\int_{t_0}^t\ e^{-r_ks}h_k(s)ds + c_ke^{r_kt},\ k=1,\ldots,n
+		$$
+	\end{itemize}
+	%
+	\section*{Solving the original system}
+	\begin{itemize}
+		\item The solution $\vb{y}$ to $\vb{y}^\prime = \vb{Dy} + \vb{h}(t)$ has components
+		$$
+		y_k = e^{r_kt}\int_{t_0}^t\ e^{-r_ks}h_k(s)ds + c_ke^{r_kt},\ k=1,\ldots,n
+		$$
+		\item For this solution vector $\vb{y}$, the solution to the original system $\vb{x}^\prime = \vb{Ax} + \vb{g}(t)$ is then $\vb{x} = \vb{Ty}$.
+		\item Recall that $\vb{T}$ is the nonsingular transform matrix whose columns are the eigenvectors of $\vb{A}$.
+		\item Thus, when multiplied by $\vb{T}$, the second term on right side of $y_k$ produces a general solution of homogeneous equation, while the integral term of $y_k$ produces a particular solution of the nonhomogeneous system. 
+	\end{itemize}
+	%
+	\section*{Example 1: General solution of the homogeneous case (1 of 5)}
+	\begin{itemize}
+		\item Consider the nonhomogeneous system $\vb{x}^\prime = \vb{Ax} + \vb{g}$ below.
+		$$
+		\vb{x}^\prime =
+		\begin{pmatrix}
+			-2 & 1\\
+			1 & -2
+		\end{pmatrix}\vb{x} +
+		\begin{pmatrix}
+			2e^{-t}\\
+			3t
+		\end{pmatrix} = \vb{Ax} + \vb{g}(t)
+		$$
+		\item Note: $\vb{A}$ is a Hermitian matrix, since it is real and symmetric.
+		\item The eigenvalues of $\vb{A}$ are $r_1 = -3$ and $r_2 = -1$, with corresponding eigenvectors
+		$$
+		\xi^{(1)} =
+		\begin{pmatrix}
+			1\\
+			-1
+		\end{pmatrix},\ \xi^{(2)} =
+		\begin{pmatrix}
+			1\\
+			1
+		\end{pmatrix}
+		$$
+		\item The general solution of the homogeneous system is then
+		$$
+		\vb{x}(t) = c_1
+		\begin{pmatrix}
+			1\\
+			-1
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			1\\
+			1
+		\end{pmatrix}e^{-t}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 1: Transformation matrix (2 of 5)}
+	\begin{itemize}
+		\item Consider next the transformation matrix $\vb{T}$ of eigenvectors. Using a property of $\vb{A}$ being Hermitian, we have $\vb{T}^{-1} = \vb{T}^* = \vb{T}^T$  provided we normalize $\xi^{(1)}$ and $\xi^{(2)}$ so that $(\xi^{(1)}, \xi^{(1)}) = 1$ and $(\xi^{(2)}, \xi^{(2)}) = 1$. Thus normalize as follows:
+		\begin{align*}
+			&\xi^{(1)} = \frac{1}{\sqrt{(1)(1) + (-1)(-1)}}
+			\begin{pmatrix}
+				1\\
+				-1
+			\end{pmatrix} = \frac{1}{\sqrt{2}}
+			\begin{pmatrix}
+				1\\
+				-1
+			\end{pmatrix},\\
+			&\xi^{(2)} = \frac{1}{\sqrt{(1)(1) + (1)(1)}}
+			\begin{pmatrix}
+				1\\
+				1
+			\end{pmatrix} = \frac{1}{\sqrt{2}}
+			\begin{pmatrix}
+				1\\
+				1
+			\end{pmatrix}
+		\end{align*}
+		\item Then for this choice of eigenvectors,
+		$$
+		\vb{T} = \frac{1}{\sqrt{2}}
+		\begin{pmatrix}
+			1 & 1\\
+			-1 & 1
+		\end{pmatrix},\ \vb{T}^{-1}=\frac{1}{\sqrt{2}}
+		\begin{pmatrix}
+			1 & -1\\
+			1 & 1
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 1: Diagonal System and its Solution (3 of 5)}
+	\begin{itemize}
+		\item Under the transformation $\vb{x} = \vb{Ty}$, we obtain the diagonal system $\vb{y}^\prime = \vb{Dy} + \vb{T}^{-1}\vb{g}(t)$:
+		\begin{align*}
+			\begin{pmatrix}
+				y_1^\prime\\
+				y_2^\prime
+			\end{pmatrix} &=
+			\begin{pmatrix}
+				-3 & 0\\
+				0 & -1
+			\end{pmatrix}
+			\begin{pmatrix}
+				y_1\\
+				y_2
+			\end{pmatrix} + \frac{1}{\sqrt{2}}
+			\begin{pmatrix}
+				1 & -1\\
+				1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				2e^{-t}\\
+				3t
+			\end{pmatrix}\\
+			&=
+			\begin{pmatrix}
+				-3y_1\\
+				-y_2
+			\end{pmatrix} + \frac{1}{\sqrt{2}}
+			\begin{pmatrix}
+				2e^{-t} - 3t\\
+				2e^{-t} + 3t
+			\end{pmatrix}
+		\end{align*}
+		\item Therefore
+		\begin{align*}
+			y_1^\prime + 3y_1 &= \sqrt{2}e^{-t} - \frac{3}{\sqrt{2}}t \Rightarrow y_1 = \frac{\sqrt{2}}{2}e^{-t}-\frac{3}{\sqrt{2}}\left(\frac{t}{3}-\frac{1}{9}\right) + c_1e^{-3t}\\
+			y_2^\prime + y_2 &= \sqrt{2}e^{-t} + \frac{3}{\sqrt{2}}t \Rightarrow y_2 = \sqrt{2}te^{-t}+\frac{3}{\sqrt{2}}(t-1) + c_2e^{-t}
+		\end{align*}
+	\end{itemize}
+	%
+	\section*{Example 1: Transform Back to Original System (4 of 5)}
+	\begin{itemize}
+		\item We next use the transformation x = Ty to obtain the solution of the original system $\vb{x}^\prime = \vb{Ax} + \vb{g}(t)$:
+		\begin{align*}
+			\begin{pmatrix}
+				x_1\\
+				x_2
+			\end{pmatrix} &= \frac{1}{\sqrt{2}}
+			\begin{pmatrix}
+				1 & 1\\
+				-1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				y_1\\
+				y_2
+			\end{pmatrix} =
+			\begin{pmatrix}
+				1 & 1\\
+				-1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				\frac{1}{2}e^{-t}-\left(\frac{t}{2}-\frac{1}{6}\right)+k_1e^{-3t}\\
+				te^(-t) + \frac{3}{2}(t-1)+k_2e^{-t}
+			\end{pmatrix}\\
+			&=
+			\begin{pmatrix}
+				k_1e^{-3t} + \left(k_2 + \frac{1}{2}\right)e^{-t} + t-\frac{4}{3} + te^{-t}\\
+				-k_1e^{-3t} + \left(k_2-\frac{1}{2}\right)e^{-t} + 2t - \frac{5}{3}+te^{-t}
+			\end{pmatrix},\ k_1 = \frac{c_1}{\sqrt{2}},\ k_2 = \frac{c_2}{\sqrt{2}}
+		\end{align*}
+	\end{itemize}
+	%
+	\section*{Example 1: Solution of Original System (5 of 5)}
+	\begin{itemize}
+		\item Simplifying further, the solution x can be written as
+		\begin{align*}
+			\begin{pmatrix}
+				x_1\\
+				x_2
+			\end{pmatrix} 
+			&=
+			\begin{pmatrix}
+				k_1e^{-3t} + \left(k_2 + \frac{1}{2}\right)e^{-t} + t-\frac{4}{3} + te^{-t}\\
+				-k_1e^{-3t} + \left(k_2-\frac{1}{2}\right)e^{-t} + 2t - \frac{5}{3}+te^{-t}
+			\end{pmatrix}\\
+			&= k_1
+			\begin{pmatrix}
+				1\\
+				-1
+			\end{pmatrix}e^{-3t} + k_2
+			\begin{pmatrix}
+				1\\
+				1
+			\end{pmatrix}e^{-t} + \frac{1}{2}
+			\begin{pmatrix}
+				1\\
+				-1
+			\end{pmatrix}e^{-t} +
+			\begin{pmatrix}
+				1\\
+				1
+			\end{pmatrix}te^{-t} + 
+			\begin{pmatrix}
+				1\\
+				2
+			\end{pmatrix}t-\frac{1}{3}
+			\begin{pmatrix}
+				4\\
+				5
+			\end{pmatrix}
+		\end{align*}
+		\item Note that the first two terms on right side form the general solution of the homogeneous system, while the remaining terms form a particular solution of the nonhomogeneous system.
+	\end{itemize}
+	%
+	\section*{Variation of parameters: preliminaries}
+	\begin{itemize}
+		\item A more general way of solving $\vb{x}^\prime = \vb{P}(t)\vb{x} + \vb{g}(t)$ is the method of variation of parameters.
+		\item Assume $\vb{P}(t)$ and $\vb{g}(t)$ are continuous on $\alpha < t < \beta$, and let $\Psi(t)$ be a fundamental matrix for the homogeneous system.
+		\item Recall that the columns of $\Psi$ are linearly independent solutions of $\vb{x}^\prime = \vb{P}(t)\vb{x}$, and hence $\Psi(t)$ is invertible on the interval $\alpha < t < \beta$, and also $\Psi^\prime(t) = \vb{P}(t)\Psi(t)$.
+		\item Next, recall that the solution of the homogeneous system can be expressed as $\vb{x} = \Psi(t)\vb{c}$.
+		\item Assume the particular solution of the nonhomogeneous system has the form $\vb{x} = \Psi(t)\vb{u}(t)$, where $\vb{u}(t)$ is a vector to be found. 
+	\end{itemize}
+	%
+	\section*{Variation of parameters: solution}
+	\begin{itemize}
+		\item We assume a particular solution of the form $\vb{x} = \Psi(t)\vb{u}(t)$.
+		\item Substituting this into $\vb{x}^\prime = \vb{P}(t)\vb{x} + \vb{g}(t)$, we obtain
+		$$
+		\Psi^\prime(t)\vb{u}(t) + \Psi(t)\vb{u}^\prime(t) = \vb{P}(t)\Psi(t)\vb{u}(t) + \vb{g}(t)
+		$$
+		\item Since $\Psi^\prime (t) = \vb{P}(t) \Psi(t)$, the above equation simplifies to
+		$$
+		\vb{u}^\prime (t) = \Psi^{-1}(t)\vb{g}(t)
+		$$
+		\item Thus
+		$$
+		\vb{u}(t) = \int \Psi^{-1}(t)g(t)dt + \vb{c}
+		$$
+		where the vector $\vb{c}$ is an arbitrary constant of integration.
+		\item The general solution to $\vb{x}^\prime = \vb{P}(t)\vb{x} + \vb{g}(t)$ is therefore
+		$$
+		\vb{x} = \Psi(t)\vb{c} + \Psi(t)\int_{t_1}^t \Psi^{-1}(s)\vb{g}(s)ds,\ t_1\in (\alpha, \beta)\ \text{arbitrary}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 2: Variation of parameters (1 of 3)}
+	\begin{itemize}
+		\item Consider again the nonhomogeneous system $\vb{x}^\prime = \vb{Ax} + \vb{g}$:
+		$$
+		\vb{x}^\prime =
+		\begin{pmatrix}
+			-2 & 1\\
+			1 & -2
+		\end{pmatrix}\vb{x} +
+		\begin{pmatrix}
+			2e^{-t}\\
+			3t
+		\end{pmatrix} =
+		\begin{pmatrix}
+			-2 & 1\\
+			1 & -2
+		\end{pmatrix}\vb{x} + 
+		\begin{pmatrix}
+			2\\
+			0
+		\end{pmatrix}e^{-t} + 
+		\begin{pmatrix}
+			0\\
+			3
+		\end{pmatrix}t
+		$$
+		\item We have previously found general solution to homogeneous case, with corresponding fundamental matrix:
+		$$
+		\Psi(t) =
+		\begin{pmatrix}
+			e^{-3t} & e^{-t}\\
+			-e^{-t} & e^{-t}
+		\end{pmatrix}
+		$$
+		\item Using variation of parameters method, our solution is given by $\vb{x} = \Psi(t)\vb{u}(t)$, where $\vb{u}(t)$ satisfies $\Psi(t)\vb{u}^\prime(t) = \vb{g}(t)$, or
+		$$
+		\begin{pmatrix}
+			e^{-3t} & e^{-t}\\
+			-3^{-3t} & e^{-t}
+		\end{pmatrix}
+		\begin{pmatrix}
+			u_1^\prime\\
+			u_2^\prime
+		\end{pmatrix}=
+		\begin{pmatrix}
+			2e^{-t}\\
+			3t
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	\section*{Example 2: Solving for $\vb{u}(t)$ (2 of 3)}
+	\begin{itemize}
+		\item Solving $\Psi(t)\vb{u}^\prime(t) = \vb{g}(t)$ by row reduction,\\
+		$
+		\begin{pmatrix}
+			e^{-3t} & e^{-t} & 2e^{-t}\\
+			-e^{-3t} & e^{-t} & 3t
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			e^{-3t} & e^{-t} & 2e^{-t}\\
+			0 & 2e^{-t} & 2e^{-t}+3t
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			e^{-3t} & e^{-t} & 2e^{-t}\\
+			0 & e^{-t} & e^{-t} + 3t/2
+		\end{pmatrix}\to
+		$\\
+		$
+		\begin{pmatrix}
+			e^{-3t} & 0 & e^{-t} - 3t/2\\
+			0 & e^{-t} & e^{-t} + 3t/2
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			1 & 0 & e^{2t}-3te^{3t}/2\\
+			0 & 1 & 1+3te^t/2
+		\end{pmatrix}\to
+		\begin{pmatrix}
+			u_1^\prime & & = e^{2t} - 3te^{3t}/2\\
+			& u_2^\prime & =1+3te^t/2
+		\end{pmatrix}
+		$
+		\item It follows that
+		$$
+		\vb{u}(t)=
+		\begin{pmatrix}
+			u_1\\
+			u_2
+		\end{pmatrix}=
+		\begin{pmatrix}
+			e^{2t}/2 - te^{3t}/2 +e^{3t}/6+c_1\\
+			t+3te^t/2-3e^t/2+c_2
+		\end{pmatrix}
+		$$
+	\end{itemize}
+	%
+	\section*{Example 2: Solving for $\vb{x}(t)$ (3 of 3)}
+	\begin{itemize}
+		\item Now $\vb{x}(t) = \Psi(t)\vb{u}(t)$, and hence we multiply
+		$$
+		\vb{x} =
+		\begin{pmatrix}
+			e^{-3t} & e^{-t}\\
+			-e^{-3t} & e^{-t}
+		\end{pmatrix}
+		\begin{pmatrix}
+			e^{2t}/2-te^{3t}/2+e^{3t}/6+c_1\\
+			t+3te^t/2-3e^t/2+c_2
+		\end{pmatrix}
+		$$
+		to obtain, after collecting terms and simplifying,
+		$$
+		\vb{x} = c_1
+		\begin{pmatrix}
+			1\\
+			-1
+		\end{pmatrix}e^{-3t} + c_2
+		\begin{pmatrix}
+			1\\
+			1
+		\end{pmatrix}e^{-t} +
+		\begin{pmatrix}
+			1\\
+			1
+		\end{pmatrix}te^{-t} + \frac{1}{2}
+		\begin{pmatrix}
+			1\\
+			-1
+		\end{pmatrix}e^{-t} +
+		\begin{pmatrix}
+			1\\
+			2
+		\end{pmatrix}t - \frac{1}{3}
+		\begin{pmatrix}
+			4\\
+			5
+		\end{pmatrix}
+		$$
+		\item Note that this is the same solution as in the previous example.
+	\end{itemize}
+	\section*{Summary (1 of 2)}
+	\begin{itemize}
+		\item The method of undetermined coefficients requires no integration but is limited in scope and may involve several sets of algebraic equations.
+		\item Diagonalization requires finding the inverse of the transformation matrix and solving the uncoupled first order linear equations. When the coefficient matrix is Hermitian, the inverse of transformation matrix can be found without calculation, which is very helpful for large systems.
+	\end{itemize}
+	%
+	\section*{Summary (2 of 2)}
+	\begin{itemize}
+		\item Variation of parameters is the most general method, but it involves solving linear algebraic equations with variable coefficients, integration, and matrix multiplication, and hence may be the most computationally complicated method.
+		\item For many small systems with constant coefficients, all of these methods work well, and there may be little reason to select one over another.
+	\end{itemize}
+\end{document}
