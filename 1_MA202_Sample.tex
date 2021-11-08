@@ -1,0 +1,136 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{MA202-5-SP (Sample Exam)}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+	\thispagestyle{empty}
+	%
+	\begin{singlespace}
+		\hfill\textbf{\large MA202-5-SP (Sample Exam)}\\
+		\textbf{\large UNIVERSITY OF ESSEX}\\[1.5cm]
+		Second Year Examination\\
+		\rule{\linewidth}{0.4pt}\\
+		\textbf{\large DIFFERENTIAL EQUATIONS}\\
+		\rule[0.66\baselineskip]{\linewidth}{0.4pt}
+	\end{singlespace}
+	%
+	\vspace{1cm}
+	Time allowed: 2 hours.
+	\vspace{1cm}
+	\begin{itemize}
+		\item Attempt all five questions.
+		\item Each question is marked out of 20.
+		\item Candidates are permitted to bring into the examination room:\\
+		\textit{Hand-held electronic calculators that have no stored textual information.}
+		\item Please do not leave your seat unless you are given permission by an Invigilator.
+		\item Do not communicate in any way with any other candidate in the examination room.
+		\item Do not open the question paper until told to do so. All answers must be written in the answer book(s) provided. All rough work must be written in the answer book(s) provided. A line should be drawn through any rough work to indicate to the examiner that it is not part of the work to be marked. At the end of the examination, remain
+		seated until your answer book(s) have been collected and you have been told you may leave.
+	\end{itemize}
+	\newpage
+	\setcounter{page}{1}
+	%
+	\textbf{Question 1:} (A) Solve the following initial value problem
+	$$
+	xy^\prime + y = y^2,\quad y(1) = 2.
+	$$
+	\hfill\textbf{[10 marks]}\\
+	(B) Solve the following equation:
+	$$
+	(xye^{\nicefrac{x}{y}}+y^2)dx - x^2e^{x/y}dy = 0.
+	$$
+	\hfill\textbf{[10 marks]}\par
+	%
+	\textbf{Question 2:} (A) Find the general solution to the following equation
+	$$
+	2yy^{\prime\prime} = y^{\prime 2} + y^2.
+	$$
+	\hfill\textbf{[10 marks]}\\
+	(B) Solve the differential equation
+	$$
+	y^{\prime\prime} + y = \cot x.
+	$$
+	\hfill\textbf{[10 marks]}\par
+	%
+	\textbf{Question 3:} (A) Construct a linear homogeneous ODE with constant coefficients of lowest possible order, having particular solutions $y_1(x) = xe^x$ and $y_2(x) = e^{-x}$.\\
+	\hspace*{0pt}\hfill\textbf{[10 marks]}\\
+	(B) Determine the power series solution of the differential equation
+	$$
+	(x+1)^2y^{\prime\prime} + 4(x+1)y^\prime + y = 0.
+	$$
+	\hfill\textbf{[10 marks]}\par
+	%
+	\textbf{Question 4:} (A) Find the fundamental matrix $\Phi(t)$ for the given system of equations below, satisfying $\Phi(0) = \vb{I}$:
+	$$
+	\vb{x^\prime} =
+	\begin{pmatrix}
+		3 & 2\\
+		-2 & -2
+	\end{pmatrix}\vb{x}
+	$$
+	\hfill\textbf{[10 marks]}\\
+	\hspace*{0pt}\hfill\textbf{Continue on the next page}
+	\newpage
+	(B) Find the general solution of the given system of equations:
+	$$
+	\vb{x^\prime} = 
+	\begin{pmatrix}
+		2 & 3\\
+		-1 & -2
+	\end{pmatrix}\vb{x} + 
+	\begin{pmatrix}
+		e^t\\
+		t
+	\end{pmatrix}
+	$$
+	\hfill\textbf{[10 marks]}\par
+	%
+	\textbf{Question 5:} (A) For the nonlinear system
+	\begin{align*}
+		&\frac{dx}{dt} = x-2y^2,\\
+		&\frac{dy}{dt} = y-2x^2
+	\end{align*}
+	determine all critical points and find the corresponding linear system near each critical point. Then, determine the stability properties of the system in the neighborhood of each critical point.\\
+	\hspace*{0pt}\hfill\textbf{[10 marks]}\\
+	(B) For the given autonomous system expressed in polar coordinates
+	\begin{align*}
+		&\frac{dr}{dt} = r|r-2|(r-4),\\
+		&\frac{d\theta}{dt} = -1
+	\end{align*}
+	determine all periodic solutions, all limit cycles, and determine their stability characteristics.
+	\hspace*{0pt}\hfill\textbf{[10 marks]}\par
+	%
+	\vfill
+	\centering
+	\textbf{END}
+\end{document}
