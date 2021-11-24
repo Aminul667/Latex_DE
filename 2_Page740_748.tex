@@ -1,0 +1,395 @@
+\documentclass[11pt,a4paper, twoside]{report}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[RO]{PARTIAL DIFFERENTIAL EQUATIONS}
+\fancyhead[LE]{THE METHOD OF SEPARATION OF VARIABLES}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+	\textbf{Problem.} Apply the method of separation of variables to obtain a formal solution $u(x,y)$ of the problem which consists of the two-dimensional Laplace equation
+	%
+	\begin{equation}\tag{14.42}\label{14.42}
+		\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0
+	\end{equation}
+	and the four boundary conditions
+	%
+	\begin{align}\tag{14.43}\label{14.43}
+		u(0, y) = 0,\quad & 0 \leq y \leq b;\\
+		\tag{14.44}\label{14.44}
+		u(a, y) = 0,\quad & 0 \leq y \leq b;\\
+		\tag{14.45}\label{14.45}
+		u(x, 0) = 0,\quad & 0 \leq x \leq a;\\
+		\tag{14.46}\label{14.46}
+		u(x, b) = f(x),\quad & 0 \leq x \leq a;
+	\end{align}
+	We point out that the numbers $a$ and $b$ are definite positive constants and the function $f$ is a specified function of $x,\ 0 \leq x \leq a$.\par
+	\textbf{Formal Solution.} We first make the basic assumption that the differential equation (\ref{14.42}) has product solutions of the form $XY$, where $X$ is a function of $x$ only and $Y$ is a function of $y$ only. That is, we assume solutions
+	%
+	\begin{equation}\tag{14.47}\label{14.47}
+		u(x, y) = X(x)Y(y)
+	\end{equation}
+	We  now  differentiate  (\ref{14.47})  and  substitute   into  the  differential  equation (\ref{14.42}). Differentiating, we find
+	$$
+	\frac{\partial^2 u}{\partial x^2} = Y \frac{d^2 X}{dx^2}\quad \text{and} \quad \frac{\partial^2 u}{\partial y^2} = X\frac{d^2Y}{dy^2};
+	$$
+	substituting, we obtain
+	$$
+	Y\frac{d^2X}{dx^2} + X\frac{d^2Y}{dy^2} = 0.
+	$$
+	From this we obtain at once
+	%
+	\begin{equation}\tag{14.48}\label{14.48}
+		\frac{\frac{d^2X}{dx^2}}{X} = -\frac{\frac{d^2Y}{dy^2}}{Y}.
+	\end{equation}
+	The left member of (\ref{14.48}) is a function of $x$ only and so is independent of $y$. The right member of (\ref{14.48}) is a function of $y$ only and so is independent of  $x$. Therefore the two equal expressions in (\ref{14.48}) must both be equal to a constant $k$. Setting each member of (\ref{14.48}) equal to this constant $k$ we obtain the two ordinary differential equations
+	$$
+	\frac{d^2X}{dx^2} - kX = 0
+	$$
+	and
+	$$
+	\frac{d^2Y}{dy^2} + kY = 0.
+	$$
+	Let us now consider the four boundary conditions (\ref{14.43}) through (\ref{14.46}). The first three of these are homogeneous, but the fourth one is not. Let us attempt  to satisfy the three homogeneous conditions first. Since $u(x, y) = X(x)Y(y)$, we see that the three homogeneous conditions (\ref{14.43}), (\ref{14.44}), and (\ref{14.45}) reduce  to
+	\begin{align*}
+		X(0)Y(y) = 0, \quad 0 \leq y \leq b;\\
+		X(a)Y(y) = 0, \quad 0 \leq y \leq b;\\
+	\end{align*}
+	and
+	\begin{align*}
+		X(x)Y(0) = 0, \quad 0 \leq x \leq a;\ \text{respectively}.
+	\end{align*}
+	Since either $X(x) = 0,\ 0\leq x \leq a$, or $Y(y) = 0,\ 0 \leq y \leq b$, would reduce the assumed solution (14.47) to the trivial solution of(14.42), we must have
+	$$
+	X(0) = 0,\quad X(a) = 0,\quad \text{and}\quad Y(0) = 0.
+	$$
+	Thus the function $X$ in the assumed solution (14.47) must be a nontrivial solution of the Sturm—Liouville problem
+	\begin{align}
+		\tag{14.49}
+		\frac{d^2X}{dx^2} - kX = 0,\\
+		\tag{14.50}
+		X(0) = 0,\quad X(a) = 0.
+	\end{align}
+	Further, the function $Y$ in (14.47) must be a nontrivial solution of the problem
+	\begin{align}
+		\tag{14.51}
+		\frac{d^2 Y}{dy^2} + kY = 0,\\
+		\tag{14.52}
+		Y(0) = 0.
+	\end{align}
+	The Sturm—Liouville problem (14.49) and (14.50) is essentially the same as the problem (14.25) and (14.27) which we encountered and solved in connection with the vibrating string problem in Part B of this section. Indeed, the present problem (14.49) and (14.50) is merely the special case of the problem (14.25) and (14.27) in which $\alpha^2 = 1$ and $L = a$. Thus if we set $\alpha^2 = 1$ and $L = a$ in the results (14.32) and (14.33) of the problem (14.25) and (14.27), we shall obtain the desired results for the present problem (14.49) and (14.50). Doing this, we first find from (14.32) that the constant $k$ in (14.49) must be given by
+	%
+	\begin{equation}\tag{14.53}
+		k = -\frac{n^2\pi^2}{a^2}\quad (n = 1,2,3,\ldots)
+	\end{equation}
+	Then from (14.33) we find that the corresponding nontrivial solutions of the problem (14.49) and (14.50) are
+	%
+	\begin{equation}\tag{14.54}
+		X_n = c_n\sin\frac{n\pi x}{a}\quad (n=1,2,3,\ldots)
+	\end{equation}
+	where the $c_n\ (n = 1, 2, 3, \ldots)$ are arbitrary constants. That is, corresponding to each positive integral value of $n$, we obtain functions $X$, of the form (14.54)  which will serve as the function $X$ in the product solution (14.47).\\
+	We now return to the problem (14.51) and (14.52) involving the function $Y$. Since $k$ must be of the form (14.53), the differential equation (14.51) becomes
+	$$
+	\frac{d^2 Y}{dy^2} - \frac{n^2\pi^2}{a^2}Y = 0,
+	$$
+	where $n = 1, 2, 3, \ldots$ For each such value of $n$, this differential equation has the general solution
+	$$
+	Y_n = c_{n,1}e^{n\pi y/a} + c_{n,2}e^{-n\pi y/a}\quad (n = 1, 2, 3, \ldots)
+	$$
+	where $c_{n, 1}$ and $c_{n,2}\ n=1,2,3,\ldots$, are arbitrary constants. In order to satisfy the condition (14.52), we must have
+	$$
+	c_{n, 1} + c_{n,2} = 0\quad (n = 1, 2, 3, \ldots),
+	$$
+	Thus nontrivial solutions of the problem (14.51) and (14.52) are
+	$$
+	Y_n = c_{n, 1}(e^{n\pi y/a} - e^{-n\pi y/a})\quad (n=1,2,3,\ldots),
+	$$
+	where the $c_{n,1}\ (n=1,2,3,\ldots)$, are arbitrary constants. Using the identity $e^\theta - e^{-\theta} = 2\sinh \theta$, we may put thoes solutions in the form
+	%
+	\begin{equation}\tag{14.55}
+		Y_n = c^\prime_{n, 1}\sinh \frac{n\pi y}{a}\quad (n=1,2,3,\ldots)
+	\end{equation}
+	where the $c^\prime_{n,1}\ n(n=1,2,3,\ldots)$, are arbitrary constants. Thus corresponding  to each positive integral value of $n$, we obtain functions $Y$ of the form (14.55) which will serve as the function $Y$ in the product solution (14.47).\\
+	Hence, corresponding to each positive integral value of $n(n = 1, 2, 3,\ldots)$, we obtain solutions
+	$$
+	X_nY_n = \left[c_n\sin\frac{n\pi x}{a}\right]\left[c^\prime_{n,1}\sinh \frac{n\pi y}{a}\right]
+	$$
+	which have the product form (14.47). We set $C_n = c_n c^\prime_{n,1}(n=1,2,3,\ldots)$, and write these solutions as
+	%
+	\begin{equation}\tag{14.56}
+		u_n(x,y) = C_n\sin\frac{n\pi x}{a}\sinh \frac{n\pi y}{a}\quad (n=1,2,3,\ldots)
+	\end{equation}
+	Each one of these solutions (14.56) satisfies both the partial differential equation (14.42) and the three homogeneous boundary conditions (14.43),(14.44), and (14.45) for all values of the constant  $C_n$.\\
+	We must now apply the nonhomogeneous boundary condition (14.46). In order to do this, we form an infinite series
+	$$
+	\sum_{n=1}^\infty u(x,y) = \sum_{n=1}^\infty C_n \sin\frac{n\pi x}{a} \sinh\frac{n\pi y}{a}
+	$$
+	of the solutions (14.56). Assuming appropriate convergence, Theorem 14.2 applies and assures us that the sum of this series is also a solution of the differential equation  (14.42). Denoting  this sum by $u(x, y)$, we write
+	%
+	\begin{equation}\tag{14.57}
+		u(x, y) = \sum_{n=1}^\infty C_n\sin\frac{n\pi x}{a}\sinh\frac{n\pi y}{a}
+	\end{equation}
+	We observe that $u(0, y) = 0,\ u(o, y) = 0$, and $u(x, 0) = 0$. Thus, assuming appropriate convergence, the function $u$ given by (14.57) satisfies both the differential equation (14.42) and the three homogeneous boundary conditions (14.43), (14.44), and (14.45).\\
+	We now apply the nonhomogeneous boundary condition (14.46) to the series solution (14.57). Doing so, we obtain at once
+	$$
+	\sum_{n=1}^\infty C_n \sin \frac{n\pi x}{a}\sinh\frac{n\pi b}{a} = f(x),\quad 0 \leq x \leq a.
+	$$
+	Letting $A_n = C_a\sinh(n\pi b/a)$, this takes the form
+	%
+	\begin{equation}\tag{14.58}
+		\sum_{n=1}^\infty A_n\sin\frac{n\pi x}{a} = f(x),\quad 0\leq x \leq a.
+	\end{equation}
+	Thus in order to satisfy the condition (14.46), we must determine the coefficients $A_n$ so that (14.58) is satisfied. This is a problem in Fourier sine series. Using (12.56), we find that the coefficients $A_n$ are given by
+	$$
+	A_n = \frac{2}{a}\int_0^a f(x)\sin\frac{n\pi x}{a}dx\quad (n = 1,2,3,\ldots).
+	$$
+	Since $A_n = C_n\sinh(n\pi b/a)\ (n=1,2,3,\ldots)$ we find  that
+	%
+	\begin{equation}\tag{14.59}
+		C_n = \frac{A_n}{\sinh\frac{n\pi b}{a}} = \frac{2}{a\sinh\frac{n\pi b}{a}}\int_0^af(x)\sin\frac{n\pi x}{a}dx\quad (n=1,2,3,\ldots)
+	\end{equation}
+	Thus in order for the series solution (14.57) to satisfy the nonhomogeneous boundary condition (14.46), the coefficients C in the series must be given by (14.59).\\ Therefore the formal solution of the problem consisting of the partial differential equation (14.42) and the four boundary conditions (14.43) through (14.46) is
+	%
+	\begin{equation}\tag{14.57}
+		u(x, y) = \sum_{n=1}^\infty C_n\sin\frac{n\pi x}{a}\sinh\frac{n\pi y}{a},
+	\end{equation}
+	where
+	%
+	\begin{equation}\tag{14.59}
+		C_n = \frac{2}{a\sinh\frac{n\pi b}{a}}\int_0^af(x)\sin\frac{n\pi x}{a}dx\quad (n = 1,2,3,\ldots)
+	\end{equation}
+	%
+	\section*{An Example Involving Bessel Functions}
+	In this example we shall apply the method of separation of variables to a problem in which the partial differential equation has a variable coefficient. As a result of this variable coefficient we shall encounter certain difficulties which were not present in the two previous examples. Further, we shall need to know a few results which we have not yet proved. Whenever such a result is needed, we shall state it without proof.\par
+	\textbf{Problem} Apply the method of separation of variables to obtain a formal solution $u(x, t)$ of the problem which consists of the partial differential equation
+	%
+	\begin{equation}\tag{14.60}
+		\frac{\partial^2 u}{\partial x^2} + \frac{1}{x}\frac{\partial u}{\partial x} = \frac{\partial u}{\partial t}
+	\end{equation}
+	and the three conditions
+	\begin{align}
+		\tag{14.61}
+		& 1.\quad u(L, t) = 0,\quad t>0;\\
+		\tag{14.62}
+		& 2.\quad u(x, 0) = f(x),\quad 0 < x < L\\
+		\shortintertext{where $f$ is a prescribed function of $x,\ 0 < x < L$; and}
+		\tag{14.63}
+		& 3. \lim_{t\to \infty}u(x, t) = 0\\
+		\shortintertext{for each $x,\ 0 \leq x \leq L$.}
+	\end{align}
+	\textbf{Formal Solution.} We begin by making the basic assumption that the differential equation (14.60) has product solutions of the form
+	%
+	\begin{equation}\tag{14.64}
+		u(x, t) = X(x)T(t),
+	\end{equation}
+	where $X$ is a function of $x$ only and $T$ is a function of $t$ only. Upon differentiating (14.64) and substituting into the differential equation (14.60), we obtain
+	$$
+	T\frac{d^2X}{dx^2} + \frac{1}{x}T\frac{dX}{dx} = X\frac{dT}{dt}.
+	$$
+	From this we obtain at once
+	%
+	\begin{equation}\tag{14.65}
+		\frac{1}{x}\left(\frac{d^2X}{dx^2} + \frac{1}{x}\frac{dX}{dx} = \frac{1}{T}\frac{dT}{dt}\right).
+	\end{equation}
+	The left member of (14.65) is a function of $x$ only and so is independent of $t$. The right member of (14.65) is a function of $t$ only and so is independent of $x$. Therefore the two equal expressions in (14.65) must both be equal to a constant $k$. Setting each member of (14.65) equal to this constant $k$, we obtain the two ordinary differential equations
+	%
+	\begin{equation}\tag{14.66}
+		\frac{d^2X}{dx^2} + \frac{1}{x}\frac{dX}{dx} - kX = 0
+	\end{equation}
+	and
+	\begin{equation}\tag{14.67}
+		\frac{dT}{dt} - kT = 0.
+	\end{equation}
+	The effect of the variable coefficient $(l/x)$ in the partial differential equation (14.60) appears here, for the ordinary differential equation (14.66) also has this same variable coefficient.\\
+	We shall need the general solutions of both of the ordinary differential equations (14.66) and (14.67). Equation (14.67) is the more promising of the two; let us work with it first. We find at once that the general solution of (14.67) is of the form
+	%
+	\begin{equation}\tag{14.68}
+		T = Ce^{kt},
+	\end{equation}
+	where $C$ is an arbitrary constant.\\
+	Let us now examine the three conditions (14.61), (14.62), and (14.63) to see if any of them will lead to further information about the solution (14.68). The first two of these conditions lead to conditions on the function X. Let us therefore examine the third condition (14.63). Since $u(x, t) = X(x)T(t)$, this condition reduces to
+	$$
+	X(x)[\lim_{t\to \infty} T(t)] = 0
+	$$
+	for each $x,\ 0 x < L$. Hence we require that
+	$$
+	\lim_{t \to \infty}T(t) = 0
+	$$
+	From this we see that the constant $k$ in (14.68) must be a negative number. Therefore we set $k = -\lambda^2$, where $\lambda$ is real and positive. The general solution (14.68) of the differential equation (14.67) now takes the form
+	%
+	\begin{equation}\tag{14.69}
+		T = Ce^{-\lambda^2 t},
+	\end{equation}
+	where $C$ is an arbitrary constant.\par
+	Let us now return to the differential equation (14.66) for $X$. Since $k = -\lambda^2$ it now takes the form
+	$$
+	\frac{d^2 X}{dx^2} + \frac{1}{x}\frac{dX}{dx} + \lambda^2X = 0
+	$$
+	or equivalently,
+	\begin{equation}\tag{14.70}
+		x^2\frac{d^2X}{dx^2} + x\frac{dX}{dx} + \lambda^2x^2 X =0.
+	\end{equation}
+	The transformation $\theta = \lambda x$ reduces (14.70) to the equation
+	$$
+	\theta^2 \frac{d^2X}{d\theta^2} + \theta\frac{dX}{d\theta} + \theta^2X = 0.
+	$$
+	We readily recognize this equation as the Bessel equation of order zero. Its general solution may be written
+	$$
+	X = c_1J_0(\theta) + c_2Y_0(\theta),
+	$$
+	where and $J_0$ are the Bessel functions of order zero of the first and second kind,  respectively, and $c_1$, and $c_2$ are arbitrary constants (see Section 6.3). Thus the general solution of (14.70) may be written
+	\begin{equation}\tag{14.71}
+		X = c_1J_0(\lambda x) + c_2 Y_0(\lambda x),
+	\end{equation}
+	where $c_1$, and $c_2$ are arbitrary constants.\\
+	Let us now return to the condition (14.63). This condition requires that
+	$$
+	\lim_{t\to \infty} u(x, t) = 0
+	$$
+	for each $x,\ 0 \leq x \leq L$. For $x = 0$ this becomes
+	$$
+	\lim_{t\to \infty} u(0, t) = 0
+	$$
+	or
+	$$
+	X(0)[\lim_{t\to \infty} T(t)] = 0
+	$$
+	In order to satisfy this condition we must require that $X(0)$ be finite. We recall that $J_0(0)$. However, it can be shown that
+	$$
+	\lim_{x\to \infty}Y_0(\lambda x) = -\infty.
+	$$
+	Thus in order for $X(0)$ to be finite we must set $c_2 = 0$. Thus the solution (14.71) reduces to
+	\begin{equation}\tag{14.72}
+		X = c_1J_0(\lambda x.
+	\end{equation}
+	Let us now consider the condition (14.61). We have already noticed that this condition leads to a condition on $X$. Indeed, it reduces to
+	$$
+	X(L)T(t) = 0,\quad t>0;
+	$$
+	thus we must have $X(L) = 0$. Applying this to the solution (14.72), we see that $\lambda$ must satisfy the equation
+	\begin{equation}\tag{14.73}
+		J_0(\lambda L) = 0.
+	\end{equation}
+	In Section 6.3B we pointed out that the function $J_0$ has a damped oscillatory behavior as $x \to +\infty$. Thus the equation $J_0(x) = 0$ has an infinite sequence of positive roots $x_n(n = 1, 2, 3,\ldots)$. Let us arrange these positive roots such that $x_n < x_{n+1}\ (n=1,2,3,\ldots)$. Then there exists a monotonic increasing sequence of positive numbers
+	$$
+	\lambda_n = \frac{x_n}{L}\quad (n=1,2,3,\ldots),
+	$$
+	each of which satisfies Equation (14.73). Thus corresponding to each positive integer $n$, the differential equation (14.70) has solutions which satisfy the condition (14.61). These solutions are of the form
+	\begin{equation}\tag{14.74}
+		X_n = c_{1,n}J_0(\lambda_nx)\quad (n=1,2,3,\ldots)
+	\end{equation}
+	where the $c_{1,n}\ (n=1,2,3,\ldots)$ are arbitrary constants and the $\lambda_n\ (n = 1, 2, 3,\ldots)$ are the positive roots of Equation (14.73). That is, corresponding to each positive integer $n$, we obtain functions $X_n$, of the form (14.74) which will serve as the function $X$ in the product solution (14.64).\\
+	Let us now return to the solution (14.69) of the differential equation (14.67). We see that, corresponding to each positive integer $n$, the differential equation (14.67) has solutions of the form
+	%
+	\begin{equation}\tag{14.75}
+		T_n = c_{2,n}e^{-\lambda_n^2t}\quad (n=1,2,3,\ldots)
+	\end{equation}
+	where $c_{2,n}\ (n=1,2,3,\ldots)$ are arbitrary constants and the $\lambda_n\ (n = 1, 2, 3, \ldots)$ are the positive roots of Equation (14.73). That is, corresponding to each positive integer $n$, we obtain functions $T$ of the form (14.75) which will serve as the function $T$ in the product solution (14.64).\\
+	Hence, corresponding to each positive integral value of $n\ (n = 1, 2, 3, \ldots)$, we obtain product solutions of the form
+	\begin{equation}\tag{14.76}
+		u_n(x, t) = A_nJ_0(\lambda_n x)e^{-\lambda_n^2t}\quad (n=1,2,3,\ldots),
+	\end{equation}
+	where the $A_n = c_{1,n}c_{2,n}\ (n=1,2,3,\ldots)$ are arbitrary constants.Each one of these solutions (14.76) satisfies the partial differential equation (14.60) and the conditions (14.61) and (14.63) for all values of the constant $A_n$.\\
+	We must now apply the initial condition (14.62). In order to do this, we form an infinite series of the solutions (14.76). Assuming appropriate convergence, the sum of this series is also a solution of the partial differential equation (14.60). We denote this sum by $u(x, t)$ and thus write
+	%
+	\begin{equation}\tag{14.77}
+		u(x,t) = \sum_{n=1}^\infty A_nJ_0(\lambda_nx)e^{-\lambda_n^2t}.
+	\end{equation}
+	Applying the initial condition (14.62) to the series solution (14.77), we obtain
+	%
+	\begin{equation}\tag{14.78}
+		\sum_{n=1}^\infty A_nJ_0(\lambda_n x) = f(x),\quad 0 < x < L
+	\end{equation}
+	Thus in order to satisfy the initial condition (14.62), the coefficients $A_n$ must be  determined so that (14.78) is satisfied. In other words, we must expand the function $f$ in a series of Bessel functions of the first kind of order zero, valid on the interval $0 < x < L$.\\
+	Here we have encountered a new difficulty, and this difficulty leads to matters which are outside the scope of this book. Nevertheless, we shall indicate briefly what can be done. This is one place where we need to know certain of the results which we referred to at the beginning of this section. Let us state them and get on with the problem!\\
+	In the first place, it can be shown that if the numbers $\lambda_n, (n = 1, 2, 3,\ldots)$ are the positive roots of the equation $J_0(\lambda L) = 0$, then the set of functions defined by $\{J_0(\lambda_nx)\} (n = 1, 2, 3,\ldots)$ is an orthogonal system with respect to the weight function $r$ such that $r(x) = x$ on the interval $0 \leq x \leq L$. Therefore,
+	$$
+	\int_0^L xJ_0(\lambda_m x)J_0(\lambda_n x)dx = 0\quad (m=1,2,3,\ldots;\ n = 1,2,3,\ldots;\ m\neq n).
+	$$
+	Further, if $m=n$, we have
+	\begin{equation}\tag{14.79}
+		\int_0^L x[J_0(\lambda_n x)]^2 dx = \varGamma_n > 0\quad (n=1,2,3,\ldots)
+	\end{equation}
+	In Section 12.3A we learned how to form a set of orthonormal functions from a set of orthogonal characteristic functions of a Sturm—Liouville problem. Applying this procedure to the orthogonal set defined by $\{J_0(\lambda_n x)\}$, we obtain the corresponding orthonormal system $\{\phi_n\}$, where
+	%
+	\begin{equation}\tag{14.80}
+		\phi_n(x) = \frac{J_0(\lambda_n x)}{\sqrt{\varGamma_n}}\quad (n=1,2,3,\ldots)
+	\end{equation}
+	and $\varGamma_n\ (n=1,2,3,\ldots)$ is given by (14.79). Let us now recall the results of Section 12.3B concerning the formal expansion of a function $f$ in a series
+	$$
+	\sum_{n=1}^\infty c_n\phi_n
+	$$
+	of orthonormal functions $\{\phi_n\}$. According to (12.37) the coefficients $c_n$ in the expansion of $f$ in the series of orthonormal functions $\phi$, defined by (14.80) are given by
+	$$
+	c_n = \frac{1}{\sqrt{\varGamma_n}}\int_0^L xf(x)J_0(\lambda_n x)dx\quad (n=1,2,3,\ldots)
+	$$
+	Thus this expansion takes the form
+	$$
+	\sum_0^\infty \left[\frac{1}{\sqrt{\varGamma_n}}\int_0^L xf(xJ_0(\lambda_n x))dx\right]\frac{J_0(\lambda_nx)}{\sqrt{\varGamma_n}},
+	$$
+	and we write formally
+	%
+	\begin{equation}\tag{14.81}
+		f(x) = \sum_{n=1}^\infty \left[\frac{1}{\varGamma_n}\int_0^L xf(x)J_0(\lambda_nx)dx\right]J_0(\lambda_nx),\quad 0 < x < L.
+	\end{equation}
+	Comparing (14.78) and (14.81), we see that if the coefficients $A_n$ in (14.78) are given by
+	%
+	\begin{equation}\tag{14.82}
+		A_n = \frac{1}{\varGamma_n}\int_0^L xf(x) J_0(\lambda_n x)dx\quad (n=1,2,3,\ldots)
+	\end{equation}
+	then the requirement (14.78) will be formally satisfied. We note that the constants $\varGamma_n$, in (14.82) are given by (14.79). That is,
+	$$
+	\varGamma_n = \int_0^L x[J_0 (\lambda_nx)]^2dx\quad (n=1,2,3,\ldots).
+	$$
+	This integral can be evaluated in terms of values of the Bessel function of the first kind of order one, $J_1$,. Indeed, it can be shown that
+	$$
+	\int_0^L x[J_0(\lambda_nx)]^2dx = \frac{L^2}{2}[J_1(\lambda_nL)]^2\quad (n = 1,2,3,\ldots)
+	$$
+	and thus
+	$$
+	\varGamma_n = \frac{L^2}{2}[J_1(\lambda_nL)]^2\quad (n=1,2,3,\ldots),
+	$$
+	Thus the coefficients $A_n$ in (14.78) are given by
+	%
+	\begin{equation}\tag{14.83}
+		A_n = \frac{2}{L^2[J_1(\lambda_nL)]^2}\int_0^L xf(x)J_0(\lambda_n x)dx\quad (n = 1,2,3,\ldots)
+	\end{equation}
+	Finally, then, we obtain the formal solution of the problem consisting of the partial  differential equation (14.60) and the conditions (14.61), (14.62), and (14.63). The formal solution is
+	$$
+	u(x,t) = \sum_{n=1}^\infty A_nJ_0(\lambda_n x)e^{-\lambda_n^2t},
+	$$
+	where
+	$$
+	A_n = \frac{2}{L^2[J_1(\lambda_nL)]^2}\int_0^L xf(x)J_0(\lambda_n x)dx\quad (n=1,2,3,\ldots),
+	$$
+	the $\lambda_n (n = 1,2,3,\ldots)$, are the positive roots of the equation $J_0(\lambda L) = 0$, and $J_0$ and $J_1$, denote the Bessel functions of the first kind of orders zero and one, respectively.\par
+	\textbf{Remarks and Observations.} At the risk of being unduly repetitious, but with the good intentions of promoting a cautious attitude, we emphasize that the results which we have obtained are strictly formal results. We assumed “appropriate convergence” of the series in (14.77), and we have said nothing concerning the convergence of the Bessel function expansion which we obtained for the function $f$.  In order to relieve our consciences concerning the latter point, we state that there do exist classes of functions $f$ such that the expansions (14.78), in which the coefficients $A_n$ are given by (14.83), is valid on the interval $0 < x < L$. The study of these classes is definitely beyond the scope of this book, and we refer the reader to more advanced works for a discussion of this and other pertinent problems of convergence.\\
+	Finally, we point out that the problem which we have considered here gives some  indication of the types of difficulties which may be encountered if the method of  separation of variables is applied to a problem in which the partial differential equation has variable coefficients.  The  variable coefficient  $(1/x)$ in the partial differential equation (14.60) led to the variable coefficient $(1/x)$ in the ordinary differential equation (14.66) which resulted from the separation of the variables. A similar situation occurs in other problems in which the partial differential equation has variable coefficients. In such problems, one or more of the ordinary differential equations which result from the separation process will also contain variable coefficients. Obtaining  the general solutions of these ordinary differential equations can then be a formidable task in its own right. But even if these general solutions can be obtained, they may involve functions which will lead to further difficulties when one attempts to apply certain of.
+\end{document}

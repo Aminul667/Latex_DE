@@ -1,0 +1,614 @@
+\documentclass[11pt,a4paper, twoside]{report}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{caption}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[RO]{PARTIAL DIFFERENTIAL EQUATIONS}
+\fancyhead[LE]{CANONICAL FORMS}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}\,}
+\newcommand{\pfn}[3]{\dfrac{\partial^#3 #1}{\partial #2^#3}\,}
+\newcommand{\pfp}[4]{\dfrac{\partial^#4 #1}{\partial #2\ \partial #3}\,}
+
+\begin{document}
+  \section*{14.3 CANONICAL FORMS OF SECOND-ORDER LINEAR\\EQUATIONS WITH CONSTANT COEFFICIENTS}
+	\subsection*{A. Canonical Forms}
+	In this section we restrict our attention  to second-order  linear partial differential equations of the form
+	%
+	\begin{equation}\tag{14.84}
+		A\frac{\partial^2 u}{\partial x^2} + B\frac{\partial^2 u}{\partial x \partial y} + C\frac{\partial^2 u}{\partial y^2} + D \frac{\partial u}{\partial x} + E\frac{\partial u}{\partial y} + Fu = 0,
+	\end{equation}
+	in which the coefficients $A,\ B,\ C,\ D,\ E$, and $F$ are real constants. This equation is a special case of the more general equation (14.6) in which these coefficients are functions of $x$ and $y$. In Section 14.1 we classified such equations according to the sign of $B^2 - 4AC$. Using this classification, Equation (14.84) is said to be
+	\begin{enumerate}
+		\item \textit{hyperbolic} if $B^2 - 4AC > 0$;
+		\item \textit{parabolic} if $B^2 - 4AC = 0$;
+		\item \textit{elliptic} if $B^2 - 4AC < 0$.
+	\end{enumerate}
+	We shall now show that in each of these three cases Equation (14.84) can be reduced to a more simple form by a suitable change of the independent variables. The simpler forms which result in this way are called \textit{canonical forms} of Equation (14.84). We therefore introduce new independent variables $\xi,\ \eta$ by means of the transformation
+	%
+	\begin{equation}
+		\xi = \xi(x, y),\quad \eta = \eta(x, y).
+	\end{equation}
+	We now compute derivatives of $u$, regarding  and $\xi$ as intermediate variables, so that $u = u(\xi, \eta)$, where $\xi$ and $\eta$ are given by (14.85). We first find
+	%
+	\begin{align}
+		\tag{14.86}
+		\frac{\partial u}{\partial x} = \frac{\partial u}{\partial \xi}\frac{\partial \xi}{\partial x} + \frac{\partial u}{\partial \eta}\frac{\partial \eta}{\partial x}\\
+		\shortintertext{and}
+		\tag{14.87}
+		\frac{\partial u}{\partial y} = \frac{\partial u}{\partial \xi}\frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta}\frac{\partial \eta}{\partial y}.
+	\end{align}
+	Using (14.86), we next determine $\frac{\partial^2 u}{\partial x^2}$.\par
+	We find
+	\begin{equation}\tag{14.88}
+		\begin{aligned}
+			\frac{\partial^2 u}{\partial x^2}
+			&= \frac{\partial }{\partial x}\left(\frac{\partial u}{\partial x}\right)\\
+			&= \frac{\partial u}{\partial \xi}\frac{\partial}{\partial x}\left(\frac{\partial \xi}{\partial x}\right) + \frac{\partial \xi}{\partial x}\frac{\partial}{\partial x}\left(\frac{\partial u}{\partial \xi}\right) + \frac{\partial u}{\partial \eta}\frac{\partial}{\partial x}\left(\frac{\partial \eta}{\partial x}\right) + \frac{\partial \eta}{\partial x}\frac{\partial}{\partial x}\left(\frac{\partial u}{\partial \eta}\right)
+		\end{aligned}
+	\end{equation}
+	Since $\xi = \xi(x,y)$ and $\eta = \eta (x,y)$,
+	$$
+	\frac{\partial }{\partial x}\left(\frac{\partial \xi}{\partial x}\right)\quad \text{is simply}\quad \frac{\partial^2 \xi}{\partial x^2}
+	$$
+	and
+	$$
+	\frac{\partial }{\partial x}\left(\frac{\partial \eta}{\partial x}\right)\quad \text{is simply}\quad \frac{\partial^2 \eta}{\partial x^2}
+	$$
+	However, in computing $\dfrac{\partial }{\partial x}\left(\dfrac{\partial \xi}{\partial x}\right)$ and $\dfrac{\partial }{\partial x}\left(\dfrac{\partial \eta}{\partial x}\right)$, the situation is somewhat more complicated and we must be careful to remember what is involved. We are regarding $u$ as a function of $\xi$ and $\eta$, where $\xi$ and $\eta$ are themselves functions of $x$ and $y$. That is $u = u(\xi, \eta)$, where $\xi = \xi(x,y)$ and $\eta = \eta(x,y)$. Thus $\dfrac{\partial u}{\partial \xi}$ and $\dfrac{\partial u}{\partial \eta}$ are regarded as function of $\xi$ and $\eta$, where $\xi$ and $\eta$ are themselves function of $x$ and $y$. That is $\dfrac{\partial u}{\partial \xi} = u_1(\xi, \eta)$ and $\dfrac{\partial u}{\partial \eta} = u_2(\xi, \eta)$, where in each case $\xi = \xi(x, y)$ and $\eta = \eta(x,y)$. With this in mind, we compute $\dfrac{\partial }{\partial x}\left(\dfrac{\partial u}{\partial \xi}\right)$. We have
+	$$
+	\frac{\partial }{\partial x}\left(\frac{\partial u}{\partial \xi}\right) = \frac{\partial}{\partial x}[u_1(\xi, \eta)] = \pf{u_1}{\xi}\pf{\xi}{x} + \pf{u_1}{\eta}\pf{\eta}{x},
+	$$
+	and since $u_1 = \pf{u}{\xi}$, we thus find
+	$$
+	\pf{}{x}\left(\pf{u}{\xi}\right) = \pfn{u}{\xi}{2}\pf{\xi}{x} + \pfp{u}{\eta}{\xi}{2}\pf{\eta}{x}.
+	$$
+	In like manner, we obtain
+	$$
+	\pf{}{x}\left(\pf{u}{\eta}\right) = \pfp{u}{\xi}{\eta}{2}\pf{\xi}{x} + \pfn{u}{\eta}{2}\pf{\eta}{x}.
+	$$
+	Substituting these result into (14.88), we thus obtain
+	%
+	\begin{equation*}
+		\begin{split}
+			\pfn{u}{x}{2} = \pf{u}{\xi}\pfn{\xi}{x}{2} + \pf{\xi}{x}\left(\pfn{u}{\xi}{2}\pf{\xi}{x} + \pfp{u}{\eta}{\xi}{2}\pf{\eta}{x}\right)\\
+			+ \pf{u}{\eta}\pfn{\eta}{x}{2} + \pf{\eta}{x}\left(\pfp{u}{\xi}{\eta}{2}\pf{\xi}{x} + \pfn{u}{\eta}{2}\pf{\eta}{x}\right).
+		\end{split}
+	\end{equation*}
+	Assuming $u(\xi, \eta)$ has continuous second derivatives with respect to $\xi$ and $\eta$, the so-called cross derivatives are equal, and we have
+	%
+	\begin{equation}\tag{14.89}
+		\begin{split}
+			\pfn{u}{x}{2} = &\pfn{u}{\xi}{2}\left(\pf{\xi}{x}\right)^2 + 2\pfp{u}{\xi}{\eta}{2}\pf{\xi}{x}\pf{\eta}{x} + \pfn{u}{\xi}{2}\left(\pf{\eta}{x}\right)^2\\
+			&+ \pf{u}{\xi}\pfn{\xi}{x}{2} + \pf{u}{\eta}\pfn{\eta}{x}{2}.
+		\end{split}
+	\end{equation}
+	In like manner, we find
+	%
+	\begin{equation}\tag{14.90}
+		\begin{split}
+			\pfp{u}{x}{y}{2} &= \pfn{u}{\xi}{2}\pf{\xi}{x}\pf{\xi}{y} + \pfp{u}{\xi}{\eta}{2}\left[\pf{\xi}{x}\pf{\eta}{y} + \pf{\xi}{y}\pf{\eta}{x}\right]\\
+			& +\pfn{u}{\eta}{2}\pf{\eta}{x}\pf{\eta}{y} + \pf{u}{\xi}\pfp{\xi}{x}{y}{2} + \pf{u}{\eta}\pfp{\eta}{x}{y}{2}
+		\end{split}
+	\end{equation}
+	and
+	\begin{equation}\tag{14.91}
+		\begin{split}
+			\pfn{u}{y}{2} &= \pfn{u}{\xi}{2}\left(\pf{\xi}{y}\right)^2 + 2\pfp{u}{\xi}{\eta}{2}\pf{\xi}{y}\pf{\eta}{y} + \pfn{u}{\eta}{2}\left(\pf{\eta}{y}\right)^2\\
+			& + \pf{u}{\xi}\pfn{\xi}{y}{2} + \pf{u}{\eta}\pfn{\eta}{y}{2}.
+		\end{split}
+	\end{equation}
+	We now substitute (14.86), (14.87), (14.89), (14.90), and (14.91) into the partial differential equation (14.84), to obtain
+	\begin{equation*}
+		\begin{split}
+			A & \left[\pfn{u}{\xi}{2} \left(\pf{\xi}{x}\right)^2 + 2\pfp{u}{\xi}{\eta}{2}\pf{\xi}{x}\pf{\eta}{x} + \pfn{u}{\eta}{2}\left(\pf{\eta}{x}\right)^2 + \pf{u}{\xi}\pfn{\xi}{x}{2} + \pf{u}{\eta}\pfn{\eta}{x}{2}\right]\\
+			& \quad + B\left[\pfn{u}{\xi}{2}\pf{\xi}{x}\pf{\xi}{y} + \pfp{u}{\xi}{\eta}{2}\left(\pf{\xi}{x}\pf{\eta}{y} + \pf{\xi}{y}\pf{\eta}{x}\right) + \pfn{u}{\eta}{2}\pf{\eta}{x}\pf{\eta}{y} + \pf{u}{\xi}\pfp{\xi}{x}{y}{2} + \pf{u}{\eta}\pfp{\eta}{x}{y}{2}\right]\\
+			& \quad + C \left[\pfn{u}{\xi}{2}\left(\pf{\xi}{y}\right)^2 + 2\pfp{u}{\xi}{\eta}{2}\pf{\xi}{y}\pf{\eta}{y} + \pfn{u}{\eta}{2}\left(\pf{\eta}{y}\right)^2 + \pf{u}{\xi}\pfn{\xi}{y}{2} + \pf{u}{\eta}\pfn{\eta}{y}{2}\right]\\
+			& \qquad \qquad \qquad \qquad \qquad \qquad \qquad + D\left[\pf{u}{\xi}\pf{\xi}{x} + \pf{u}{\eta}\pf{\eta}{x}\right] + E\left[\pf{u}{\xi}\pf{\xi}{\eta}\pf{\eta}{y}\right] + Fu = 0.
+		\end{split}
+	\end{equation*}
+	Rearranging terms, this becomes
+	\begin{equation*}
+		\begin{split}
+			& \left[A\left(\pf{\xi}{x}\right)^2 + B\pf{\xi}{x}\pf{\xi}{y} + C\left(\pf{\xi}{y}\right)^2\right]\pfn{u}{\xi}{2} + \left[2A\pf{\xi}{x}\pf{\eta}{x} + B\left(\pf{\xi}{x}\pf{\eta}{y} + \pf{\xi}{y}\pf{\eta}{x}\right) \right.\\
+			& \left. + 2C \pf{\xi}{y}\pf{\eta}{y}\right]\pfp{u}{\xi}{\eta}{2} + \left[A\left(\pf{\eta}{x}\right)^2 + B\pf{\eta}{x}\pf{\eta}{y} + C\left(\pf{\eta}{y}\right)^2\right]\pfn{u}{\eta}{2}\\
+			& + \left[A\pfn{\xi}{x}{2} + B\pfp{\xi}{x}{y}{2} + C\pfn{\xi}{y}{2} + D\pf{\xi}{x} + E\pf{\xi}{y}\right]\pf{u}{\xi}\\
+			& \qquad \qquad \qquad \qquad + \left[A\pfn{\eta}{x}{2} + \pfp{\eta}{x}{y}{2} + C\pfn{\eta}{y}{2} + D\pf{\eta}{x} + E\pf{\eta}{y}\right]\pf{u}{\eta} + Fu = 0.
+		\end{split}
+	\end{equation*}
+	Thus using the transformation (14.85), the equation (14.84) is reduced to the form
+	%
+	\begin{equation}\tag{14.92}
+		A_1\pfn{u}{\xi}{2} + B_1\pfp{u}{\xi}{\eta}{2} + C_1 \pfn{u}{\eta}{2} + D_1 \pf{u}{\xi} + E_1 \pf{u}{\eta} + F_1u = 0,
+	\end{equation}
+	where
+	\begin{equation}\tag{14.93}
+		\begin{aligned}
+			& A_1 = A\left(\pf{\xi}{x}\right)^2 + B\pf{\xi}{x}\pf{\xi}{y} + C\left(\pf{\xi}{y}\right)^2,\\
+			& B_1 = 2A \pf{\xi}{x}\pf{\eta}{x} + B \left(\pf{\xi}{x}\pf{\eta}{y} + \pf{\xi}{y}\pf{\eta}{x}\right) + 2C\pf{\xi}{y}\pf{\eta}{y},\\
+			& C_1 = A\left(\pf{\eta}{x}\right)^2 + B\pf{\eta}{x}\pf{\eta}{y} + C\left(\pf{\eta}{y}\right)^2,\\
+			& D_1 = A\pfn{\xi}{x}{2} + B\pfp{\xi}{x}{y}{2} + C\pfn{\xi}{y}{2} + D\pf{\xi}{x} + E\pf{\xi}{y},\\
+			& E_1 = A\pfn{\eta}{x}{2} + B\pfp{\eta}{x}{y}{2} + C\pfn{\eta}{y}{2} + D\pf{\eta}{x} + E\pf{\eta}{y},\\
+			\text{and}\\
+			& F_1 = F.
+		\end{aligned}
+	\end{equation}
+	We now show that the new equation (14.92) can be simplified by a suitable choice of $\xi(x, y)$ and $\eta(x, y)$ in the transformation (14.85). The choice of these functions $\xi$ and $\eta$ and the form of the resulting simplified equation (the canonical form) depend upon whether the original partial differential equation (14.84) is hyperbolic, parabolic, or elliptic.
+	\subsection*{B. The Hyperbolic Equation}
+	Concerning the canonical form in the hyperbolic case, we state and prove the following theorem.\par
+	\textbf{\large THEOREM 14.3}\par
+	\textbf{Hypothesis.} \textit{Consider the second-order linear partial differential equation}
+	%
+	\begin{equation}\tag{14.84}
+		A\pfn{u}{x}{2} + B\pfp{u}{x}{y}{2} + C \pfn{u}{y}{2} + D\pf{u}{x} + E\pf{u}{y} + Fu = 0,
+	\end{equation}
+	\textit{where the coefficients $A,\ B,\ C,\ D,\ E$, and $F$ are real constants and $B^2 - 4AC > 0$ so that the equation is hyperbolic.}\par
+	\textbf{Conclusion.} \textit{There exists a transformation}
+	%
+	\begin{equation}\tag{14.85}
+		\xi = \xi(x, y),\quad \eta = \eta(x,y)
+	\end{equation} 
+	\textit{of the independent variables in (14.84) so thai the transformed equation in the independent variables $(\xi, \eta)$ may be written in the canonical form}
+	%
+	\begin{equation}\tag{14.94}
+		\pfp{u}{\xi}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	\end{equation}
+	\textit{where $d,\ e$, and $f$ are real constants.}\\
+	\textit{If $A \neq 0$, such a transformation is given by}
+	%
+	\begin{equation}\tag{14.95}
+		\begin{aligned}
+			\xi = \lambda_1x + y.\\
+			\eta = \lambda_2x + y,
+		\end{aligned}
+	\end{equation}
+	\textit{where $\lambda_1$ and $\lambda_2$ are the roots of the quadratic equation}
+	%
+	\begin{equation}\tag{14.96}
+		A\lambda^2 + B\lambda + C = 0
+	\end{equation}
+	\textit{If $A = 0,\ B\neq 0,\ C \neq 0$, such transformation is given by}
+	%
+	\begin{equation}\tag{14.97}
+		\begin{aligned}
+			& \xi = x,\\
+			& \eta = x - \frac{B}{C}y.
+		\end{aligned}
+	\end{equation}
+	\textit{If $A = 0,\ B\neq 0,\ C = 0$, such transformation is merely the identity trandformation}
+	%
+	\begin{equation}\tag{19.98}
+		\begin{aligned}
+			\xi = x,\\
+			\eta = y.
+		\end{aligned}
+	\end{equation}
+	\textbf{Proof.}  We shall first show that the transformations given by (14.95), (14.97), and (14.98) actually do reduce Equation (14.84) so that it may be written in the form (14.94) in the three respective cases described in the conclusion. We shall then observe that these three cases cover all possibilities for the hyperbolic equation, thereby completing the proof.\\
+	We have seen that a transformation of the form (14.85) reduces Equation (14.84) to the form (14.92), where the coefficients are given by (14.93). In the case $A \neq 0$, we apply the special case of (14.85) given by
+	%
+	\begin{equation}\tag{14.95}
+		\begin{aligned}
+			&\xi = \lambda_1x + y,\\
+			&\eta = \lambda_2x + y,
+		\end{aligned}
+	\end{equation}
+	where $\lambda_1$ and $\lambda_2$ are the roots of the quadratic equation
+	\begin{equation}\tag{14.96}
+		A\lambda^2 + B\lambda + C = 0
+	\end{equation}
+	Then the coefficients in the transformed equation (14.92) are given by (14.93), where $\xi(x, y)$ and $\eta(x, y)$ are given by (14.95). Evaluating these coefficients in this case we find that
+	\begin{align*}
+		 A_1 &= A\lambda_1^2 + B\lambda_1 + C,\\
+		 B_1 &= 2A\lambda_1\lambda_2 + B(\lambda_1 + \lambda_2) + 2C\\
+		 &= 2A\left(\frac{C}{A}\right) + B\left(-\frac{B}{A}\right) + 2c = \frac{B^2 - 4AC}{-A},\\
+		 C_1 &= A\lambda_2^2 + B\lambda_2 + C,\\
+		 D_1 &= D\lambda_1 + E,\\
+		 E_1 &= D\lambda_2 + E,\\
+		 F_1 &= F.
+	\end{align*}
+	Since $\lambda_1$ and $\lambda_2$ satisfy the quadratic equation (14.96), we see that $A_1 = 0$ and $C_1 = 0$. Therefore in this case the transformed equation (14.92) is
+	%
+	\begin{equation}\tag{14.99}
+		\left(\frac{B^2 - 4AC}{-A}\right)\pfp{u}{\xi}{\eta}{2} + (D\lambda_1 + E)\pf{u}{\xi} + (D\lambda_2 + E)\pf{u}{\eta} + Fu = 0,
+	\end{equation}
+	Since $B^2 - 4AC > 0$ (Equation (14.84) is hyperbolic), the roots $\lambda_1$ and $\lambda_2$ of (14.96) are real and distinct. Therefore the coefficients in (14.99) are all real. Furthermore, the leading coefficient $(B^2 - 4AC)/(- A)$ is unequal to zero. Therefore we may write the transformed equation (14.99) in the form
+	$$
+	\pfp{u}{\xi}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	$$
+	where the coefficients
+	$$
+	d = \frac{A(D\lambda_1 + E)}{B^2 - 4AC},\quad e = \frac{A(D\lambda_2 + E)}{B^2 - 4AC},\quad f = \frac{AF}{B^2 - 4AC}
+	$$
+	are all real. This is the canonical form of (14.94).\\
+	Now consider the case in which $A = 0,\ B \neq 0,\ C \neq 0$, and apply the special case of (14.85) given by
+	\begin{equation}
+		\begin{aligned}
+			& \xi = x,
+			& \eta = x - \frac{B}{C}y.
+		\end{aligned}
+	\end{equation}
+	In this case the coefficients in the transformed equation (14.92) are given by (14.93), where $\xi(x, y)$ and $\eta(x,y)$ are given by (14.97). Evaluating these coefficients (recall $A = 0$ here), we hnd that
+	\begin{align*}
+		A_1 &= 0,\\
+		B_1 &= -\frac{B^2}{C} \neq 0,\\
+		C_1 &= B\left(-\frac{B}{C}\right) + C\left(-\frac{B}{C}\right)^2 = 0,\\
+		D_1 &= D,\quad E_1 = D - \frac{EB}{C},\quad F_1 = F
+	\end{align*}
+	Therefore in this case the transformed equation is
+	$$
+	\left(-\frac{B^2}{C}\right)\pfp{u}{\xi}{\eta}{2} + D\pf{u}{\xi} + \left(\frac{DC - EB}{C}\right)\pf{u}{\eta} + Fu = 0.
+	$$
+	Since $(-B)/C^2 = \neq 0$, we may write this in the form
+	$$
+	\pfp{u}{\xi}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	$$
+	where the coefficients
+	$$
+	d = \frac{CD}{B^2},\quad e = \frac{DC - EB}{B^2},\quad f = \frac{CF}{B^2}
+	$$
+	are all real. This is again the canonical form (14.94).\\
+	Finally, consider the case in which $A = 0,\ B \neq 0,\ C = 0$. In this case Equation (14.84) is simply
+	$$
+	B\pfp{u}{x}{y}{2} + D\pf{u}{x} + E\pf{u}{y} + Fu = 0.
+	$$
+	and the identity transformation (14.98) reduces it to
+	$$
+	B\pfp{u}{\xi}{\eta}{2} + D\pf{u}{\xi} + E\pf{u}{\eta} + Fu = 0.
+	$$
+	Since $B \neq 0$, we may write this in the form
+	$$
+	\pfp{u}{\xi}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu = 0
+	$$
+	where
+	$$
+	d = -\frac{D}{B},\quad e = -\frac{E}{B},\quad f = -\frac{F}{B}.
+	$$
+	This is again the canonical form (14.94). In effect, in this special case $(A = 0,\ B\neq 0,\ C = 0)$ Equation (14.84) may be put in the canonical form (14.94) simply by transposing the appropriate terms and dividing by $B$.\\
+	We now observe that the three special cases considered exhaust all possibilities for the hyperbolic equation (14.84). We first note that either $A = 0$ or $A \neq 0$. All cases in which  $A \neq 0$ are covered  by  the first  of  the three special cases  which  we have considered. Turning to the cases in which $A = 0$, it would appear that the following four distinct possibilities deserve consideration:(a) $B \neq 0,\ C \neq 0$;(b) $B \neq 0,\ C = 0$; (c) $B = 0,\ C \neq 0$; and (d) $B = 0,\ C = 0$. We note that (a) and (b) are covered by the second and third of the three special cases which we have considered. Concerning (c) and (d), in both cases $B^2 - 4AC = 0$, contrary  to hypothesis. In particular, if (c) holds, Equation (14.84) is parabolic (not hyperbolic); and if (d) holds, Equation (14.84) is of the first order.\\
+	We thus observe that the three special cases considered cover all possibilities for the hyperbolic equation (14.84). Thus there always exists a transformation (14.85) which transforms the hyperbolic equation (14.84) into one which may be written in the canonical form (14.94).\par
+	\textbf{Example 14.6}\par
+	Consider the equation
+	%
+	\begin{equation}\tag{14.100}
+		\pfn{u}{x}{2} + 4\pfp{u}{x}{y}{2} - 5\pfn{u}{y}{2} + 6\pf{u}{x} + 3\pf{u}{y} - 9u = 0.
+	\end{equation}
+	We first observe that $B^2 - 4AC = 36 > 0$ and so Equation (14.100) is hyperbolic. Since $A \neq 0$, we consider the transformation
+	\begin{equation}\tag{14.95}
+		\begin{aligned}
+			\xi = \lambda_1 x + y,\\
+			\eta = \lambda_2 x + y,
+		\end{aligned}
+	\end{equation}
+	where $\lambda_1$, and $\lambda_2$ are the roots of the quadratic equation $\lambda^2 + 4\lambda - 5 = 0$. We find that $\lambda_1 = 1$ and $\lambda_2 = -5$, and so the transformation (14.95) is
+	\begin{equation}\tag{14.101}
+		\begin{aligned}
+			\xi &= x+y,\\
+			\eta &= -5x + y.
+		\end{aligned}
+	\end{equation}
+	Applying (14.101) to Equation (14.100), we see that this equation transforms into
+	$$
+	-36\pfp{u}{\xi}{\eta}{2} + 9\pf{u}{\xi} - 27\pf{u}{\eta} - 9u = 0
+	$$
+	Dividing by $-36$ and transposing terms, we obtain the canonical form
+	$$
+	\pfp{u}{\xi}{\eta}{2} = \frac{1}{4}\pf{u}{\xi} - \frac{3}{4}\pf{u}{\eta} - \frac{1}{4}u.
+	$$
+	\subsection*{C. The Parabolic Equation}
+	We now investigate the canonical form in the parabolic case and obtain the following theorem.\par 
+	\textbf{\large THEOREM 14.4}\par
+	\textbf{Hypothesis.} \textit{Consider the second-order linear partial differential equation}
+	%
+	\begin{equation}\tag{14.84}
+		A\pfn{u}{x}{2} + B\pfp{u}{x}{y}{2} + C\pfn{u}{y}{2} + D\pf{u}{x} + E \pf{u}{y} + Fu = 0,
+	\end{equation}
+	\textit{where the coefficients $A,\ B,\ C,\ D,\ E$, and $F$ are real constants and $B^2-4AC = 0$ so that the equation is parabolic.}\par
+	\textbf{Conclusion.} \textit{There exists a transformation}
+	%
+	\begin{equation}\tag{14.85}
+		\xi = \xi(x, y),\quad \eta = \eta(x, y)
+	\end{equation}
+	\textit{of the independent variables in (14.84) so that the transformed equation in the independent variables $(\xi, \eta)$ may be written in the canonical form}
+	%
+	\begin{equation}\tag{14.102}
+		\pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	\end{equation}
+	\textit{where $d,\ e$, and $f$ are real constants.}\\
+	\textit{If $A\neq 0$ and $C \neq 0$, such a transformation is given by}
+	\begin{equation}\tag{14.103}
+		\begin{aligned}
+			\xi &= \lambda x + y,\\
+			\eta &= y,
+		\end{aligned}
+	\end{equation}
+	\textit{where $\lambda$ is the repeated real root of the quadratic equation}
+	%
+	\begin{equation}\tag{14.104}
+		A\lambda^2 + B\lambda + C = 0.
+	\end{equation}
+	\textit{If $A \neq 0$ and $C = 0$, such a transforamation is given by}
+	%
+	\begin{equation}\tag{14.105}
+		\begin{aligned}
+			\xi = y,\\
+			\eta = y.
+		\end{aligned}
+	\end{equation}
+	\textit{If $A = 0$ and $C \neq 0$, such a transformation is merely the identity transformation}
+	%
+	\begin{equation}\tag{14.106}
+		\begin{aligned}
+			\xi = x,\\
+			\eta = y.
+		\end{aligned}
+	\end{equation}
+	\textbf{Proof}. We shall proceed in a manner similar to that by which we proved Theorem 14.3.\\
+	If $A \neq 0$ and $C \neq 0$, we apply the transformation (14.103) to obtain the transformed equation (14.92) with coefficients (14.93), where in this case $\xi(x, y)$ and $\eta(x, y)$ are given by (14.103). Evaluating these coefficients we find that
+	\begin{align*}
+		A_1 &= A\lambda^2 + B\lambda + C,\\
+		B_1 &= B\lambda + 2C,\\
+		C_1 &= C,\\
+		D_1 &= D\lambda + E,\quad E_1 = E,\quad F_1 = F. 
+	\end{align*}
+	Since $\lambda$ satisfies the quadratic equation (14.104), we see at once that $A_1 = 0$. Also,  since $B^2 - 4AC = 0,\ \lambda = -B/2A$ and so
+	$$
+	B_1 = -\frac{B^2}{2A} + 2C = \frac{4AC - B^2}{2A} = 0.
+	$$
+	Thus in the present case the transformed equation (14.92) is
+	\begin{equation}\tag{14.107}
+		C\pfn{u}{\eta}{2} + (D\lambda + E)\pf{u}{\xi} + E\pf{u}{\eta} + Fu = 0.
+	\end{equation}
+	Since $\lambda$ is real, all coefficients in (14.107) are real; and since $C \neq 0$, we may write equation (14.107) in the form
+	$$
+	\pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	$$
+	where the coefficients
+	$$
+	d = -\frac{D\lambda + E}{C},\quad e = -\frac{E}{C},\quad f = -\frac{F}{C}
+	$$
+	are all real. This is the canonical form (14.102).\\
+	If $A \neq 0$ and $C = 0$, we apply the transformation (14.105) to obtain the transformed
+	equation (14.92) with coefficients (14.93), where in this case $\xi(x, y)$ and $\eta(x, y)$ are given by (14.105). Evaluating these coefficients, we obtain
+	\begin{align*}
+		A_1 &= C = 0,\\
+		B_1 &= B = 0\quad \text{since $B^2 - 4AC = 0$ and $C = 0$},\\
+		C_1 &= A \neq 0,\\
+		D_1 &= E,\quad E_1 = D,\quad F_1 = F.
+	\end{align*}
+	Thus in the case under consideration the transformed equation (14.92) is
+	$$
+	A\pfn{u}{\eta}{2} + E\pf{u}{\xi} + D\pf{u}{\eta} + Fu = 0.
+	$$
+	Since $A \neq 0$, we may write this in the form
+	$$
+	\pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	$$
+	where the coefficients $d = -E/A,\ e = -D/A$, and $f = -F/A$ are real. This is again the canonical form (14.102).\\
+	Finally, consider the case in which $A = 0$ and $C \neq 0$. Since $B^2 - 4AC = 0$, we must also have $B = 0$. Therefore in this case Equation (14.84) is simply
+	$$
+	C\pfn{u}{y}{2} + D\pf{u}{x} + E\pf{u}{y} + Fu = 0,
+	$$
+	and the identity transformation (14.106) reduces it to
+	$$
+	C\pfn{u}{\eta}{2} + D\pf{u}{\xi} + E\pf{u}{\eta} + Fu = 0.
+	$$
+	Since $C \neq 0$, we may write this in the form
+	$$
+	\pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	$$
+	where $d = -D/C,\ e = -E/C,\ f = -F/C$. This is again the canonical form (14.102). We thus see that in this special case $(A = 0,\ B = 0,\ C \neq 0)$ Equation (14.84) may be put in the canonical form (14.102) simply by transposing the appropriate terms and dividing by $C$.\\
+	Finally, we observe that the three special cases considered exhaust all possibilities for the parabolic equation (14.84). For, either $A = 0$ or $B = 0$. If $A \neq 0$, either $C \neq 0$ or $C = 0$. These two possibilities are, respectively, the first and second special cases considered, and so all cases in which $A \neq 0$ are thus covered. If $A = 0$, either $C \neq 0$ or $C = 0$. The first of these two possibilities is the third special case considered. Finally, consider the situation in which $A = 0$ and $C = 0$. Since $B^2 - 4AC = 0$, we must also have $B = 0$ and so Equation (14.84) reduces to a first-order equation.\par
+	Therefore  there always exists a  transformation  (14.85)  which  transforms  the parabolic equation (14.84) into one which may be written in the canonical form (14.102).\par
+	\textbf{Example 14.7}\\
+	Consider the equation
+	%
+	\begin{equation}\tag{14.108}
+		\pfn{u}{x}{2} - 6\pfp{u}{x}{y}{2} + 9\pfn{u}{y}{2} + 2\pf{u}{x} + 3\pf{u}{y} - u =0.
+	\end{equation}
+	We observe that $B^2 - 4AC = 0$, Equation (14.108) is parabolic. Since $A \neq 0$ and $C = 0$, we consider the transformation
+	%
+	\begin{equation}\tag{14.103}
+		\begin{aligned}
+			\xi &= \lambda x + y,\\
+			\eta &= y,
+		\end{aligned}
+	\end{equation}
+	where $\lambda$ is the repeated real root of the quadratic equation $\lambda^2 - 6\lambda + 9 = 0$. We find that $\lambda = 3$, and so the transformation (14.103) is
+	%
+	\begin{equation}\tag{14.109}
+		\begin{aligned}
+			\xi &= 3x + y,\\
+			\eta &= y.
+		\end{aligned}
+	\end{equation}
+	Applying (14.109) to Equation (14.108), we see that this equation transforms into
+	$$
+	9 \pfn{u}{\eta}{2} + 9\pf{u}{\xi} + 3\pf{u}{\eta} - u =0.
+	$$
+	Dividing by 9 and transposing terms, we obtain the canonical form
+	$$
+	\pfn{u}{\eta}{2} = -\pf{u}{\xi} -\frac{1}{3}\pf{u}{\eta} + \frac{1}{9}u.
+	$$
+	\subsection*{D. The Elliptic Equation}
+	Finally, we prove the following theorem concerning the canonical form in the elliptic case.\\
+	\textbf{\large THEOREM 14.5}\par
+	\textbf{Hypothesis.} \textit{Consider the second-order linear partial differential equation}
+	%
+	\begin{equation}\tag{14.84}
+		A\pfn{u}{x}{2} + B\pfp{u}{x}{y}{2} + C\pfn{u}{y}{2} + D\pf{u}{x} + E\pf{u}{y} + Fu = 0,
+	\end{equation}
+	\textit{where the coefficients $A,\ B,\ C,\ D,\ E$, and $F$ are real constants and $B^2 - 4AC < 0$ so that the equation is elliptic.}\par
+	\textbf{Conclusion.} \textbf{There exists a transformation}
+	%
+	\begin{equation}\tag{14.85}
+		\xi = \xi(x, y),\quad \eta = \eta(x, y)
+	\end{equation}
+	\textit{of the independent variables in(14.84) so that the transformed equation in the independent variables $(\xi, \eta)$ may be written in the canonical form}
+	%
+	\begin{equation}\tag{14.110}
+		\pfn{u}{\xi}{2} + \pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu, 
+	\end{equation}
+	\textit{where $d,\ e$, and $f$ are real constants}.\\
+	\textit{Such a transformation is given by}
+	%
+	\begin{equation}\tag{14.111}
+		\begin{aligned}
+			\xi &= ax + y,\\
+			\eta &= bx,
+		\end{aligned}
+	\end{equation}
+	\textit{}{where $a \pm bi$ ($a$ and $b$ real, $b\neq 0$) are the conjugate complex roots of the quadratic equation.}
+	%
+	\begin{equation}\tag{14.112}
+		A\lambda^2 + B\lambda + C = 0
+	\end{equation}
+	\textbf{Proof.} Since $B^2 - 4AC < 0$, we cannot  have  $A = 0$ in  the elliptic case. Thus  Equation (14.112) is a full-fledged quadratic equation with two roots. The condition $B^2 - 4AC < 0$ further shows that these two roots must indeed be conjugate complex.\\
+	We apply the transformation (14.111) to obtain the transformed equation (14.92) with  coefficients (14.93), where in this case $\xi(x, y)$ and $\eta(x,y)$ are given by (14.111).  Evaluating these coefficients we find that
+	\begin{align*}
+		A_1 &= Aa^2 + Ba + C,\\
+		B_1 &= 2Aab + Bb = b(2Aa + B)\\
+		C_1 &= Ab^2 \neq 0\quad \text{(Since $A \neq 0,\ b\neq 0$)}\\
+		D_1 &= Da + E,\quad E_1 = Db,\quad F_1 = F.
+	\end{align*}
+	Since $a + bi$ satisfies the quadratic equation (14.112), we have
+	$$
+	A(a + bi)^2 + B(a + bi) + C = 0
+	$$
+	or
+	$$
+	[A(a^2 - b^2) + Ba + C] + [b(2Aa + B)]i = 0.
+	$$
+	Therefore
+	$$
+	A(a^2 - b^2) + Ba + C = 0
+	$$
+	and
+	$$
+	b(2Aa + B) = 0.
+	$$
+	Thus
+	$$
+	A_1 = Aa + Ba + C = Ab^2
+	$$
+	and
+	$$
+	B_1 = 0.
+	$$
+	Hence the transformation equation (14.92) is
+	\begin{equation}\tag{14.113}
+		Ab^2\left(\pfn{u}{\xi}{2} + \pfn{u}{\eta}{2}\right) + (Da + E)\pf{u}{\xi} + Db\pf{u}{\eta} + Fu = 0.
+	\end{equation}
+	Since $a$ and $b$ are real, all coefficients in (14.113) are real; and since $Ab^2 \neq 0$, we may write Equation (14.113) in the form
+	$$
+	\pfn{u}{\xi}{2} + \pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu,
+	$$
+	where the coefficients
+	$$
+	d = -\frac{Da + E}{Ab^2},\quad e = -\frac{D}{Ab},\quad f = -\frac{F}{Ab^2}
+	$$
+	are all real. This is the canonical form (14.110).\par
+	\textbf{Example.}\par
+	Consider the equation
+	\begin{equation}\tag{14.114}
+		\pfn{u}{x}{2} + 2\pfp{u}{x}{y}{2} + 5\pfn{u}{y}{2} + \pf{u}{z}  - \pf{u}{y} - 3u = 0.
+	\end{equation}
+	We observe  that $B^2 - 4AC = -16 < 0$ and  so Equation (14.114) is elliptic. We consider the transformation
+	%
+	\begin{equation}\tag{14.111}
+		\begin{aligned}
+			\xi &= ax + y,\\
+			\eta &= bx,
+		\end{aligned}
+	\end{equation}
+	where $a \pm bi$ are the conjugate complex roots of the quadratic equation $\lambda^2 + 2\lambda + 5 = 0$. We find that these roots are $-1 \pm 2i$, and so the transformation (14.111) is
+	\begin{equation}\tag{14.115}
+		\begin{aligned}
+			\xi = -x + y,\\
+			\eta = 2x
+		\end{aligned}
+	\end{equation}
+	Applying (14.115) to Equation (14.114), we see that this equation transforms into
+	$$
+	4\pfn{u}{\xi}{2} + 4\pfn{u}{\eta}{2} - 3\pf{u}{\xi} + 2\pf{u}{\eta} - 3u = 0.
+	$$
+	Dividing by $4$ and transposing terms, we obtain the canonical form
+	$$
+	\pfn{u}{\xi}{2} + \pfn{u}{\eta}{2} = \frac{3}{4}\pf{u}{\xi} - \frac{1}{2}\pf{u}{\eta} + \frac{3}{4}u = 0.
+	$$
+	\subsection*{E. Summary}
+	Summarizing, we list in Table 14.1 the canonical forms which we have obtained for the second-order linear partial differential equation
+	%
+	\begin{equation}\tag{14.84}
+		A\pfn{u}{x}{2} + B\pfp{u}{x}{y}{2} + C\pfn{u}{y}{2} + D\pf{u}{x} + E\pf{u}{y} + Fu = 0,
+	\end{equation}
+	where $A,\ B,\ C,\ D,\ E$, and $F$ are real constants.
+	%
+	\begin{table}[H]
+		\captionsetup{justification=raggedright, singlelinecheck=off}
+		\caption*{TABLE 14.1}
+		\begin{tabular}{p{3.5cm} p{6.5cm}} 
+		 \hline
+		 \textit{Type of} & \textit{Canonical form}\\
+		 \textit{equation (14.84)} & \textit{(where $d,\ e$, and $f$ are real constants)}\\
+		 \hline
+		 hyperbolic: & \multirow{2}{*}{$\pfp{u}{\xi}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu$}\\
+		 $B^2 - 4AC > 0$\\
+		 & \\
+		 parabolic: & \multirow{2}{*}{$\pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu$}\\
+		 $B^2 - 4AC = 0$\\
+		 & \\
+		 elliptic: & \multirow{2}{*}{$\pfn{u}{\xi}{2} + \pfn{u}{\eta}{2} = d\pf{u}{\xi} + e\pf{u}{\eta} + fu$}\\
+		 $B^2 - 4AC = 0$\\
+		 \hline
+		\end{tabular}
+	\end{table}
+	%
+	\textbf{Exercises}\par
+	Transform each of the partial differential equations in Exercises 1-10 into canonical form.
+	\begin{enumerate}
+		\item $\pfn{u}{x}{2} - 5\pfp{u}{x}{y}{2} + 6\pfn{u}{y}{2} = 0$.
+		\item $\pfn{u}{x}{2} - 4\pfp{u}{x}{y}{2} + 4\pfn{u}{y}{2} = 0$.
+		\item $\pfn{u}{x}{2} - 2\pfp{u}{x}{y}{2} - 8\pfn{u}{y}{2} + 9\pf{u}{x} =0$.
+		\item $2\pfn{u}{x}{2} + 3\pfp{u}{x}{y}{2} - 9\pfn{u}{y}{2} + 4\pf{u}{x} = 0$.
+		\item $\pfn{u}{x}{2} - 4\pfp{u}{x}{y}{2} + 13\pfn{u}{y}{2} - 9\pf{u}{y} = 0$.
+		\item $\pfn{u}{x}{2} + 2\pfp{u}{x}{y}{2} + \pfn{u}{y}{2} + 3\pf{u}{y} + 9u = 0$.
+		\item $6\pfp{u}{x}{y}{2} + 3\pfn{u}{y}{2} + 2\pf{u}{x} = 0$.
+		\item $\pfn{u}{x}{2} + 4\pfp{u}{x}{y}{2} + 3\pf{u}{x} + 5\pf{u}{y} = 0$.
+		\item $2\pfn{u}{x}{2} - 2\pfp{u}{x}{y}{2} + 5\pfn{u}{y}{2} + u = 0$.
+		\item $\pfn{u}{x}{2} - 5\pfp{u}{x}{y}{2} + 5\pf{u}{x} -\pf{u}{y} + 3u = 0$.
+		\item Show that the transformation
+					\begin{align*}
+						\xi &= y - \frac{x^2}{2},\\
+						\eta &= x,
+					\end{align*}
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{patterns, arrows.meta}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Fall 2020}\\
+		\large \textbf{Coursework 5 - part 2: week 11} \hfill \large \textbf{W. Huang}
+		\rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\begin{itemize}
+		\item This coursework has only one part: I. Practice problems (you will get help on this part in tutorials. You should work on this before you go to tutorials.)
+		\item Homework problems of week 10 and 11 are announced together in the mid of week 11 (Dec. 2nd 17:00) in the format of QMquiz under Qmplus week 11. \textcolor{red}{For this quiz you can only have} \textcolor{blue}{one} \textcolor{red}{attempt and} \textcolor{blue}{1.5} \textcolor{red}{weeks to work with}. This is to prepare you to get used to the more strict format of the final exam, where only a single attempt with 3 hours are allowed according to school exam regulations.\\
+		\textcolor{red}{The deadline of this upcoming QMquiz is on the} \textcolor{blue}{Monday evening} \textcolor{red}{of week 13 (Dec. 14th, 22:00)}. If you miss the deadline, you will receive 0 for this coursework (which worths 5\% for your final mark. The correct answer will be shown in QMquiz after the submission deadline.
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this module}.
+		\item A selection of solutions to coursework problems will be posted on QMPlus, see our module schedule. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	\textbf{I. Practice Problems}\par
+	%
+	\begin{enumerate}[\bfseries A.]
+		\item Find all fixed points of the system $\dot{y_1} = f_1(y_1, y_2),\ \dot{y} = f_2(y_1, y_2)$ with
+		$$
+		f_1(y_1, y_2) = 2y_1 + y_2^2 - 1,\ f_2(y_1, y_2) = 6y_1 - y_2^2 + 1.
+		$$
+		Investigate the linear stability of the corresponding system linearized around each fixed point. Describe the type of fixed point and explain in words the shape of the trajectories close to it.
+		\item Find the values of the real parameter a for which the system (This content might show up in week 12 session 1 if not in week 11 session 3)
+		$$
+		\dot{y_1} = y_2 + ay_1 - y_1^5,\ \dot{y} = -y_1 - y_2^5
+		$$
+		has a stable fixed point at $y_1 = y_2 = 0$. Use the function $V(y_1, y_2) = y^2_1 + y^2_2$ for judging the stability of the nonlinear system when linear stability analysis is insufficient.
+		\item Study the stability properties of the solution $y_1(t) = 0$ of the second order differential equation
+		$$
+		\ddot{y_1} + (a - 1)\dot{y_1} + (4 - a^2)y_1 = 0
+		$$
+		for the values $a = 1,\ a = 2$ and $a = -2$ of the real parameter a by converting the ODE to a system of two first-order equations (using week 3 knowledge).
+		\item Recall from Coursework 9, the following differential equation modelling the flow of electric current in a simple series circuit:
+		$$
+		L\frac{d^2I}{dt^2} + R\frac{dI}{dt} + \frac{1}{C}I = 0,
+		$$
+		where $L,\ R$ and $C$ are positive constants. Rewrite the equation as a system of two firstorder differential equations for $y_1 = I$ and $y_2 = dI/dt$. Show that $y_1 = 0,\ y_2 = 0$ is a critical point of the system and analyze the nature and stability of the critical point as a function of the parameters $L,\ R$ and $C$.\par
+		\vspace{0.5cm}
+		\textit{Remark: Observe that your analysis would apply equally well to the equation of motion for a damped spring-mass system}
+		$$
+		m\frac{d^2u}{dt^2} + c\frac{du}{dt} + ku = 0,
+		$$
+		\textit{introduced in the first week of lectures!}
+	\end{enumerate}
+\end{document}

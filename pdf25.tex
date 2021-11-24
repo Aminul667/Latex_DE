@@ -1,0 +1,104 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{patterns, arrows.meta}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+	\begin{singlespace}
+		\begin{center}
+			\Huge Queen Mary\\
+			\LARGE University of London
+		\end{center}
+		\Large \textbf{MTH5123} \hfill \Large \textbf{Differential Equations,} \hfill \Large \textbf{Fall 2020}\\
+		\large \textbf{Coursework 5 - part 1: week 10} \hfill \large \textbf{W. Huang}
+		\rule{\textwidth}{0.4pt}
+	\end{singlespace}
+	%
+	\begin{itemize}
+		\item Each Coursework consists of three parts:
+		\begin{enumerate}[\bfseries I.]
+			\item Practice problems
+			\item Homework problems (to be submitted through QMquiz under QMplus > week 5)
+			\item Exploration problems (to help you understand concepts discussed during lecture, not optional and examinable)\\
+			you will get help on part I and III in tutorials. You should work on this before you go to tutorials.
+		\end{enumerate}
+		\item Homework problems of week 10 and 11 are announced together in the mid of week 11 (Dec. 2nd 17:00) in the format of QMquiz under Qmplus week 11. \textcolor{red}{For this quiz you can only have} \textcolor{blue}{one} \textcolor{red}{attempt and} \textcolor{blue}{1.5} \textcolor{red}{weeks to work with}. This is to prepare you to get used to the more strict format of the final exam, where only a single attempt with 3 hours are allowed according to school exam regulations.\\
+		\textcolor{red}{The deadline of this upcoming QMquiz is on the} \textcolor{blue}{Monday evening} \textcolor{red}{of week 13 (Dec. 14th, 22:00)}. If you miss the deadline, you will receive 0 for this coursework (which worths 5\% for your final mark. The correct answer will be shown in QMquiz after the submission deadline.
+		\item You have to solve the homework problems by yourself. \textit{Submitting homework questions on time is critical for you to achieve good grade in this module}
+		\item A selection of solutions to coursework problems will be posted on QMPlus, see our
+		module schedule. \textcolor{blue}{You are expected to seek solutions to the remaining problems using the Reading List and making use of our interactive session 4 in each week.}
+		\item I encourage all students to learn and check your computational answers using math softwares such as MAPLE, Mathematica, MATLAB, etc. For example, there are free Mathematica licenses for students in QMUL. \href{https://www.its.qmul.ac.uk/services/service-catalogue/items/software---computational-mathematica.html}{\textcolor{blue}{Click here for the QMUL Mathematica software webpage.}} Using these softwares is a fun practice and will help you to visualise your solutions (– \textcolor{blue}{sketching solutions will be tested in the final exam}).
+	\end{itemize}
+	\rule{\textwidth}{0.4pt}
+	%
+	\textbf{I. Tutorial Problems}\par
+	\begin{enumerate}[\bfseries A.]
+		\item Determine the type of equilibrium at $y_1 = 0,\ y_2 = 0$ for the following ODE systems.\\
+		\textit{Hint}: Both question appeared in Coursework 8, and you can check the solutions to the IVP and also sketch of trajectories there.
+		\begin{enumerate}[\bfseries 1)]
+			\item $\dot{y_1} = -\frac{1}{2}y_1 + \frac{5}{2}y_2,\quad \dot{y_2} = \frac{5}{2}y_1 - \frac{1}{2}y_2,\quad y_1(0) = a,\ y_2(0) = b$.
+			\item $\dot{y_1} = -y_1 + 5y_2,\quad \dot{y_2} - y_1 + y_2,\quad y_1(0) = 0,\ y_2(0) = 4.$
+		\end{enumerate}
+		\item Determine the general solution and sketch the phase portraits of the following systems of linear differential equations:
+		\begin{enumerate}[\bfseries 1)]
+			\item $\dot{y_1} = - y_1 + 6y_2 ,\quad \dot{y_2} = - 3y_1 + 8y_2$
+			\item $\dot{y_1} = - y_1 + y_2,\quad \dot{y_2} = y_1 - y_2$
+			\item $\dot{y_1} = - 4y_1 - 8y_2,\quad \dot{y_2} = 4y_1 + 4y_2$
+		\end{enumerate}
+		\item Determine the type of fixed point for the dynamical systems
+		$$
+		\dot{y_1} = 4y_2,\quad \dot{y_2} = - y_1.
+		$$
+		Then determine the solutions of the corresponding initial value problems for the general initial conditions $y_1(0) = a,\ y_2(0) = b$. Sketch the phase portraits in the $(y_1, y_2)$ phase plane.
+		\item Determine the solution of the initial value problem
+		$$
+		\dot{y_1} = y_1 - 4y_2,\ \dot{y_2} = 4y_1 + y_2 ,\ y_1(0) = 0,\ y_2(0) = 1,\ t \geq 0
+		$$
+		and the type of fixed point. Then sketch the trajectory in the $(y_1, y_2)$ phase plane corresponding to the chosen initial values in the specified range of $t$.
+	\end{enumerate}
+	\rule{\textwidth}{0.4pt}
+	\newpage
+	\textbf{III. Further Exploration: Applications involving Dynamical Systems}\par
+	Second order, constant-coefficient linear differential equations appear in many physical models, such as the spring-mass system studied in the first half of the semester. In this exercise, we see a second example, using electrical circuits.\par
+	To model the flow of electric current in a simple series circuit (involving a resistor a capacitor and an inductor in series), one uses Kirchhoff’s Law to obtain
+	$$
+	L\frac{dI}{dt} + RI + \frac{1}{C}Q = E(t)
+	$$
+	Here $L,\ R$, and $C$ are not variables but positive parameters (referred to as the inductance, resistance and capacitance, respectively). $E(t)$ is the impressed voltage (in volts) which is a function of our independent variable $t$. $Q$ and $I$ are both variables depending on $t$, where $Q$ is the total charge on the capacitor at time $t$ (in coulombs) and $I$ is the current at time $t$ (in amperes). In addition, the relation between charge and current is $I = dQ/dt$.
+	%
+	\begin{enumerate}[\bfseries A.]
+		\item 1) Rewrite the above equation as a 2nd-order ODE in the charge $Q$ (i.e. an ODE only containing variable $Q$, independent variable $t$, functions of $t$, and parameters $L,\ R$, and $C$.\\
+		2) Show how to get a new 2nd-order ODE in the current $I$ as
+		$$
+		L\frac{d^2I}{dt^2} + R\frac{dI}{dt} + \frac{1}{C}I = E^\prime(t).
+		$$
+		\item 1) Assuming $\dot{E}(t) = 0$ (which means the system is closed), write the above 2nd-order ODE in $I$ as a system of two 1st-order ODEs with variables $y_1$ and $y_2$.\\
+		(Hint: assume $y_1 = I$ and $y_2 = dI/dt$ and follow the method we learned in 2.1 scanned lecture notes).\\
+		2) Show that $y_1 = 0,\ y_2 = 0$ is a critical point.
+	\end{enumerate}
+	In the next Coursework, we shall analyze the nature and stability of the critical point as a function of the parameters (in this case, $L,\ R$ and $C$).\par
+	\vspace{1.5cm}
+	\textit{Remark: exactly the same analysis can be used to study the equation of motion for a damped spring-mass system $m\ddot{u} + c\dot{u} + ku = 0$, where $m,\ k,\ c$ are positive constants. Full details for the derivation of the equation appearing in this example can be found in Boyce \& DiPrima, Section 3.7}
+\end{document}
