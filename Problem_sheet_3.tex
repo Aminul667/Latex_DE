@@ -1,0 +1,74 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Problem Sheet 3}
+\fancyhead[L]{MA323: Partial Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\begin{document}
+	\begin{center}
+		\textbf{Problem Sheet 3}
+	\end{center}
+	%
+	\begin{enumerate}
+		\item Find the Fourier cosine series of the function $|\sin x|$ in the interval $(−\pi, \pi)$. Use it to find the sums
+		$$
+		\sum_{n = 0}^\infty \frac{1}{4n^2 - 1},\quad \text{and}\quad \sum_{n=0}^\infty \frac{(-1)^n}{4n^2 - 1}.
+		$$
+		\item Find the complex eigenvalues of the first-derivative operator d/dx subject to the single boundary condition $X(0) = X(1)$. Are the eigenfunctions orthogonal on the interval $(0, 1)$?
+		\item Find the Fourier sine series of the function $f(x) = \cos x$ on the interval $(0, \pi)$. For each $x$ satisfying $-\pi \leq x \leq \pi$, what is the sum of the series?
+		\item Using the separation of variables method find a (formal) solution of a vibrating string with fixed ends:
+		\begin{align*}
+			&u_{tt} - c^2u_{xx} = 0,\quad 0 < x < L, t > 0,\\
+			&u(0, t) = u(L, t) = 0,\quad t \geq 0,\\
+			&u(x, 0) = f(x),\quad 0 \leq x \leq L,\\
+			&u_t(x, 0) = g(x),\quad 0 \leq x \leq L.
+		\end{align*}
+		Prove that the above solution can be represented as a superposition of a forward and a backward wave.
+		\item Find a formal solution of the problem
+		\begin{align*}
+			& u_{tt} = u_{xx},\quad 0 < x < \pi,\ t > 0,\\
+			& u(0, t) = u(\pi, t) = 0,\quad t \geq 0,\\
+			& u(x, 0) = \sin^3 x,\quad 0 \leq x \leq \pi,\\
+			& u_t(x, 0) = \sin 2x,\quad 0 \leq x \leq \pi.
+		\end{align*}
+		\item Solve the following heat problem:
+		\begin{align*}
+			& u_t - ku_{xx} = A \cos \alpha t,\quad 0 < x < 1,\ t > 0,\\
+			& x(0, t) = u_x(1, t) = 0,\quad t \geq 0,\\
+			& u(x, 0) = 1 + \cos 2\pi x,\quad 0 \leq x \leq 1.
+		\end{align*}
+		\item (A) Solve as a series the equation $u_t = u_{xx}$ in $(0, 1)$ with $u_x(0, t) = 0,\ u(1, t) = 1$, and $u(x, 0) = x^2$. Compute the first two coefficients explicitly.\\
+		(B) What is the equilibrium state (the term that does not tend to zero as $t \to \infty$?
+		\item Solve $u_{tt} = c^2 u_{xx} + k$ for $0 < x < l$, with the boundary conditions $u(0, t) = 0,\ ux(l, t) = 0$ and the initial conditions $u(x, 0) = 0,\ ut(x, 0) = V$. Here $k$ and $V$ are constants.
+		\item Solve $u_{tt} = c^2 u_{xx},\ u(x, 0) = e^x,\ ut(x, 0) = \sin x$.
+		\item Solve $u_{xx} - 3u_{xt} - 4u_{tt} = 0,\ u(x, 0) = x^2,\ u_t(x, 0) = e^x$.\\
+		(\textbf{Hint:} Factor the operator as we did for the wave equation)
+	\end{enumerate}
+\end{document}
