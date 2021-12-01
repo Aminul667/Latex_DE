@@ -1,0 +1,182 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Test 2 (Spring 2018) - Solutions}
+\fancyhead[L]{MA202: Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcommand{\mrk}[1]{\hfill\textbf{[#1 marks]}}
+
+\begin{document}
+	%
+	\begin{center}
+		\textbf{\large Test 2 (Spring 2018)}\\[0.15cm]
+		\textbf{\large SOLUTIONS}
+	\end{center}
+	%
+	\begin{enumerate}
+		\item Let
+		$$
+		y = a_0 + a_1x + a_2x^2 + \ldots + a_nx^n + \ldots
+		$$
+		then
+		$$
+		y^\prime = a_1 + 2a_2x + 3a_3x^2 + \ldots + na_nx^n + \ldots,
+		$$
+		Substituting into the ODE,
+		$$
+		(1 + x)\sum_{n = 0}^\infty (n + 1)a_{n + 1}x^n + \sum_{n = 0}^\infty a_nx^n = 0.
+		$$
+		That is
+		$$
+		\sum_{n = 0}^\infty(n + 1)a_{n + 1}x^n + \sum_{n = 1}^\infty na_nx^n + \sum_{n = 0}^\infty a_nx^n = 0.
+		$$
+		Combining the series, we have
+		$$
+		a_1 + a_0 + \sum_{n = 0}^\infty[(n + 1)a_{n + 1} + na_n + a_n]x^n = 0.
+		$$
+		Setting the coefficients equal to zero, $a_1 = -a_0$ and
+		$$
+		a_{n + 1} = -a_n,\quad \text{for}\quad n = 0,\ 1,\ 2,\ldots
+		$$
+		Hence the general solution is
+		$$
+		y(x) = a_0[1 - x + x^2 - x^3 + \ldots + (-1)^nx^n + \ldots] = a_0\frac{1}{1+x}.
+		$$
+		The coefficient $a_0 = y(0)$ can be arbitrary.
+		\item We have
+		$$
+		y = \sum_0^\infty a_nx^n,\quad y^\prime = \sum_1^\infty na_nx^{n-1},\quad y^{\prime\prime} = \sum_2^\infty n(n-1)a_nx^{n - 2}.
+		$$
+		Substituting in the differential equation and shifting the index in both summations for $y^{\prime\prime}$ gives
+		\begin{equation*}
+			\begin{split}
+				\sum_0^\infty(n + 2)(n + 1)a_{n+2}x^n - \sum_{n = 1}^\infty(n + 1)na_{n + 1}x^n + \sum_{n = 0}^\infty a_nx^n\\
+				= (2 \cdot 1 \cdots a_2 + a_0)x^0 + \sum_{n = 1}^\infty[(n + 2)(n + 1)a_{n+2} - (n+1)na_{n+1} + a_n]x^n = 0.
+			\end{split}
+		\end{equation*}
+		Thus $a_2 = -a_0/2$ and
+		$$
+		a_{n + 2} = \frac{na_{n + 1}}{n + 2}\frac{a_n}{(n + 2)(n + 1)},\quad n = 1,\ 2,\ 3,\ldots
+		$$
+		Choosing $a_0 = 0$ yields
+		$$
+		a_2 = 0,\quad a_3 = -\frac{a_1}{6},\quad a_4 = \frac{2a_3}{4} = -\frac{a_1}{12},\quad a_5 = \frac{3a_4}{5} - \frac{a_3}{20} = -\frac{a_1}{24},\ldots
+		$$
+		and hence
+		$$
+		y_2(x) = a_1\left(x - \frac{x^3}{6} - \frac{x^4}{12} - \frac{x^5}{24} - \ldots\right).
+		$$
+		A second linearly independent solution is obtained by choosing $a_1 = 0$. Then
+		$$
+		a_2 = -\frac{a_1}{2},\quad a_3 = \frac{a_2}{3} = -\frac{a_0}{6},\quad a_4 = \frac{2a_3}{4} - \frac{a_2}{12} = -\frac{a_0}{24},\ldots
+		$$
+		which gives
+		$$
+		y_1(x) = a_0\left(1 - \frac{x^2}{2} - \frac{x^3}{6} - \frac{x^4}{24}-\ldots\right).
+		$$
+		\item The system is
+		$$
+		\dot{x_1} = x_1 + x_2 + 2e^t,\ \dot{x_2} = 4x_1 - 2x_2 - e^t.
+		$$
+		Let us eliminate $x_2$. First, take the derivative of the first equation to obtain
+		$$
+		\ddot{x_1} = \dot{x_1} + \dot{x_2} +2e^t = \dot{x_1} + (4x_1 - 2x_2 - e^t) + 2e^2.
+		$$
+		We also have
+		$$
+		x_2 = \dot{x_1} - x_1 - 2e^t.
+		$$
+		Combining the equations will yield
+		$$
+		\ddot{x_1} = \dot{x_1} + 4x_1 - 2(\dot{x_1} - x_1 - 2e^t) + e^t = -\dot{x_1} + 6x_1 +9e^t.
+		$$
+		\item See Example 1 of Lecture 13.
+		\item Setting $x = \xi e^{rt}$, and substituting into the ODE, we obtain the algebraic equations
+		$$
+		\begin{pmatrix}
+			2-r & -1\\
+			3 & -2-r
+		\end{pmatrix}
+		\begin{pmatrix}
+			\xi_1\\
+			\xi_2
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			0\\
+			0
+		\end{pmatrix}
+		$$
+		For a nonzero solution, we require that $\det(\vb{A} - r\vb{I}) = r^2 - 1 = 0$ and hence the roots of the characteristic equation are $r_1 = 1$ and $r_2 = -1$.\mrk{2}\par
+		For $r = 1$, the two equations reduce to $\xi_1 = \xi_2$. A corresponding eigenvector is $\xi^{(1)} = (1, 1)^T$.\mrk{1}\par
+		Substitution of $r = -1$ results in the single equation $3\xi_1 = \xi_2$. A corresponding eigenvector is $\xi^{(2)} = (1, 3)^T$.\mrk{1}\par
+		The general solution is
+		$$
+		\vb{x}(t) = c_1
+		\begin{pmatrix}
+			e^t\\
+			e^t
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			e^{-t}\\
+			3e^{-t}
+		\end{pmatrix}.
+		$$ 
+		Hence a fundamental matrix is given by
+		$$
+		\Psi (t) =
+		\begin{pmatrix}
+			e^t & e^{-t}\\
+			e^t & 3e^{-t}
+		\end{pmatrix},
+		$$
+		\mrk{2}\par
+		Then we have
+		$$
+		\Psi(0) =
+		\begin{pmatrix}
+			1 & 1\\
+			1 & 3
+		\end{pmatrix},\quad
+		\Psi^{-1}(0) = \frac{-1}{4}
+		\begin{pmatrix}
+			3 & -1\\
+			-1 & 1
+		\end{pmatrix}.
+		$$
+		\mrk{2}\par
+		So that
+		$$
+		\Phi (t) = \Psi(t)\Psi^{-1}(0) = \frac{1}{2}
+		\begin{pmatrix}
+			3e^t - e^{-t} & -e^t + e^{-t}\\
+			3e^t - 3e^{-t} & -e^t + 3e^{-t}
+		\end{pmatrix}.
+		$$
+		\mrk{2}
+	\end{enumerate}
+\end{document}

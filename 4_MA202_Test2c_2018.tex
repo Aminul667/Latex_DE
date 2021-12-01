@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Test 2 (Spring 2018)}
+\fancyhead[L]{MA202: Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcounter{mk}
+\newcommand{\mrk}[1]{\hfill\textbf{[#1 marks]}}
+\newcommand{\qtion}{\stepcounter{mk}\textbf{Question \arabic{mk}: }}
+
+\begin{document}
+	%
+	\begin{center}
+		\textbf{\large Test 2 (Spring 2018)}
+	\end{center}
+	%	
+	\fbox{\parbox{15.65cm}{
+		\begin{itemize}
+			\item Attempt all five questions!
+			\item Time allowed: 1 hour.
+			\item All questions carry equal marks.
+		\end{itemize}
+	}}\\[1cm]
+	%
+	\qtion (a) Given the power-series $y(x) = \sum_{n = 0}^\infty a_nx^n$ of $x$ about $x = 0$, determine $y^\prime(x)$.\\
+	\vspace*{0ex}\mrk{3}\\
+	(b) Consider the following first-order differential equation and a power-series of $x$ about $x = 0$ as in (a):
+	$$
+	(1 + x)y^\prime = -y
+	$$
+	By substituting the power-series and its derivative in (a), determine the coefficients an such that $y(x)$ is a power-series solution to the differential equation.\mrk{7}\\
+	\qtion Find the power-series solution to the following differential equation about $x = 0$:
+	$$
+	(1 - x)y^{\prime\prime} + y = 0.
+	$$
+	\textbf{Hint:} Follow a similar approach as in Q1 above.\mrk{10}\\
+	\qtion Transform the following non-homogeneous system of equations into a single non-homogeneous differential equation of second order:
+	$$
+	\vb{x}^\prime =
+	\begin{pmatrix}
+		1 & 1\\
+		4 & -2
+	\end{pmatrix}\vb{x} +
+	\begin{pmatrix}
+		2\\
+		-1
+	\end{pmatrix}e^t.
+	$$
+	\textbf{Hint:} Write the above system in the form of 2 differential equations for $\dot{x}_1$ and $\dot{x}_2$, and eliminate $x_2$.\mrk{10}\\
+	\qtion Consider the system of linear differential equations $x^\prime = \vb{Ax}$, with:
+	$$
+	\vb{A} =
+	\begin{pmatrix}
+		-1/2 & 1\\
+		-1 & -1/2
+	\end{pmatrix}.
+	$$
+	\begin{enumerate}[(a)]
+		\item Calculate the eigenvalues and corresponding eigenvectors of $\vb{A}$.\mrk{2}
+		\item Determine the stability of the origin.\mrk{2}
+		\item  Write the general solutions to the system of equations.\mrk{4}
+		\item  Sketch the phase-portrait of the system.\mrk{2}
+	\end{enumerate}
+	\qtion Consider the system of linear differential equations $x^\prime = \vb{Ax}$, with
+	$$
+	\vb{A} =
+	\begin{pmatrix}
+		2 & -1\\
+		3 & -2
+	\end{pmatrix}.
+	$$
+	\begin{enumerate}[(a)]
+		\item Calculate the eigenvalues and corresponding eigenvectors of $\vb{A}$.\mrk{3}
+		\item Determine the fundamental solutions to the system.\mrk{3}
+		\item Construct the fundamental matrix $\Psi(t)$ using the fundamental solutions in (b).\mrk{2}
+		\item Find the fundamental matrix $\Phi(t)$ that satisfies $\Phi(0) = I$ for this system, using $\Psi(t)$ from (c).\mrk{2}
+	\end{enumerate}
+	\vfill\centering\textbf{END}
+\end{document}

@@ -1,0 +1,315 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Test 2 (Spring 2019) - Solutions}
+\fancyhead[L]{MA202: Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcommand{\mrk}[1]{\hfill\textbf{[#1 marks]}}
+
+\begin{document}
+	%
+	\begin{center}
+		\textbf{\large Test 2 (Spring 2019)}\\[0.15cm]
+		\textbf{\large SOLUTIONS}
+	\end{center}
+	%
+	\begin{enumerate}
+		\item The characteristic equation is given by
+		$$
+		\begin{vmatrix}
+			1 - r & -i\\
+			i & 1 - r
+		\end{vmatrix} 
+		= (1 - r)^2 + i^2 = r(r - 2) = 0.
+		$$
+		The equation has roots $r_1 = 0$ and $r_2 = 2$. For $r = 0$, the components of the solution vector must satisfy $\xi_1 − i\xi_22 = 0$. Thus the corresponding eigenvector is $\xi^{(1)} = (1, −i)^T$. Substitution of $r = 2$ results in the single equation $-\xi_1 - i\xi_2 = 0$. A corresponding eigenvector is $\xi^{(2)} = (1, i)^T$. Since the eigenvalues are distinct, the general solution is
+		$$
+		\vb{z}(t) = c_1
+		\begin{pmatrix}
+			1\\
+			-i
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			1\\
+			i
+		\end{pmatrix}e^{2t}
+		$$
+		\mrk{10}
+		\item The solution to the ODEs is based on the analysis of the algebraic equations
+		$$
+		\begin{pmatrix}
+			2 - r & 1\\
+			-5 & -2 - r
+		\end{pmatrix}
+		\begin{pmatrix}
+			\xi_1\\
+			\xi_2
+		\end{pmatrix} =
+		\begin{pmatrix}
+			0\\
+			0
+		\end{pmatrix}.
+		$$
+		For a nonzero solution, we require that $\det(\vb{A} - r\vb{I}) = r^2 + 1 = 0$. The roots of the characteristic equation are $r_{1,2} = \pm i$. Setting $r = i$, the equations are equivalent to $(2 - i)\xi_1 + \xi_2 = 0$. The eigenvectors are $\xi^{(1)} = (1, -2 + i)^T$ and $\xi^(2) = (1, -2 - i)^T$. Hence one of the complexvalued solutions is given by
+		\begin{align*}
+			\vb{x}^{(1)}(t)
+			&=
+			\begin{pmatrix}
+				1\\
+				-2 + i
+			\end{pmatrix} e^{it} =
+			\begin{pmatrix}
+				1\\
+				-2 + i
+			\end{pmatrix}(\cos t + i\sin t)\\
+			&=
+			\begin{pmatrix}
+				\cos t\\
+				-2\cos t - \sin t
+			\end{pmatrix} + i
+			\begin{pmatrix}
+				\sin t\\
+				\cos t - 2\sin t
+			\end{pmatrix}.
+		\end{align*}
+		%
+		Therefore the general solution is
+		$$
+		\vb{x}(t) = c_1
+		\begin{pmatrix}
+			\cos t\\
+			-2\cos t - \sin t
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			\sin t\\
+			\cos t - 2\sin t
+		\end{pmatrix}.
+		$$
+		The solution may also be written as
+		$$
+		\vb{x}(t) = c_1
+		\begin{pmatrix}
+			-2 \cos t + \sin t\\
+			5\cos t
+		\end{pmatrix} + c_2
+		\begin{pmatrix}
+			-2\sin t - \cos t\\
+			5\sin t
+		\end{pmatrix}.
+		$$
+		\mrk{10}
+		%
+		\item The characteristic equation reduces to $r^2 + r - 6 = 0$. The roots of the characteristic equation are $r_1 = 2$ and $r_2 = -3$. For $r = 2$, the system of equations reduces to $\xi_1 = 4\xi_2$. The corresponding eigenvector is $\xi^{(1)} = (4, 1)^T$. Substitution of $r = -3$ results in the single equation $\xi_1 + \xi_2 = 0$. A corresponding eigenvector is $\xi^{(2)} = (1, -1)^T$. Hence, we have the two linearly independent solutions
+		$$
+		\vb{x}^{(1)} =
+		\begin{pmatrix}
+			4\\
+			1
+		\end{pmatrix}e^{2t},\quad\text{and} \quad \vb{x}^{(1)} =
+		\begin{pmatrix}
+			1\\
+			-1
+		\end{pmatrix}e^{-3t}.
+		$$
+		Thus
+		$$
+		\Psi(t) =
+		\begin{pmatrix}
+			4e^{2t} & -e^{-3t}\\
+			e^{2t} & e^{-3t}
+		\end{pmatrix}.
+		$$
+		Imposing the canonical initial condition we get
+		$$
+		\Psi(0) =
+		\begin{pmatrix}
+			4 & -1\\
+			1 & 1
+		\end{pmatrix},\quad \text{and}\quad \Psi^{-1}(0) = \frac{1}{5}
+		\begin{pmatrix}
+			1 & 1\\
+			-1 & 4
+		\end{pmatrix},
+		$$
+		so that
+		$$
+		\Phi(t) = \Psi(t)\Psi^{-1}(0) = \frac{1}{5}
+		\begin{pmatrix}
+			e^{-3t} + 4e^{2t} & -4e^{-3t} + 4e^{2t}\\
+			-e^{-3t} + e^{2t} & 4e^{-3t} + e^{2t}
+		\end{pmatrix}.
+		$$
+		\mrk{10}
+		\item The eigenvalues of
+		$$
+		\begin{pmatrix}
+			2 & 3\\
+			-1 & -2
+		\end{pmatrix}
+		$$
+		are given by $r_1 = 1$ and $r_2 = -1$. The corresponding eigenvectors are given by
+		$$
+		\xi^{(1)} =
+		\begin{pmatrix}
+			-3\\
+			1
+		\end{pmatrix},\quad 
+		\xi^{(2)} =
+		\begin{pmatrix}
+			-1\\
+			1
+		\end{pmatrix}.
+		$$
+		Therefore, two linearly independent solutions are given by
+		$$
+		\vb{x}^{(1)} = 
+		\begin{pmatrix}
+			-3\\
+			1
+		\end{pmatrix}e^t,\quad
+		\vb{x}^{(2)} =
+		\begin{pmatrix}
+			-1\\
+			1
+		\end{pmatrix}e^{-t}.
+		$$
+		and
+		$$
+		\Psi(t) =
+		\begin{pmatrix}
+			-3e^t & -e^{-t}\\
+			e^t & e^{-t}
+		\end{pmatrix}
+		$$
+		is a fundamental matrix. In order to find the general solution using variation of parameters, we need to calculate $\int^t_{t_1}\Psi^{-1}(s)\vb{g}(s)ds$. We see that
+		$$
+		\Psi^{-1}(s) = \frac{1}{2}
+		\begin{pmatrix}
+			-e^{-s} & -e^{-s}\\
+			e^s & 3e^s
+		\end{pmatrix}
+		$$
+		Therefore,
+		\begin{align*}
+			\int_{t_1}^t \Psi^{-1}(s)\vb{g}(s)ds = \frac{1}{2}\int_{t_1}^t
+			\begin{pmatrix}
+				-e^{-s} & -e^{-s}\\
+				e^s & 3e^s
+			\end{pmatrix}
+			\begin{pmatrix}
+				e^s\\
+				s
+			\end{pmatrix}ds\\
+			= \frac{1}{2}\int_{t_1}^t
+			\begin{pmatrix}
+				-1 -se^{-s}\\
+				e^{2s} + 3se^s
+			\end{pmatrix}ds = \frac{1}{2}
+			\begin{pmatrix}
+				-t + te^{-t} + e^{-t}\\
+				\frac{1}{2}e^{2t} + 3te^t - 3e^t
+			\end{pmatrix} + \vb{c.}
+		\end{align*}
+		Then the general solution will be given by
+		\begin{align*}
+			\vb{x}(t)
+			&= \Psi(t)\vb{c} + \Psi(t)\int_{t_1}^t \Psi^{-1}(s)\vb{g}(s)ds\\
+			&= 
+			\begin{pmatrix}
+				-3e^t & -e^{-t}\\
+				e^t & e^{-t}
+			\end{pmatrix}\vb{c}\\
+			&+
+			\begin{pmatrix}
+				-3e^t & -e^{-t}\\
+				e^t & e^{-t}
+			\end{pmatrix}
+			\left[
+				\frac{1}{2}
+				\begin{pmatrix}
+					-t + te^{-t} + e^{-t}\\
+					\frac{1}{2}e^{2t} + 3te^t - 3e^t
+				\end{pmatrix} + \vb{c}
+			\right]\\
+			&= c_1e^t
+			\begin{pmatrix}
+				-3\\
+				1
+			\end{pmatrix} + c_2e^{-t}
+			\begin{pmatrix}
+				-1\\
+				1
+			\end{pmatrix} +
+			\begin{pmatrix}
+				\left(\frac{3}{2}t - \frac{1}{4}\right)e^t - 3t\\
+				\left(-\frac{1}{2}t + \frac{1}{4}\right)e^t + 2t - 1
+			\end{pmatrix}.
+		\end{align*}
+		\mrk{10}
+		\item The critical points are given by the solution set of the equations
+		\begin{align*}
+			(2 + x) \sin y &= 0\\
+			1 - x - \cos y = 0.
+		\end{align*}
+		If $x = -2$, then we must have $\cos y = 3$, which is impossible (for real $y$). Therefore $\sin y = 0$, which implies that $y = n\pi,\ n \in \mathbb{Z}$. Based on the second equation,
+		$$
+		x = 1 - \cos n\pi.
+		$$
+		It follows that the critical points are located at $(0, 2k\pi)$ and $(2,(2k +1)\pi)$, where $k \in \mathbb{Z}$.\\
+		Given that $F(x, y) = (2 + x) \sin y$ and $G(x, y) = 1 - x - \cos y$, the Jacobian matrix of the vector field is
+		$$
+		\begin{pmatrix}
+			F_x(x,y) & F_y(x,y)\\
+			G_x(x,y) & G_y(x,y)
+		\end{pmatrix} =
+		\begin{pmatrix}
+			\sin y & (2 + x)\cos y\\
+			-1 & \sin y
+		\end{pmatrix}
+		$$
+		At the critical points $(0, 2k\pi)$, the coefficient matrix of the linearised system is
+		$$
+		J(0, 2k\pi) =
+		\begin{pmatrix}
+			0 & 2\\
+			-1 & 0
+		\end{pmatrix}
+		$$
+		with purely imaginary eigenvalues $r_{1,2} = \pm \sqrt{2}i$. The critical points of the associated linear systems are centres, which are stable (see Theorem 9.3.2 in the main Textbook). Note that Theorem 9.3.2 does not provide a definite conclusion regarding the relation between the nature of the critical points of the nonlinear systems and their corresponding linearisations.\\
+		At the points $(2,(2k + 1)\pi)$, the coefficient matrix of the linearised system is
+		$$
+		J[2, (2k+1)\pi] =
+		\begin{pmatrix}
+			0 & -4\\
+			-1 & 0
+		\end{pmatrix},
+		$$
+		with eigenvalues $r_1 = 2$ and $r_2 = -2$. The eigenvalues are real, with opposite sign. Hence the critical points of the associated linear systems are saddles, which are unstable.\\
+		As asserted in Theorem 9.3.2 in the main Textbook, the trajectories near the critical points $(2,(2k + 1)\pi)$ resemble those near a saddle. Upon closer examination, the critical points $(0, 2k\pi)$ are indeed centres.\par
+		\vspace*{0ex}\mrk{10}
+	\end{enumerate}
+\end{document}

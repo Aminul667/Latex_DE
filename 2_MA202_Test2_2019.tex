@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Test 2 (Spring 2019)}
+\fancyhead[L]{MA202: Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcounter{mk}
+\newcommand{\mrk}[1]{\hfill\textbf{[#1 marks]}}
+\newcommand{\qtion}{\stepcounter{mk}\textbf{Question \arabic{mk}: }}
+
+\begin{document}
+	%
+	\begin{center}
+		\textbf{\large Test 2 (Spring 2019)}
+	\end{center}
+	%	
+	\fbox{\parbox{15.65cm}{
+		\begin{itemize}
+			\item Attempt all five questions!
+			\item Time allowed: 1 hour.
+			\item All questions carry equal marks.
+		\end{itemize}
+		}}\\[1cm]
+		%
+		\qtion Find the general solution to the system of equations:
+		$$
+		\vb{x}^\prime
+		=
+		\begin{pmatrix}
+			1 & -i\\
+			i & 1
+		\end{pmatrix}\vb{x}
+		$$
+		\mrk{10}\par
+		\qtion Find the general solution to the system of equations in terms of real-valued functions:
+		$$
+		\vb{x}^\prime
+		=
+		\begin{pmatrix}
+			2 & 1\\
+			-5 & -2
+		\end{pmatrix}\vb{x}
+		$$
+		\mrk{10}\par
+		\qtion Find the fundamental matrix $\Phi(t)$ that satisfies $\Phi(0) = \vb{I}$ for the system of equations:
+		$$
+		\vb{x}^\prime =
+		\begin{pmatrix}
+			1 & 4\\
+			1 & -2
+		\end{pmatrix}\vb{x}.
+		$$
+		\mrk{10}\par
+		\qtion Find the general solution to the system of equations:
+		$$
+		\vb{x}^\prime =
+		\begin{pmatrix}
+			2 & 3\\
+			-1 & -2
+		\end{pmatrix}\vb{x} +
+		\begin{pmatrix}
+			e^t\\
+			t
+		\end{pmatrix}
+		$$
+		\textbf{Hint:} \textit{You might want to express the general solution $\vb{x}(t)$ as $\vb{x}(t) = \Psi(t)\vb{c}+ \Psi(t)\int^t_{t_1}\Psi^{-1}(s)\vb{g}(s)\allowbreak ds$, where $\Psi(t)$ is the fundamental matrix of the system and $c$ a vector of real constants.}\\
+		\vspace*{0ex}\mrk{10}\par
+		\hfill\textbf{Continue on next page}\par
+		\pagebreak
+		\qtion Determine all critical points and find the corresponding linear system near each critical point of the system of ODEs:\par
+		$$
+		dx/dt = (2 + x) \sin y,\quad dy/dt = 1 - x - \cos y.
+		$$
+		Then, determine the stability properties of the system around each critical point.\\
+		\vspace*{0ex}\mrk{10}.
+		%
+		\vfill\centering\textbf{END}
+\end{document}

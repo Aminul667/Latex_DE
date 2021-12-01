@@ -1,0 +1,218 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+\usepackage{subcaption}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Sample Test 2 - Solutions}
+\fancyhead[L]{MA323: Partial Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcommand{\mrk}[1]{\hfill\textbf{[#1 marks]}}
+
+\begin{document}
+	%
+	\begin{center}
+		\textbf{\large Test 2 (Spring 2018)}\\[0.15cm]
+		\textbf{\large SOLUTIONS}
+	\end{center}
+	%
+	\begin{enumerate}
+		\item To say that $u(x, y) = F(x)G(y)$ is a solution of $xu_y = yu_x$ is equivalent to say that
+		$$
+		xF(x)G^\prime(y) = yF^\prime(x)G(y),\quad \Leftrightarrow \quad \frac{G^\prime(y)}{yG(y)} = \frac{F^\prime(x)}{xF(x)}
+		$$
+		\mrk{2}\par
+		Here, we need a function of $y$ to be equal to a function of $x$, so this implies
+		$$
+		\frac{G^\prime}{yG(y)} = \frac{F^\prime(x)}{xF(x)} = \lambda,\quad \Rightarrow \quad F^\prime(x) = \lambda xF(x),\quad G^\prime(y) = \lambda yG(y),
+		$$
+		for some $\lambda \in \mathbb{R}$.\mrk{3}\par
+		Once we now solve these two separable ODEs, we find that
+		$$
+		F(x) = C_1e^{\lambda x^2/2},\quad G(y) = C_2e^{\lambda y^2/2},
+		$$
+		\mrk{3}\par
+		so
+		$$
+		u(x, y) = F(x)G(y) = C_3e^{\lambda(x^2 + y^2)/2},\quad (C_3 = C_1C_2).
+		$$
+		\mrk{2}
+		\item 
+		\begin{enumerate}
+			\item The characteristic equations are
+			$$
+			x_t = x,\quad y_t = 1,\quad u_t = 1.
+			$$
+			\mrk{2}\par 
+			The solution is
+			$$
+			x(t, s) = x_0e^t,\quad y(t, s) = y_0 + t,\quad u(t, s) = u_0 + t.
+			$$
+			The characteristic curve passing through the point $(1,\ 1,\ 1)$ is $(e^t,\ 1 + t,\ 1 + t)$.\\
+			\vspace*{0ex}\mrk{2}
+			\item The direction of the projection of the initial curve on the $(x, y)$ plane is $(1, 0)$. The direction of the projection of the characteristic curve is $(s, 1)$. Since the directions are not parallel (i.e. the transversality condition is satisfied), there exists a unique solution.\mrk{2}\par
+			To find this solution, we substitute the initial curve into the formula for the characteristic curves, and find
+			$$
+			x(t, s) = se^t,\quad y(t,s) = t,\quad u(t, s) = \sin s + t.
+			$$
+			\mrk{2}\par
+			Eliminating $s$ and $t$ we get $s = x = e^y$. The explicit solution is
+			$$
+			u(x, y) = \sin(xe^{-y}) + y.
+			$$
+			It is defined for all $x$ and $y$.\mrk{2}
+		\end{enumerate}
+		\item Here we have $A = y^2,\ B = xy$ and $C = 2x^2$, so $\mathcal{D} = -x^2y^2 \leq 0$. Thus, the equation is parabolic on $x = 0$, or $y = 0$, and elliptic otherwise.\mrk{1}\par
+		We restrict ourselves to the case $x \neq 0,\ y \neq 0$, which means that the equation has no real characteristics. The equations are
+		$$
+		\frac{dy}{dx} = (1 - i)\frac{x}{y},\quad \frac{dy}{dx} = (1 + i)\frac{x}{y}.
+		$$
+		\mrk{2}\par
+		Integrating the first of them we get
+		$$
+		z = y^2 - (1 - i)x^2 = \text{const}.
+		$$
+		Then we choose to make the transformation $\xi = \Re(z) = y^2 - x^2,\ \eta = \Im(z) = x^2$.\\
+		\vspace*{0ex}\mrk{3}\par
+		Changing the coordinates, we get the canonical form
+		$$
+		\tilde{u}_{\xi\xi} + \tilde{u}_{\eta\eta} + \frac{1}{2\eta}\tilde{u}_\eta + \frac{1}{\xi + \eta}\tilde{u}_\xi = 0.
+		$$
+		\mrk{4}\\
+		(Don’t forget to express $x$ and $y$ in terms of $\xi$ and $\eta$ in order to get the canonic form of the PDE.)
+		\item By direct computation
+		$$
+		a_0 = \frac{1}{2\pi}\int_0^{2\pi} f(x)dx = \frac{1}{2\pi}\int_0^{2\pi}\cos xdx = 0.
+		$$
+		\mrk{2}\par
+		For the coefficients $a_k$ we will treat the cases $k = 1$ and $k \neq 0$ separately. For $k = 1$ we have:
+		$$
+		a_k = \frac{1}{\pi}\int_0^{2\pi}\cos^2xdx = \frac{1}{2\pi}\int_0^{2\pi}(1 + \cos 2xdx) = \frac{1}{\pi}\left[\frac{1}{2}x + \frac{1}{4}\sin 2x\right]_0^\pi = \frac{1}{2},
+		$$
+		and for $k \neq 1$:
+		$$
+		a_k = \frac{1}{\pi}\int_0^{2\pi}\cos x\cos kdx = \frac{1}{\pi}\left[\frac{\sin(k-1)x}{2(k-1)} + \frac{\sin(k+1)x}{2(k + 1)}\right]_0^\pi = 0.
+		$$
+		So,
+		$$
+		a_k = 
+		\begin{cases}
+			0 & k \neq 1,\\
+			1/2 & k = 1.
+		\end{cases}
+		$$
+		\mrk{3}\par
+		We proceed in a similar way for the coefficients $b_k$. For $k = 1$ we have
+		$$
+		b_k = \frac{1}{\pi}\int_0^{2\pi}\cos x\sin xdx = -\frac{1}{4\pi}[\cos2x]_0^\pi = 0,
+		$$
+		and for $k \neq 1$:
+		$$
+		b_k = \frac{1}{\pi}\int_0^{2\pi}\cos x\sin xdx = -\frac{1}{\pi}\left[\frac{\cos(k-1)x}{2(k-1)} + \frac{\cos(k+1)x}{2(k + 1)}\right]_0^\pi =
+		\begin{cases}
+			0 & k - \text{odd},\\
+			\frac{2k}{\pi(k^2 - 1)} & k - \text{even}.
+		\end{cases}
+		$$
+		\mrk{3}\par
+		Thus, the Fourier series for $f(x)$ is
+		$$
+		f(x) = \frac{1}{2}\cos x + \sum_{k - \text{even}}\frac{2k}{\pi(k^2 - 1)}\sin kx.
+		$$
+		\mrk{2}
+		\item We look for solutions of the form $u(x, y) = X(x)Y(y) \neq 0$. We substitute in the equation to obtain
+		$$
+		X^{\prime\prime}Y + XY^{\prime\prime} = 0,\quad \Longrightarrow\quad \frac{X^{\prime\prime}}{X} = -\frac{Y^{\prime\prime}}{Y} = \lambda.
+		$$
+		So we obtain the following ODEs for $X$ and $Y$ respectively:
+		$$
+		X^{\prime\prime} = \lambda X,\quad Y^{\prime\prime} = -\lambda Y.
+		$$
+		From the homogeneous boundary conditions we obtain:
+		$$
+		X(0) = X(a) = 0.
+		$$
+		\mrk{2}\par
+		From considering different cases for $\lambda$ in the boundary value problem
+		$$
+		X^{\prime\prime} = \lambda X,\quad X(0) = X(a) = 0.
+		$$
+		we obtain that
+		$$
+		\lambda = \lambda_n = -\frac{n^2\pi^2}{a^2},\quad n = 1,2,\ldots
+		$$
+		and that
+		$$
+		X_n(x) = \sin\left(\frac{n\pi}{a}x\right).
+		$$
+		\mrk{2}\par
+		For the obtained values of $\lambda = \lambda_n$ we solve $Y^{\prime\prime} = -\lambda Y$ to obtain
+		$$
+		Y_n(y) = A_ne^{\frac{n\pi}{a}y} + B_ne^{-\frac{n\pi}{a}y}.
+		$$
+		So for $n = 1,\ 2,\ \ldots$ the functions
+		$$
+		u_n(x, y) = X_n(x)Y_n(y) = \left(A_ne^{\frac{n\pi}{a}y} + B_ne^{-\frac{n\pi}{a}y}\right)\sin\left(\frac{n\pi}{a}x\right)
+		$$
+		satisfy the equation and the homogeneous boundary conditions. The same is true for
+		$$
+		u(x, y) = \sum_{n = 1}^\infty u_n(x, y) = \sum_{n = 1}^\infty\left(A_ne^{\frac{n\pi}{a}y} + B_ne^{-\frac{n\pi}{a}y}\right)\sin\left(\frac{n\pi}{a}x\right)
+		$$
+		\mrk{2}\par
+		The remaining boundary conditions imply
+		$$
+		u(x, b) = 0\quad \Longrightarrow \quad \sum_{n = 1}^\infty\left(A_ne^{\frac{n\pi}{a}b} + B_ne^{-\frac{n\pi}{a}b}\right)\sin\left(\frac{n\pi}{a}x\right) = 0
+		$$
+		from where it follows that
+		$$
+		A_ne^{\frac{n\pi}{a}b} + B_ne^{-\frac{n\pi}{a}b} = 0,\quad n = 1,\ 2,\ \ldots
+		$$
+		\mrk{1}\par
+		The final boundary condition gives
+		$$
+		u(x, 0) = \sin\left(\frac{\pi}{a}x\right) \quad \Longrightarrow \quad \sum_{n = 1}^\infty (A_n + B_n)\sin\left(\frac{n\pi}{a}x\right) = \sin\left(\frac{\pi}{a}x\right)
+		$$
+		from which it follows that
+		$$
+		A_1 + B_1 = 1,\quad A_n + B_n = 0,\ n \geq 2.
+		$$
+		\mrk{1}\par
+		Putting all together we get:
+		$$
+		B_1 = -A_1e^{2\pi\frac{b}{a}},\quad A_1 = (1 - e^{2\pi\frac{b}{a}})^{-1},\quad A_n = B_n = 0,\ n \geq 2
+		$$
+		\mrk{1}\par
+		and thus
+		$$
+		u(x, y) = \frac{\sin\left(\frac{\pi x}{a}\right)}{1 - e^{2\pi\frac{b}{a}}}\left(e^{\frac{\pi y}{a}} - e^{2\pi \frac{b}{a}}e^{-\frac{\pi y}{a}}\right).
+		$$
+		\mrk{1}
+	\end{enumerate}
+	%
+	\vfill\centering\textbf{END OF MODEL SOLUTIONS}
+\end{document}

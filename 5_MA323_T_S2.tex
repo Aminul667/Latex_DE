@@ -1,0 +1,102 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,suetterl}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\usepackage{mathrsfs}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhead[R]{Sample Test 2}
+\fancyhead[L]{MA323: Partial Differential Equations}
+
+\parindent 0ex
+\setlength{\parskip}{1em}
+\raggedbottom
+
+\newcounter{mk}
+\newcommand{\mrk}[1]{\hfill\textbf{[#1 marks]}}
+\newcommand{\qtion}{\stepcounter{mk}\textbf{Question \arabic{mk}: }}
+
+\begin{document}
+	\begin{enumerate}
+		\item Find all separable solutions $u(x, y) = F(x)G(y)$ of the equation
+		$$
+		xu_y = yu_x
+		$$
+		\mrk{10}
+		\item Consider the equation
+		$$
+		xu_x + u_y = 1.
+		$$
+		\begin{enumerate}[(a)]
+			\item Find a characteristic curve passing through the point $(1, 1, 1)$.\\
+			\vspace*{0ex}\mrk{4}
+			\item Find the solution of the equation above $u(x, y)$ satisfying the initial condition
+			$$
+			u(x, 0) = \sin x.
+			$$
+			Is the solution defined for all $x$ and $y$?\\
+			\vspace*{0ex}\mrk{6}
+		\end{enumerate}
+		\item Find the region where the equation
+		$$
+		x^2u_{xx} + 2xyu_{xy} + 2x^2u_{yy} + yu_y = 0.
+		$$
+		is elliptic, and then reduce it to its canonical form in this region.\\
+		\vspace*{0ex}\mrk{10}\\
+		\textbf{Hint:} You may find useful the formulae given on the last sheet of the test paper.
+		\item Find the Fourier series of the given function
+		$$
+		f(x) = 
+		\begin{cases}
+			\cos x, & 0\leq x \leq \pi\\
+			0, & \pi \leq x \leq 2\pi.
+		\end{cases}
+		$$
+		\mrk{10}
+		\item Solve the boundary value problem for the Laplace equation
+		\begin{align*}
+			&u_{xx} + u_{yy} = 0, & 0 < x < a, &\ 0 < y < b\\
+			&u(x, 0) = \sin(\frac{\pi x}{a}), & 0 < x < a &\\
+			&u(x, b) = 0, & 0 < x < a &\\
+			&u(0, y) = u(a, y) = 0, & 0 < y < b &
+		\end{align*}
+		\mrk{10}
+	\end{enumerate}
+	\pagebreak
+	\thispagestyle{empty}
+	\rule{\textwidth}{0.4pt}
+	\begin{center}
+		\textbf{Formulae}
+	\end{center}
+	Consider the invertible transformation of the independent variables
+	$$
+	\xi = \xi(x, y),\quad \eta = \eta(x, y),\quad \frac{\partial(\xi, \eta)}{\partial(x,y)}\neq 0.
+	$$
+	If $\tilde{u}(\xi, \eta)$ is the transformation of $u(x, y)$, i.e. $u(x, y) = \tilde{u}(\xi(x, y),\ \eta(x, y))$, then
+	\begin{align*}
+		u_x &= \tilde{u}_\xi\xi_x + \tilde{u}_\eta\eta_x,\\
+		u_y &= \tilde{u}_\xi\xi_y + \tilde{u}_\eta\eta_y,\\
+		u_{xx} & =\tilde{u}_{\xi\xi}\xi^2_x + \tilde{u}_{\eta\eta}\eta_x^2 + 2\tilde{u}_{\xi\eta}\xi_x\eta_x + \tilde{u}_\xi\xi_{xx} + \tilde{u}_\eta\eta_{xx},\\
+		u_{xy} &= \tilde{u}_{\xi\xi}\xi_x\xi_y + \tilde{u}_{\eta\eta}\eta_x\eta_y + \tilde{u}_{\xi\eta}(\xi_x\eta_y + \xi_y\eta_x) + \tilde{u}_\xi\xi_{xy} + \tilde{u}_\eta\eta_{x,y},\\
+		u_{yy} & =\tilde{u}_{\xi\xi}\xi^2_y + \tilde{u}_{\eta\eta}\eta_y^2 + 2\tilde{u}_{\xi\eta}\xi_y\eta_y + \tilde{u}_\xi\xi_{yy} + \tilde{u}_\eta\eta_{yy}.
+	\end{align*}
+	\vfill\centering\textbf{END OF PAPER}
+\end{document}
